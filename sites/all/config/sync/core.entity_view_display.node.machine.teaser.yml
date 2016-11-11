@@ -1,0 +1,19 @@
+uuid: 03af37c1-48da-459e-986a-43b001103046
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.machine.field_email
+    - node.type.machine
+  module:
+    - user
+id: node.machine.teaser
+targetEntityType: node
+bundle: machine
+mode: teaser
+content:
+  links:
+    weight: 100
+hidden:
+  field_email: true

@@ -1,0 +1,11 @@
+uuid: ef6d709b-a5ca-41eb-a00e-3e0052b723ef
+langcode: en
+status: true
+dependencies: {  }
+name: Machine
+type: machine
+description: 'A Bibbox machine'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

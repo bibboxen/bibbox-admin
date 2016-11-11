@@ -1,0 +1,101 @@
+uuid: 7e1ea465-7894-4aca-a2c7-21f43fb80131
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.machine.field_bin_default
+    - field.field.node.machine.field_bin_left
+    - field.field.node.machine.field_bin_left_text
+    - field.field.node.machine.field_bin_right
+    - field.field.node.machine.field_bin_right_text
+    - field.field.node.machine.field_email
+    - field.field.node.machine.field_features
+    - field.field.node.machine.field_name
+    - field.field.node.machine.field_timeout
+    - field.field.node.machine.field_timeout_idle
+    - node.type.machine
+  module:
+    - user
+id: node.machine.default
+targetEntityType: node
+bundle: machine
+mode: default
+content:
+  field_bin_default:
+    weight: 111
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+  field_bin_left:
+    weight: 108
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+  field_bin_left_text:
+    weight: 109
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_bin_right:
+    weight: 107
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+  field_bin_right_text:
+    weight: 110
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_email:
+    weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_features:
+    weight: 106
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_name:
+    weight: 103
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_timeout:
+    weight: 104
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+  field_timeout_idle:
+    weight: 105
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+  links:
+    weight: 100
+hidden: {  }

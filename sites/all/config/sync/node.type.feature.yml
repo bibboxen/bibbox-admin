@@ -1,0 +1,11 @@
+uuid: 4866a42e-8c40-468e-992a-f631a45448e8
+langcode: en
+status: true
+dependencies: {  }
+name: Feature
+type: feature
+description: 'UI features'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true
