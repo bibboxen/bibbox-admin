@@ -9,6 +9,13 @@ dependencies:
     - field.field.node.machine.field_bin_right
     - field.field.node.machine.field_bin_right_text
     - field.field.node.machine.field_email
+    - field.field.node.machine.field_fbs_agency
+    - field.field.node.machine.field_fbs_endpoint
+    - field.field.node.machine.field_fbs_location
+    - field.field.node.machine.field_fbs_login_attempts_max
+    - field.field.node.machine.field_fbs_login_attempts_time_li
+    - field.field.node.machine.field_fbs_password
+    - field.field.node.machine.field_fbs_username
     - field.field.node.machine.field_features
     - field.field.node.machine.field_name
     - field.field.node.machine.field_timeout
@@ -63,6 +70,55 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: email_default
+  field_fbs_agency:
+    weight: 40
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_fbs_endpoint:
+    weight: 39
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_fbs_location:
+    weight: 41
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_fbs_login_attempts_max:
+    weight: 42
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_fbs_login_attempts_time_li:
+    weight: 43
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_fbs_password:
+    weight: 38
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_fbs_username:
+    weight: 37
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
   field_features:
     weight: 31
     settings:

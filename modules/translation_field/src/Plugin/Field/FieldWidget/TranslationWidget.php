@@ -31,13 +31,13 @@ class TranslationWidget extends WidgetBase {
       '#type' => 'textfield',
       '#title' => t('Key'),
       '#default_value' => isset($items[$delta]->key) ? $items[$delta]->key : '',
-      '#size' => 50,
+      '#size' => 30,
     );
     $element['value'] = array(
       '#type' => 'textfield',
       '#title' => t('Value'),
       '#default_value' => isset($items[$delta]->value) ? $items[$delta]->value : '',
-      '#size' => 50,
+      '#size' => 30,
     );
 
     // If cardinality is 1, ensure a label is output for the field by wrapping

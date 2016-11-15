@@ -9,6 +9,13 @@ dependencies:
     - field.field.node.machine.field_bin_right
     - field.field.node.machine.field_bin_right_text
     - field.field.node.machine.field_email
+    - field.field.node.machine.field_fbs_agency
+    - field.field.node.machine.field_fbs_endpoint
+    - field.field.node.machine.field_fbs_location
+    - field.field.node.machine.field_fbs_login_attempts_max
+    - field.field.node.machine.field_fbs_login_attempts_time_li
+    - field.field.node.machine.field_fbs_password
+    - field.field.node.machine.field_fbs_username
     - field.field.node.machine.field_features
     - field.field.node.machine.field_name
     - field.field.node.machine.field_timeout
@@ -66,6 +73,55 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+  field_fbs_agency:
+    weight: 115
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_fbs_endpoint:
+    weight: 114
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_fbs_location:
+    weight: 116
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_fbs_login_attempts_max:
+    weight: 117
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_fbs_login_attempts_time_li:
+    weight: 118
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_fbs_password:
+    weight: 113
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_fbs_username:
+    weight: 112
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
   field_features:
     weight: 106
     label: above
