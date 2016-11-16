@@ -18,24 +18,9 @@ class ApiController extends ControllerBase {
    */
   public function machines() {
     $machines = [];
-    $languages = [];
 
-    // Attach languages.
-    $query = \Drupal::entityQuery('node')->condition('type', 'language');
-    $nids = $query->execute();
-
-
-    $languageNodes = \Drupal::entityManager()->getStorage('node')->loadMultiple($nids);
-    foreach ($languageNodes as $language) {
-      $languages[] = (object) [
-        'text' => $language->get('field_text')->value,
-        'langKey' => $language->get('field_language_key')->value,
-        'icon' => $language->get('field_icon')->value,
-      ];
-    }
-
-    $query = \Drupal::entityQuery('node')
-      ->condition('type', 'machine');
+    // Query for machine ids.
+    $query = \Drupal::entityQuery('node')->condition('type', 'machine');
     $nids = $query->execute();
 
     // Load nodes and build response.
@@ -43,7 +28,6 @@ class ApiController extends ControllerBase {
     foreach ($nodes as $node) {
       $machine = (object) [
         'title' => $node->get('title')->value,
-        'name' => $node->get('field_name')->value,
         'email' => $node->get('field_email')->value,
         'ui' => (object)[
           'timeout' => (object)[
@@ -78,7 +62,7 @@ class ApiController extends ControllerBase {
             "bins" => []
           ],
           'features' => [],
-          'languages' => $languages,
+          'languages' => [],
         ],
       ];
 
@@ -95,10 +79,22 @@ class ApiController extends ControllerBase {
       foreach ($node->get('field_features') as $ref) {
         $feature = \Drupal::entityManager()->getStorage('node')->load($ref->getValue()['target_id']);
         $machine->ui->features[] = (object)[
+          'title' => $feature->get('title')->value,
           'icon' => $feature->get('field_icon')->value,
           'require_offline' => boolval($feature->get('field_require_online')->value),
           'text' => $feature->get('field_text')->value,
           'url' => $feature->get('field_url')->value,
+        ];
+      }
+
+      // Attach languages.
+      foreach ($node->get('field_languages') as $ref) {
+        $language = \Drupal::entityManager()->getStorage('node')->load($ref->getValue()['target_id']);
+        $machine->ui->languages[] = (object)[
+          'title' => $language->get('title')->value,
+          'text' => $language->get('field_text')->value,
+          'langKey' => $language->get('field_language_key')->value,
+          'icon' => $language->get('field_icon')->value,
         ];
       }
 

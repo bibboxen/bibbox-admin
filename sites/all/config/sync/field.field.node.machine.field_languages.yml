@@ -1,16 +1,16 @@
-uuid: 28262e14-43eb-4469-9d6e-a32ec617e19f
+uuid: 14d7abca-081c-4e72-93f0-7a7fb8c3c51b
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_features
-    - node.type.feature
+    - field.storage.node.field_languages
+    - node.type.language
     - node.type.machine
-id: node.machine.field_features
-field_name: field_features
+id: node.machine.field_languages
+field_name: field_languages
 entity_type: node
 bundle: machine
-label: Features
+label: Languages
 description: ''
 required: false
 translatable: false
@@ -20,10 +20,9 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      feature: feature
+      language: language
     sort:
       field: _none
-      direction: ASC
     auto_create: false
     auto_create_bundle: ''
 field_type: entity_reference

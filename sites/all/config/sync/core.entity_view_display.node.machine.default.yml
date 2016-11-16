@@ -17,7 +17,8 @@ dependencies:
     - field.field.node.machine.field_fbs_password
     - field.field.node.machine.field_fbs_username
     - field.field.node.machine.field_features
-    - field.field.node.machine.field_name
+    - field.field.node.machine.field_ip
+    - field.field.node.machine.field_languages
     - field.field.node.machine.field_timeout
     - field.field.node.machine.field_timeout_idle
     - node.type.machine
@@ -129,13 +130,20 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
-  field_name:
-    weight: 103
+  field_ip:
+    weight: 119
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+  field_languages:
+    weight: 120
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   field_timeout:
     weight: 104
     label: above
