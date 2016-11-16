@@ -26,6 +26,7 @@ class ApiController extends ControllerBase {
     // Load nodes and build response.
     $nodes = \Drupal::entityManager()->getStorage('node')->loadMultiple($nids);
     foreach ($nodes as $node) {
+      // Create machine object.
       $machine = (object) [
         'title' => $node->get('title')->value,
         'email' => $node->get('field_email')->value,
@@ -66,7 +67,7 @@ class ApiController extends ControllerBase {
         ],
       ];
 
-      // Attach bin sorting.
+      // Attach bins to binSorting.
       foreach ($node->get('field_bin_left') as $item) {
         $machine->ui->binSorting->bins["" . $item->value] = 'left';
       }
@@ -98,6 +99,7 @@ class ApiController extends ControllerBase {
         ];
       }
 
+      // Add machine to $machines.
       $machines[] = $machine;
     }
 
