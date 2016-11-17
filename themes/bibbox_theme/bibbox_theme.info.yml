@@ -1,0 +1,8 @@
+name: Bibbox
+type: theme
+description: 'Bibbox administration theme.'
+core: '8.x'
+base theme: adminimal_theme
+
+libraries:
+  - bibbox_theme/bibbox-styling
