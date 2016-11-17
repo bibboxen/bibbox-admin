@@ -25,3 +25,11 @@
 .main-menu > .menu-item:hover {
   background-color: #eee;
 }
+
+.field {
+  margin-bottom: 1em;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}

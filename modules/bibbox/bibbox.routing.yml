@@ -5,3 +5,20 @@ bibbox.index:
   requirements:
     _permission: 'access content'
     _content_type_format: text/html
+
+bibbox.push_config:
+  path: '/bibbox/push_config/{id}'
+  defaults:
+    _controller: '\Drupal\bibbox\Controller\ApiController::pushConfig'
+  requirements:
+    _permission: 'access content'
+    _content_type_format: text/html
+
+bibbox.restart_ui:
+  path: '/bibbox/restart_ui/{id}'
+  defaults:
+    _controller: '\Drupal\bibbox\Controller\ApiController::restartUI'
+  requirements:
+    _permission: 'access content'
+    _content_type_format: text/html
+
