@@ -11,7 +11,7 @@ entity_type: node
 bundle: machine
 label: Timeout
 description: 'The number of seconds before timeout warning.'
-required: true
+required: false
 translatable: false
 default_value:
   -

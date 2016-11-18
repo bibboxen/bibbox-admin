@@ -11,7 +11,7 @@ _core:
 id: bibbox_theme_login
 theme: bibbox_theme
 region: content
-weight: -4
+weight: -3
 provider: null
 plugin: user_login_block
 settings:

@@ -1,15 +1,15 @@
-uuid: 9b9260d0-3e96-4821-a09a-d5402619251c
+uuid: 2a7a593f-e58d-48a0-9435-db8b46e9b98d
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_ip
+    - field.storage.node.field_notification_library_phone
     - node.type.machine
-id: node.machine.field_ip
-field_name: field_ip
+id: node.machine.field_notification_library_phone
+field_name: field_notification_library_phone
 entity_type: node
 bundle: machine
-label: IP
+label: 'Notification library phone'
 description: ''
 required: false
 translatable: false

@@ -11,7 +11,7 @@ entity_type: node
 bundle: machine
 label: 'Timeout Idle'
 description: 'The number of seconds the user should be warned before timeout.'
-required: true
+required: false
 translatable: false
 default_value:
   -

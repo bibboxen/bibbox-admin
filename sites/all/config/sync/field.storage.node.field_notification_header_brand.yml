@@ -1,0 +1,19 @@
+uuid: 68fcb9a7-e780-4d54-8f48-b8c387278210
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_notification_header_brand
+field_name: field_notification_header_brand
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

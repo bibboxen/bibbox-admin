@@ -1,15 +1,15 @@
-uuid: 9b9260d0-3e96-4821-a09a-d5402619251c
+uuid: 51bdc60e-442f-4297-a2b0-86bbc58522f1
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_ip
+    - field.storage.node.field_notification_mailer_host
     - node.type.machine
-id: node.machine.field_ip
-field_name: field_ip
+id: node.machine.field_notification_mailer_host
+field_name: field_notification_mailer_host
 entity_type: node
 bundle: machine
-label: IP
+label: 'Notification mailer host'
 description: ''
 required: false
 translatable: false

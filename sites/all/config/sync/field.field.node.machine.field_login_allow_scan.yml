@@ -11,11 +11,11 @@ entity_type: node
 bundle: machine
 label: 'Login: allow scan'
 description: ''
-required: true
+required: false
 translatable: false
 default_value:
   -
-    value: 1
+    value: 0
 default_value_callback: ''
 settings:
   on_label: 'On'

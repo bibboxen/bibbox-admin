@@ -1,11 +1,11 @@
-uuid: 64727f13-67ab-4519-a24a-29a2e9763e4a
+uuid: ce045cf7-486f-4a9b-93a8-ba75a1489870
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_name
-field_name: field_name
+id: node.field_notification_default_lang
+field_name: field_notification_default_lang
 entity_type: node
 type: string
 settings:
