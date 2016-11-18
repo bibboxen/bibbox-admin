@@ -1,10 +1,10 @@
 .main-menu > .menu-item {
   background: #ccc;
-  padding: .5em;
+  padding: .8em;
   list-style-type:none;
   border-top-right-radius: .5em;
   border-top-left-radius: .5em;
-  margin-right: .5em;
+  margin-right: .8em;
 }
 
 .main-menu > .menu-item > a:link,
@@ -32,4 +32,8 @@
 
 .capitalize {
   text-transform: capitalize;
+}
+
+.translation-field-wrapper > .form-item {
+  display: inline-block;
 }

@@ -10,17 +10,26 @@
 function bibbox_entity_operation(\Drupal\Core\Entity\EntityInterface $entity) {
   $operations = [];
 
-  $operations['push'] = [
-    'title' => t('Push config'),
-    'url' => \Drupal\Core\Url::fromRoute('bibbox.push_config', ['id' => $entity->id()]),
-    'weight' => 50,
-  ];
+  // Add entity operations to machine nodes.
+  if ($entity->bundle() == 'machine') {
+    $operations['push'] = [
+      'title' => t('Push config'),
+      'url' => \Drupal\Core\Url::fromRoute('bibbox.push_config', ['id' => $entity->id()]),
+      'weight' => 50,
+    ];
 
-  $operations[''] = [
-    'title' => t('Restart UI'),
-    'url' => \Drupal\Core\Url::fromRoute('bibbox.restart_ui', ['id' => $entity->id()]),
-    'weight' => 50,
-  ];
+    $operations['restart'] = [
+      'title' => t('Restart UI'),
+      'url' => \Drupal\Core\Url::fromRoute('bibbox.restart_ui', ['id' => $entity->id()]),
+      'weight' => 50,
+    ];
+
+    $operations['clone_machine'] = [
+      'title' => t('Clone'),
+      'url' => \Drupal\Core\Url::fromRoute('bibbox.clone_machine', ['id' => $entity->id()]),
+      'weight' => 50,
+    ];
+  }
 
   return $operations;
 }

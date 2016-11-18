@@ -27,17 +27,22 @@ class TranslationWidget extends WidgetBase {
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
+    $element['#prefix'] = '<div class="translation-field-wrapper">';
+    $element['#suffix'] = '</div>';
+
     $element['key'] = array(
       '#type' => 'textfield',
       '#title' => t('Key'),
       '#default_value' => isset($items[$delta]->key) ? $items[$delta]->key : '',
       '#size' => 30,
+      '#attributes' => array('class' => array('translation-field-key')),
     );
     $element['value'] = array(
       '#type' => 'textfield',
       '#title' => t('Value'),
       '#default_value' => isset($items[$delta]->value) ? $items[$delta]->value : '',
       '#size' => 30,
+      '#attributes' => array('class' => array('translation-field-value')),
     );
 
     // If cardinality is 1, ensure a label is output for the field by wrapping

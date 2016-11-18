@@ -10,6 +10,8 @@ use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Drupal\node\Entity\Node;
+use Drupal\file\Entity\File;
 
 /**
  * ApiController.
@@ -52,6 +54,28 @@ class ApiController extends ControllerBase {
   }
 
   /**
+   * Clone a machine node.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param $id
+   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   */
+  public function cloneMachine(Request $request, $id) {
+    // Get destination to return to after completing request.
+    $destination = $request->query->get('destination');
+
+    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+/*
+    $clone = Node::create([
+      'type'        => 'machine',
+      'title'       => '',
+    ]);
+    $clone->save();
+*/
+    return new RedirectResponse($destination);
+  }
+
+  /**
    * Get json array of machines.
    *
    * @return \Symfony\Component\HttpFoundation\JsonResponse
@@ -70,7 +94,6 @@ class ApiController extends ControllerBase {
 
     return new JsonResponse($machines, 200);
   }
-
 
   /**
    * Get an array representation of a machine.
@@ -119,6 +142,12 @@ class ApiController extends ControllerBase {
             ]
           ],
           "bins" => []
+        ],
+        'display_more_materials' => $node->get('field_image_more_materials')->value ? true : false,
+        'display_bills' => $node->get('field_display_bills')->value ? true : false,
+        'login' => [
+          'allow_scan' => $node->get('field_login_allow_scan')->value ? true : false,
+          'allow_manual' => $node->get('field_login_allow_manual')->value ? true : false,
         ],
         'features' => [],
         'languages' => [],

@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.machine.field_bin_left_text
     - field.field.node.machine.field_bin_right
     - field.field.node.machine.field_bin_right_text
+    - field.field.node.machine.field_display_bills
     - field.field.node.machine.field_email
     - field.field.node.machine.field_fbs_agency
     - field.field.node.machine.field_fbs_endpoint
@@ -17,8 +18,11 @@ dependencies:
     - field.field.node.machine.field_fbs_password
     - field.field.node.machine.field_fbs_username
     - field.field.node.machine.field_features
+    - field.field.node.machine.field_image_more_materials
     - field.field.node.machine.field_ip
     - field.field.node.machine.field_languages
+    - field.field.node.machine.field_login_allow_manual
+    - field.field.node.machine.field_login_allow_scan
     - field.field.node.machine.field_timeout
     - field.field.node.machine.field_timeout_idle
     - node.type.machine
@@ -33,36 +37,42 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_bin_default:
-    weight: 14
+    weight: 19
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
   field_bin_left:
-    weight: 11
+    weight: 16
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
   field_bin_left_text:
-    weight: 12
+    weight: 17
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   field_bin_right:
-    weight: 10
+    weight: 15
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
   field_bin_right_text:
-    weight: 13
+    weight: 18
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+  field_display_bills:
+    weight: 12
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
   field_email:
     weight: 6
     settings:
@@ -71,62 +81,68 @@ content:
     third_party_settings: {  }
     type: email_default
   field_fbs_agency:
-    weight: 18
+    weight: 23
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   field_fbs_endpoint:
-    weight: 17
+    weight: 22
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   field_fbs_location:
-    weight: 19
+    weight: 24
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   field_fbs_login_attempts_max:
-    weight: 20
+    weight: 25
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   field_fbs_login_attempts_time_li:
-    weight: 21
+    weight: 26
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   field_fbs_password:
-    weight: 16
+    weight: 21
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   field_fbs_username:
-    weight: 15
+    weight: 20
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   field_features:
-    weight: 9
+    weight: 13
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+  field_image_more_materials:
+    weight: 9
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
   field_ip:
     weight: 1
     settings:
@@ -135,13 +151,25 @@ content:
     third_party_settings: {  }
     type: string_textfield
   field_languages:
-    weight: 26
+    weight: 14
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+  field_login_allow_manual:
+    weight: 11
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+  field_login_allow_scan:
+    weight: 10
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
   field_timeout:
     weight: 7
     settings:

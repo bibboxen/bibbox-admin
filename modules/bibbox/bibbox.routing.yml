@@ -22,3 +22,10 @@ bibbox.restart_ui:
     _permission: 'access content'
     _content_type_format: text/html
 
+bibbox.clone_machine:
+  path: '/bibbox/clone_machine/{id}'
+  defaults:
+    _controller: '\Drupal\bibbox\Controller\ApiController::cloneMachine'
+  requirements:
+    _permission: 'access content'
+    _content_type_format: text/html
