@@ -36,4 +36,9 @@
 
 .translation-field-wrapper > .form-item {
   display: inline-block;
+  margin-right: 1em;
+}
+
+.translation-field-wrapper > .form-item > label {
+  display: inline-block;
 }

@@ -12,15 +12,30 @@ function bibbox_entity_operation(\Drupal\Core\Entity\EntityInterface $entity) {
 
   // Add entity operations to machine nodes.
   if ($entity->bundle() == 'machine') {
-    $operations['push'] = [
+    $operations['push_config'] = [
       'title' => t('Push config'),
       'url' => \Drupal\Core\Url::fromRoute('bibbox.push_config', ['id' => $entity->id()]),
       'weight' => 50,
     ];
 
-    $operations['restart'] = [
+    $operations['restart_ui'] = [
       'title' => t('Restart UI'),
       'url' => \Drupal\Core\Url::fromRoute('bibbox.restart_ui', ['id' => $entity->id()]),
+      'weight' => 50,
+    ];
+
+    $operations['restart_node'] = [
+      'title' => t('Restart Node'),
+      'url' => \Drupal\Core\Url::fromRoute('bibbox.restart_node', ['id' => $entity->id()]),
+      'weight' => 50,
+    ];
+  }
+
+  // Add entity operations to language nodes.
+  if ($entity->bundle() == 'language') {
+    $operations['push_language'] = [
+      'title' => t('Push language'),
+      'url' => \Drupal\Core\Url::fromRoute('bibbox.push_language', ['id' => $entity->id()]),
       'weight' => 50,
     ];
   }

@@ -33,14 +33,17 @@ class ApiController extends ControllerBase {
     $node = \Drupal::entityManager()->getStorage('node')->load($id);
 
     // Get machine array.
-    $machine = $this->getMachineArray($id);
+    $machine = $this->getMachineArray($node);
 
     // If the machine exists.
     if ($machine) {
       // Merge with Default if one exists.
       if (count($node->get('field_default'))) {
+        // Get default node.
+        $defaultNode = \Drupal::entityManager()->getStorage('node')->load($node->get('field_default')[0]->getValue()['target_id']);
+
         // Get default array.
-        $default = $this->getMachineArray($node->get('field_default')[0]->getValue()['target_id']);
+        $default = $this->getMachineArray($defaultNode);
 
         // Merge.
         $machine = $this->array_merge_recursive_distinct_ignore_nulls($default, $machine);
@@ -68,7 +71,61 @@ class ApiController extends ControllerBase {
   }
 
   /**
-   * Push config to a machine.
+   * Push language to all machines.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param $id
+   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   */
+  public function pushLanguage(Request $request, $id) {
+    // Get destination to return to after completing request.
+    $destination = $request->query->get('destination');
+
+    $translations = $this->getTranslationsArray();
+
+    $client = \Drupal::httpClient();
+
+    // Query for machine ids.
+    $query = \Drupal::entityQuery('node')->condition('type', 'machine');
+    $nids = $query->execute();
+
+    foreach ($nids as $nid) {
+      $node = \Drupal::entityManager()->getStorage('node')->load($nid);
+
+      try {
+        $client->request('POST', $node->get('field_ip')->value . "/api/translations", array('json' => $translations));
+      } catch (RequestException $e) {
+        drupal_set_message(t($e->getMessage()), 'error');
+      }
+    }
+
+    return new RedirectResponse($destination);
+  }
+
+  /**
+   * Restart Node to a machine.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param $id
+   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   */
+  public function restartNode(Request $request, $id) {
+    // Get destination to return to after completing request.
+    $destination = $request->query->get('destination');
+
+    $client = \Drupal::httpClient();
+    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+    try {
+      $client->request('POST', $node->get('field_ip')->value . "/api/restart_node", array());
+    } catch (RequestException $e) {
+      drupal_set_message(t($e->getMessage()), 'error');
+    }
+
+    return new RedirectResponse($destination);
+  }
+
+  /**
+   * Restart UI to a machine.
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
    * @param $id
@@ -78,7 +135,13 @@ class ApiController extends ControllerBase {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
-    // @TODO: Do the stuff!
+    $client = \Drupal::httpClient();
+    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+    try {
+      $client->request('POST', $node->get('field_ip')->value . "/api/restart_ui", array());
+    } catch (RequestException $e) {
+      drupal_set_message(t($e->getMessage()), 'error');
+    }
 
     return new RedirectResponse($destination);
   }
@@ -96,25 +159,67 @@ class ApiController extends ControllerBase {
     $nids = $query->execute();
 
     foreach ($nids as $nid) {
+      $node = \Drupal::entityManager()->getStorage('node')->load($nid);
+
       // Add machine to $machines.
-      $machines[] = $this->getMachineArray($nid);
+      $machines[] = $this->getMachineArray($node);
     }
 
     return new JsonResponse($machines, 200);
   }
 
   /**
+   * Get an array representation of all translations.
+   *
+   * @return array
+   */
+  private function getTranslationsArray() {
+    $translations = [
+      'ui' => [],
+      'notification' => [],
+    ];
+
+    $nodeStorage = \Drupal::entityManager()->getStorage('node');
+
+    // Query for machine ids.
+    $query = \Drupal::entityQuery('node')->condition('type', 'language');
+    $nids = $query->execute();
+
+    foreach ($nids as $nid) {
+      $languageNode = $nodeStorage->load($nid);
+
+      $langKey = $languageNode->get('field_language_key')->value;
+
+      if (count($languageNode->get('field_translations_notification')) == 1) {
+        $notification = $nodeStorage->load($languageNode->get('field_translations_notification')[0]->getValue()['target_id']);
+
+        foreach ($notification->get('field_translations') as $translation) {
+          $translations['notification'][$langKey][$translation->key] = $translation->value;
+        }
+      }
+
+      if (count($languageNode->get('field_translations_ui')) == 1) {
+        $ui = $nodeStorage->load($languageNode->get('field_translations_ui')[0]->getValue()['target_id']);
+
+        foreach ($ui->get('field_translations') as $translation) {
+          $translations['ui'][$langKey][$translation->key] = $translation->value;
+        }
+      }
+    }
+
+    return $translations;
+  }
+
+  /**
    * Get an array representation of a machine.
    *
-   * @param $nid
-   *   Node id.
+   * @param $node
+   *   The machine node.
    *
    * @return array
    *   Machine represented as array.
    */
-  private function getMachineArray($nid) {
-    $node = \Drupal::entityManager()->getStorage('node')->load($nid);
-
+  private function getMachineArray($node) {
     // Create machine object.
     $machine = [
       'title' => $node->get('title')->value,
@@ -126,14 +231,14 @@ class ApiController extends ControllerBase {
         'agency' => $node->get('field_fbs_agency')->value,
         'location' => $node->get('field_fbs_location')->value,
         'loginAttempts' => (object) [
-          'max' => $node->get('field_fbs_login_attempts_max')->value,
-          'timeLimit' => $node->get('field_fbs_login_attempts_time_li')->value,
+          'max' => $this->parseInt($node->get('field_fbs_login_attempts_max')->value),
+          'timeLimit' => $this->parseInt($node->get('field_fbs_login_attempts_time_li')->value),
         ],
       ],
       'ui' => [
         'timeout' => [
-          'idleTimeout' => $node->get('field_timeout')->value,
-          'idleWarn' => $node->get('field_timeout_idle')->value,
+          'idleTimeout' => $this->parseInt($node->get('field_timeout')->value),
+          'idleWarn' => $this->parseInt($node->get('field_timeout_idle')->value),
         ],
         'binSorting' => [
           'default_bin' => $node->get('field_bin_default')->value ? 'left' : 'right',
@@ -339,5 +444,15 @@ class ApiController extends ControllerBase {
    */
   private function parseBoolean($bool) {
     return $bool ? true : false;
+  }
+
+  /**
+   * Parse the int string value from drupal to true/false.
+   *
+   * @param $int
+   * @return int
+   */
+  private function parseInt($int) {
+    return isset($int) ? intval($int) : null;
   }
 }

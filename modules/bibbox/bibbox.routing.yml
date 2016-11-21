@@ -21,3 +21,19 @@ bibbox.restart_ui:
   requirements:
     _permission: 'access content'
     _content_type_format: text/html
+
+bibbox.restart_node:
+  path: '/bibbox/restart_node/{id}'
+  defaults:
+    _controller: '\Drupal\bibbox\Controller\ApiController::restartNode'
+  requirements:
+    _permission: 'access content'
+    _content_type_format: text/html
+
+bibbox.push_language:
+  path: '/bibbox/push_language/{id}'
+  defaults:
+    _controller: '\Drupal\bibbox\Controller\ApiController::pushLanguage'
+  requirements:
+    _permission: 'access content'
+    _content_type_format: text/html
