@@ -1,14 +1,16 @@
-uuid: 18a922d2-9c28-4a0a-8e32-df9ef58be405
+uuid: 3705bbc7-b20b-4541-81b5-c51dc14f5fe3
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_notification_header_
-field_name: field_notification_header_
+id: node.field_bin_right_background_color
+field_name: field_bin_right_background_color
 entity_type: node
-type: string_long
+type: string
 settings:
+  max_length: 255
+  is_ascii: false
   case_sensitive: false
 module: core
 locked: false

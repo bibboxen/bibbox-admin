@@ -6,8 +6,12 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.machine.field_bin_default
     - field.field.node.machine.field_bin_left
+    - field.field.node.machine.field_bin_left_background_color
+    - field.field.node.machine.field_bin_left_color
     - field.field.node.machine.field_bin_left_text
     - field.field.node.machine.field_bin_right
+    - field.field.node.machine.field_bin_right_background_color
+    - field.field.node.machine.field_bin_right_color
     - field.field.node.machine.field_bin_right_text
     - field.field.node.machine.field_default
     - field.field.node.machine.field_display_fines
@@ -29,9 +33,9 @@ dependencies:
     - field.field.node.machine.field_notification_default_lang
     - field.field.node.machine.field_notification_footer_html
     - field.field.node.machine.field_notification_footer_text
-    - field.field.node.machine.field_notification_header_
     - field.field.node.machine.field_notification_header_brand
     - field.field.node.machine.field_notification_header_color
+    - field.field.node.machine.field_notification_header_logo
     - field.field.node.machine.field_notification_layouts_cin
     - field.field.node.machine.field_notification_layouts_cout
     - field.field.node.machine.field_notification_layouts_reser
@@ -62,8 +66,12 @@ content:
 hidden:
   field_bin_default: true
   field_bin_left: true
+  field_bin_left_background_color: true
+  field_bin_left_color: true
   field_bin_left_text: true
   field_bin_right: true
+  field_bin_right_background_color: true
+  field_bin_right_color: true
   field_bin_right_text: true
   field_default: true
   field_display_fines: true
@@ -85,9 +93,9 @@ hidden:
   field_notification_default_lang: true
   field_notification_footer_html: true
   field_notification_footer_text: true
-  field_notification_header_: true
   field_notification_header_brand: true
   field_notification_header_color: true
+  field_notification_header_logo: true
   field_notification_layouts_cin: true
   field_notification_layouts_cout: true
   field_notification_layouts_reser: true

@@ -5,8 +5,12 @@ dependencies:
   config:
     - field.field.node.machine.field_bin_default
     - field.field.node.machine.field_bin_left
+    - field.field.node.machine.field_bin_left_background_color
+    - field.field.node.machine.field_bin_left_color
     - field.field.node.machine.field_bin_left_text
     - field.field.node.machine.field_bin_right
+    - field.field.node.machine.field_bin_right_background_color
+    - field.field.node.machine.field_bin_right_color
     - field.field.node.machine.field_bin_right_text
     - field.field.node.machine.field_default
     - field.field.node.machine.field_display_fines
@@ -28,9 +32,9 @@ dependencies:
     - field.field.node.machine.field_notification_default_lang
     - field.field.node.machine.field_notification_footer_html
     - field.field.node.machine.field_notification_footer_text
-    - field.field.node.machine.field_notification_header_
     - field.field.node.machine.field_notification_header_brand
     - field.field.node.machine.field_notification_header_color
+    - field.field.node.machine.field_notification_header_logo
     - field.field.node.machine.field_notification_layouts_cin
     - field.field.node.machine.field_notification_layouts_cout
     - field.field.node.machine.field_notification_layouts_reser
@@ -90,7 +94,7 @@ third_party_settings:
     group_notifications_header:
       children:
         - field_notification_header_brand
-        - field_notification_header_
+        - field_notification_header_logo
         - field_notification_header_color
       parent_name: group_notifications
       weight: 23
@@ -181,8 +185,12 @@ third_party_settings:
       children:
         - field_bin_default
         - field_bin_left_text
+        - field_bin_left_color
+        - field_bin_left_background_color
         - field_bin_left
         - field_bin_right_text
+        - field_bin_right_color
+        - field_bin_right_background_color
         - field_bin_right
       parent_name: ''
       weight: 7
@@ -271,11 +279,25 @@ content:
     third_party_settings: {  }
     type: options_buttons
   field_bin_left:
-    weight: 24
+    weight: 26
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
+  field_bin_left_background_color:
+    weight: 25
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_bin_left_color:
+    weight: 24
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
   field_bin_left_text:
     weight: 23
     settings:
@@ -284,13 +306,27 @@ content:
     third_party_settings: {  }
     type: string_textfield
   field_bin_right:
-    weight: 26
+    weight: 30
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
+  field_bin_right_background_color:
+    weight: 29
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_bin_right_color:
+    weight: 28
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
   field_bin_right_text:
-    weight: 25
+    weight: 27
     settings:
       size: 60
       placeholder: ''
@@ -435,13 +471,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
-  field_notification_header_:
-    weight: 37
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textarea
   field_notification_header_brand:
     weight: 36
     settings:
@@ -456,6 +485,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+  field_notification_header_logo:
+    weight: 37
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
   field_notification_layouts_cin:
     weight: 48
     settings: {  }

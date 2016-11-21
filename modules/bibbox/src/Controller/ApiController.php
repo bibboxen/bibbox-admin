@@ -111,36 +111,39 @@ class ApiController extends ControllerBase {
     $machine = (object) [
       'title' => $node->get('title')->value,
       'email' => $node->get('field_email')->value,
+      'fbs' => (object)[
+        'username' => $node->get('field_fbs_username')->value,
+        'password' => $node->get('field_fbs_password')->value,
+        'endpoint' => $node->get('field_fbs_endpoint')->value,
+        'agency' => $node->get('field_fbs_agency')->value,
+        'location' => $node->get('field_fbs_location')->value,
+        'loginAttempts' => (object) [
+          'max' => $node->get('field_fbs_login_attempts_max')->value,
+          'timeLimit' => $node->get('field_fbs_login_attempts_time_li')->value,
+        ],
+      ],
       'ui' => (object)[
         'timeout' => (object)[
           'idleTimeout' => $node->get('field_timeout')->value,
           'idleWarn' => $node->get('field_timeout_idle')->value,
-        ],
-        'fbs' => (object)[
-          'username' => $node->get('field_fbs_username')->value,
-          'password' => $node->get('field_fbs_password')->value,
-          'endpoint' => $node->get('field_fbs_endpoint')->value,
-          'agency' => $node->get('field_fbs_agency')->value,
-          'location' => $node->get('field_fbs_location')->value,
-          'loginAttempts' => (object) [
-            'max' => $node->get('field_fbs_login_attempts_max')->value,
-            'timeLimit' => $node->get('field_fbs_login_attempts_time_li')->value,
-          ],
         ],
         'binSorting' => (object) [
           'default_bin' => $node->get('field_bin_default')->value ? 'left' : 'right',
           'destinations' => (object) [
             'left' => (object) [
               'id' => 'left',
-              'text' => $node->get('field_bin_left_text')->value
+              'text' => $node->get('field_bin_left_text')->value,
+              'background_color' => $node->get('field_bin_left_background_color')->value,
+              'color' => $node->get('field_bin_left_color')->value,
             ],
             'right' => (object) [
               'id' => 'right',
               'text' => $node->get('field_bin_right_text')->value,
-              'background_color' => '#2d66a6',
-              'color' => '#fff',
+              'background_color' => $node->get('field_bin_right_background_color')->value,
+              'color' => $node->get('field_bin_right_color')->value,
             ]
           ],
+          // Will be attached later.
           "bins" => []
         ],
         'display_more_materials' => $node->get('field_image_more_materials')->value ? true : false,
@@ -149,10 +152,63 @@ class ApiController extends ControllerBase {
           'allow_scan' => $node->get('field_login_allow_scan')->value ? true : false,
           'allow_manual' => $node->get('field_login_allow_manual')->value ? true : false,
         ],
+        // Will be attached later.
         'features' => [],
+        // Will be attached later.
         'languages' => [],
       ],
+      'notification' => (object) [
+        'config' => (object)[
+          'default_lang' => $node->get('field_notification_default_lang')->value,
+          'date_format' => $node->get('field_notification_date_format')->value,
+        ],
+        'mailer' => (object)[
+          'host' => $node->get('field_notification_mailer_host')->value,
+          'port' => $node->get('field_notification_mailer_port')->value,
+          'secure' => $node->get('field_notification_mailer_secure')->value ? true : false,
+          'from' => $node->get('field_notification_mailer_from')->value,
+          'subject' => $node->get('field_notification_mailer_subjec')->value,
+        ],
+        'header' => (object)[
+          'brand' => $node->get('field_notification_header_brand')->value,
+          'logo' => $node->get('field_notification_header_logo')->value,
+          'color' => $node->get('field_notification_header_color')->value,
+        ],
+        'footer' => (object)[
+          'html' => $node->get('field_notification_footer_html')->value,
+          'text' => $node->get('field_notification_footer_text')->value,
+        ],
+        'library' => (object)[
+          'title' => $node->get('field_notification_library_title')->value,
+          'name' => $node->get('field_notification_library_name')->value,
+          'address' => $node->get('field_notification_library_addre')->value,
+          'zipcode' => $node->get('field_notification_library_zip')->value,
+          'city' => $node->get('field_notification_library_city')->value,
+          'phone' => $node->get('field_notification_library_phone')->value,
+        ],
+        // Will be attached later.
+        'layouts' => (object)[
+          'status' => [],
+          'checkIn' => [],
+          'checkOut' => [],
+          'reservations' => [],
+        ],
+      ],
     ];
+
+    // Attach notification layouts
+    foreach ($node->get('field_notification_layouts_statu') as $item) {
+      $machine->notification->layouts->status[$item->value] = true;
+    }
+    foreach ($node->get('field_notification_layouts_cout') as $item) {
+      $machine->notification->layouts->checkOut[$item->value] = true;
+    }
+    foreach ($node->get('field_notification_layouts_cin') as $item) {
+      $machine->notification->layouts->checkIn[$item->value] = true;
+    }
+    foreach ($node->get('field_notification_layouts_reser') as $item) {
+      $machine->notification->layouts->reservations[$item->value] = true;
+    }
 
     // Attach bins to binSorting.
     foreach ($node->get('field_bin_left') as $item) {
