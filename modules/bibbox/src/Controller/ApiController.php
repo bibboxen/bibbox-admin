@@ -10,59 +10,14 @@ use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Drupal\node\Entity\Node;
-use Drupal\file\Entity\File;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7;
 
 /**
  * ApiController.
  */
 class ApiController extends ControllerBase {
-  /**
-   * array_merge_recursive does indeed merge arrays, but it converts values with duplicate
-   * keys to arrays rather than overwriting the value in the first array with the duplicate
-   * value in the second array, as array_merge does. I.e., with array_merge_recursive,
-   * this happens (documented behavior):
-   *
-   * array_merge_recursive(array('key' => 'org value'), array('key' => 'new value'));
-   *     => array('key' => array('org value', 'new value'));
-   *
-   * array_merge_recursive_distinct does not change the datatypes of the values in the arrays.
-   * Matching keys' values in the second array overwrite those in the first array, as is the
-   * case with array_merge, i.e.:
-   *
-   * array_merge_recursive_distinct(array('key' => 'org value'), array('key' => 'new value'));
-   *     => array('key' => array('new value'));
-   *
-   * Parameters are passed by reference, though only for performance reasons. They're not
-   * altered by this function.
-   *
-   * @param array $array1
-   * @param array $array2
-   * @return array
-   * @author Daniel <daniel (at) danielsmedegaardbuus (dot) dk>
-   * @author Gabriel Sobrinho <gabriel (dot) sobrinho (at) gmail (dot) com>
-   *
-   * Modified to ignore null values in array2.
-   */
-  function array_merge_recursive_distinct_ignore_nulls(array &$array1, array &$array2) {
-    $merged = $array1;
-
-    foreach ($array2 as $key => &$value) {
-      if (is_array($value) && isset ($merged[$key]) && is_array($merged[$key])) {
-        $merged[$key] = $this->array_merge_recursive_distinct_ignore_nulls($merged[$key], $value);
-      }
-      else {
-        if (isset($value)) {
-          $merged[$key] = $value;
-        }
-      }
-    }
-
-    return $merged;
-  }
-
-
   /**
    * Push config to a machine.
    *
@@ -101,7 +56,12 @@ class ApiController extends ControllerBase {
 
       // Send request.
       $client = \Drupal::httpClient();
-      $client->request('POST', $node->get('field_ip')->value . "/api/config", array('json' => $machine));
+
+      try {
+        $client->request('POST', $node->get('field_ip')->value . "/api/config", array('json' => $machine));
+      } catch (RequestException $e) {
+        drupal_set_message(t($e->getMessage()), 'error');
+      }
     }
 
     return new RedirectResponse($destination);
@@ -194,11 +154,11 @@ class ApiController extends ControllerBase {
           // Will be attached later.
           "bins" => []
         ],
-        'display_more_materials' => $node->get('field_image_more_materials')->value ? true : false,
-        'display_fines' => $node->get('field_display_fines')->value ? true : false,
+        'display_more_materials' => $this->parseBoolean($node->get('field_image_more_materials')->value),
+        'display_fines' => $this->parseBoolean($node->get('field_display_fines')->value),
         'login' => [
-          'allow_scan' => $node->get('field_login_allow_scan')->value ? true : false,
-          'allow_manual' => $node->get('field_login_allow_manual')->value ? true : false,
+          'allow_scan' => $this->parseBoolean($node->get('field_login_allow_scan')->value),
+          'allow_manual' => $this->parseBoolean($node->get('field_login_allow_manual')->value),
         ],
         // Will be attached later.
         'features' => [],
@@ -213,7 +173,7 @@ class ApiController extends ControllerBase {
         'mailer' => [
           'host' => $node->get('field_notification_mailer_host')->value,
           'port' => $node->get('field_notification_mailer_port')->value,
-          'secure' => $node->get('field_notification_mailer_secure')->value ? true : false,
+          'secure' => $this->parseBoolean($node->get('field_notification_mailer_secure')->value),
           'from' => $node->get('field_notification_mailer_from')->value,
           'subject' => $node->get('field_notification_mailer_subjec')->value,
         ],
@@ -244,18 +204,51 @@ class ApiController extends ControllerBase {
       ],
     ];
 
-    // Attach notification layouts
-    foreach ($node->get('field_notification_layouts_statu') as $item) {
-      $machine['notification']['layouts']['status'][$item->value] = true;
+    // Attach notification layout status
+    if (isset($node->get('field_notification_layouts_statu')->value)) {
+      $allowed = \Drupal\field\Entity\FieldConfig::loadByName('node', 'machine', 'field_notification_layouts_statu')->getSetting('allowed_values');
+      foreach ($allowed as $key => $value) {
+        $machine['notification']['layouts']['status'][$key] = false;
+      }
+      foreach ($node->get('field_notification_layouts_statu') as $item) {
+        $machine['notification']['layouts']['status'][$item->value] = true;
+      }
     }
-    foreach ($node->get('field_notification_layouts_cout') as $item) {
-      $machine['notification']['layouts']['checkOut'][$item->value] = true;
+
+    // Attach notification layout checkOut
+    if (isset($node->get('field_notification_layouts_cout')->value)) {
+      $allowed = \Drupal\field\Entity\FieldConfig::loadByName('node', 'machine', 'field_notification_layouts_cout')
+        ->getSetting('allowed_values');
+      foreach ($allowed as $key => $value) {
+        $machine['notification']['layouts']['checkOut'][$key] = FALSE;
+      }
+      foreach ($node->get('field_notification_layouts_cout') as $item) {
+        $machine['notification']['layouts']['checkOut'][$item->value] = TRUE;
+      }
     }
-    foreach ($node->get('field_notification_layouts_cin') as $item) {
-      $machine['notification']['layouts']['checkIn'][$item->value] = true;
+
+    // Attach notification layout checkIn
+    if (isset($node->get('field_notification_layouts_cin')->value)) {
+      $allowed = \Drupal\field\Entity\FieldConfig::loadByName('node', 'machine', 'field_notification_layouts_cin')
+        ->getSetting('allowed_values');
+      foreach ($allowed as $key => $value) {
+        $machine['notification']['layouts']['checkIn'][$key] = FALSE;
+      }
+      foreach ($node->get('field_notification_layouts_cin') as $item) {
+        $machine['notification']['layouts']['checkIn'][$item->value] = TRUE;
+      }
     }
-    foreach ($node->get('field_notification_layouts_reser') as $item) {
-      $machine['notification']['layouts']['reservations'][$item->value] = true;
+
+    // Attach notification layout reservations
+    if (isset($node->get('field_notification_layouts_reser')->value)) {
+      $allowed = \Drupal\field\Entity\FieldConfig::loadByName('node', 'machine', 'field_notification_layouts_reser')
+        ->getSetting('allowed_values');
+      foreach ($allowed as $key => $value) {
+        $machine['notification']['layouts']['reservations'][$key] = FALSE;
+      }
+      foreach ($node->get('field_notification_layouts_reser') as $item) {
+        $machine['notification']['layouts']['reservations'][$item->value] = TRUE;
+      }
     }
 
     // Attach bins to binSorting.
@@ -290,5 +283,61 @@ class ApiController extends ControllerBase {
     }
 
     return $machine;
+  }
+
+  /**
+   * array_merge_recursive does indeed merge arrays, but it converts values with duplicate
+   * keys to arrays rather than overwriting the value in the first array with the duplicate
+   * value in the second array, as array_merge does. I.e., with array_merge_recursive,
+   * this happens (documented behavior):
+   *
+   * array_merge_recursive(array('key' => 'org value'), array('key' => 'new value'));
+   *     => array('key' => array('org value', 'new value'));
+   *
+   * array_merge_recursive_distinct does not change the datatypes of the values in the arrays.
+   * Matching keys' values in the second array overwrite those in the first array, as is the
+   * case with array_merge, i.e.:
+   *
+   * array_merge_recursive_distinct(array('key' => 'org value'), array('key' => 'new value'));
+   *     => array('key' => array('new value'));
+   *
+   * Parameters are passed by reference, though only for performance reasons. They're not
+   * altered by this function.
+   *
+   * @param array $array1
+   * @param array $array2
+   * @return array
+   * @author Daniel <daniel (at) danielsmedegaardbuus (dot) dk>
+   * @author Gabriel Sobrinho <gabriel (dot) sobrinho (at) gmail (dot) com>
+   *
+   * @from http://php.net/manual/en/function.array-merge-recursive.php#92195
+   *
+   * Modified to ignore null values in array2.
+   */
+  private function array_merge_recursive_distinct_ignore_nulls(array &$array1, array &$array2) {
+    $merged = $array1;
+
+    foreach ($array2 as $key => &$value) {
+      if (is_array($value) && isset ($merged[$key]) && is_array($merged[$key])) {
+        $merged[$key] = $this->array_merge_recursive_distinct_ignore_nulls($merged[$key], $value);
+      }
+      else {
+        if (isset($value)) {
+          $merged[$key] = $value;
+        }
+      }
+    }
+
+    return $merged;
+  }
+
+  /**
+   * Parse the boolean string value from drupal to true/false.
+   *
+   * @param $bool
+   * @return bool
+   */
+  private function parseBoolean($bool) {
+    return $bool ? true : false;
   }
 }
