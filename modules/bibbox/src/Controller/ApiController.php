@@ -144,7 +144,7 @@ class ApiController extends ControllerBase {
           "bins" => []
         ],
         'display_more_materials' => $node->get('field_image_more_materials')->value ? true : false,
-        'display_bills' => $node->get('field_display_bills')->value ? true : false,
+        'display_fines' => $node->get('field_display_fines')->value ? true : false,
         'login' => [
           'allow_scan' => $node->get('field_login_allow_scan')->value ? true : false,
           'allow_manual' => $node->get('field_login_allow_manual')->value ? true : false,

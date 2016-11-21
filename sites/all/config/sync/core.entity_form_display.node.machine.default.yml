@@ -9,7 +9,7 @@ dependencies:
     - field.field.node.machine.field_bin_right
     - field.field.node.machine.field_bin_right_text
     - field.field.node.machine.field_default
-    - field.field.node.machine.field_display_bills
+    - field.field.node.machine.field_display_fines
     - field.field.node.machine.field_email
     - field.field.node.machine.field_fbs_agency
     - field.field.node.machine.field_fbs_endpoint
@@ -31,6 +31,9 @@ dependencies:
     - field.field.node.machine.field_notification_header_
     - field.field.node.machine.field_notification_header_brand
     - field.field.node.machine.field_notification_header_color
+    - field.field.node.machine.field_notification_layouts_cin
+    - field.field.node.machine.field_notification_layouts_cout
+    - field.field.node.machine.field_notification_layouts_reser
     - field.field.node.machine.field_notification_layouts_statu
     - field.field.node.machine.field_notification_library_addre
     - field.field.node.machine.field_notification_library_city
@@ -131,6 +134,9 @@ third_party_settings:
     group_notifications_layout:
       children:
         - field_notification_layouts_statu
+        - field_notification_layouts_cin
+        - field_notification_layouts_cout
+        - field_notification_layouts_reser
       parent_name: group_notifications
       weight: 25
       format_type: details
@@ -217,9 +223,9 @@ third_party_settings:
         - field_timeout
         - field_timeout_idle
         - field_image_more_materials
+        - field_display_fines
         - field_login_allow_scan
         - field_login_allow_manual
-        - field_display_bills
       parent_name: ''
       weight: 4
       format_type: details
@@ -231,6 +237,9 @@ third_party_settings:
       label: UI
     group_basic:
       children:
+        - title
+        - field_ip
+        - field_default
         - field_email
         - uid
         - created
@@ -240,10 +249,11 @@ third_party_settings:
       weight: 3
       format_type: details
       format_settings:
+        label: Basic
+        open: true
+        required_fields: true
         id: ''
         classes: ''
-        open: false
-        required_fields: true
       label: Basic
 id: node.machine.default
 targetEntityType: node
@@ -294,8 +304,8 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-  field_display_bills:
-    weight: 13
+  field_display_fines:
+    weight: 11
     settings:
       display_label: true
     third_party_settings: {  }
@@ -386,13 +396,13 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
   field_login_allow_manual:
-    weight: 12
+    weight: 13
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
   field_login_allow_scan:
-    weight: 11
+    weight: 12
     settings:
       display_label: true
     third_party_settings: {  }
@@ -446,6 +456,21 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+  field_notification_layouts_cin:
+    weight: 48
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+  field_notification_layouts_cout:
+    weight: 49
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+  field_notification_layouts_reser:
+    weight: 50
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
   field_notification_layouts_statu:
     weight: 47
     settings: {  }

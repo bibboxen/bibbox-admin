@@ -10,7 +10,7 @@ dependencies:
     - field.field.node.machine.field_bin_right
     - field.field.node.machine.field_bin_right_text
     - field.field.node.machine.field_default
-    - field.field.node.machine.field_display_bills
+    - field.field.node.machine.field_display_fines
     - field.field.node.machine.field_email
     - field.field.node.machine.field_fbs_agency
     - field.field.node.machine.field_fbs_endpoint
@@ -32,6 +32,9 @@ dependencies:
     - field.field.node.machine.field_notification_header_
     - field.field.node.machine.field_notification_header_brand
     - field.field.node.machine.field_notification_header_color
+    - field.field.node.machine.field_notification_layouts_cin
+    - field.field.node.machine.field_notification_layouts_cout
+    - field.field.node.machine.field_notification_layouts_reser
     - field.field.node.machine.field_notification_layouts_statu
     - field.field.node.machine.field_notification_library_addre
     - field.field.node.machine.field_notification_library_city
@@ -63,7 +66,7 @@ hidden:
   field_bin_right: true
   field_bin_right_text: true
   field_default: true
-  field_display_bills: true
+  field_display_fines: true
   field_email: true
   field_fbs_agency: true
   field_fbs_endpoint: true
@@ -85,6 +88,9 @@ hidden:
   field_notification_header_: true
   field_notification_header_brand: true
   field_notification_header_color: true
+  field_notification_layouts_cin: true
+  field_notification_layouts_cout: true
+  field_notification_layouts_reser: true
   field_notification_layouts_statu: true
   field_notification_library_addre: true
   field_notification_library_city: true

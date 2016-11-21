@@ -1,11 +1,11 @@
-uuid: f658ac68-4f04-4af2-aae3-2640973ab9dd
+uuid: d69fbdaa-2f82-456a-998f-ee658f312929
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_display_bills
-field_name: field_display_bills
+id: node.field_display_fines
+field_name: field_display_fines
 entity_type: node
 type: boolean
 settings: {  }
