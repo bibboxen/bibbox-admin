@@ -10,8 +10,8 @@ field_name: field_ip
 entity_type: node
 bundle: machine
 label: IP
-description: ''
-required: false
+description: "The IP of the machine.\r\nNB! Make sure this is Unique so machines are not mixed!"
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
