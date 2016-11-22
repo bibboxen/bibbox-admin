@@ -1,7 +1,15 @@
-bibbox.index:
+bibbox.machines:
   path: '/bibbox/machines'
   defaults:
     _controller: '\Drupal\bibbox\Controller\ApiController::machines'
+  requirements:
+    _permission: 'access content'
+    _content_type_format: text/html
+
+bibbox.machine:
+  path: '/bibbox/machine/{id}'
+  defaults:
+    _controller: '\Drupal\bibbox\Controller\ApiController::machine'
   requirements:
     _permission: 'access content'
     _content_type_format: text/html

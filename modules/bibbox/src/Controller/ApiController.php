@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7;
 
 /**
  * ApiController.
@@ -81,7 +80,7 @@ class ApiController extends ControllerBase {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
-    $translations = $this->getTranslationsArray();
+    $baseTranslations = $this->getTranslationsArray(NULL);
 
     $client = \Drupal::httpClient();
 
@@ -91,6 +90,16 @@ class ApiController extends ControllerBase {
 
     foreach ($nids as $nid) {
       $node = \Drupal::entityManager()->getStorage('node')->load($nid);
+
+      $defaults = [];
+      // Merge with Default if one exists.
+      if (count($node->get('field_default'))) {
+        $defaults = $this->getTranslationsArray($node->get('field_default')[0]->getValue()['target_id']);
+      }
+
+      $defaults = $this->array_merge_recursive_distinct_ignore_nulls($baseTranslations, $defaults);
+
+      $translations = $this->array_merge_recursive_distinct_ignore_nulls($defaults, $this->getTranslationsArray($nid));
 
       try {
         $client->request('POST', $node->get('field_ip')->value . "/api/translations", array('json' => $translations));
@@ -147,10 +156,10 @@ class ApiController extends ControllerBase {
   }
 
   /**
-   * Get json array of machines.
-   *
-   * @return \Symfony\Component\HttpFoundation\JsonResponse
-   */
+ * Get json array of machines.
+ *
+ * @return \Symfony\Component\HttpFoundation\JsonResponse
+ */
   public function machines() {
     $machines = [];
 
@@ -169,11 +178,28 @@ class ApiController extends ControllerBase {
   }
 
   /**
+   * Get json array of machines.
+   *
+   * @param $id
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   */
+  public function machine($id) {
+    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+
+    $machine = $this->getMachineArray($node);
+
+    return new JsonResponse($machine, 200);
+  }
+
+  /**
    * Get an array representation of all translations.
+   *
+   * @param $mid
+   *   Optionally. Get only the translations where Machine.id == $mid.
    *
    * @return array
    */
-  private function getTranslationsArray() {
+  private function getTranslationsArray($mid) {
     $translations = [
       'ui' => [],
       'notification' => [],
@@ -181,7 +207,7 @@ class ApiController extends ControllerBase {
 
     $nodeStorage = \Drupal::entityManager()->getStorage('node');
 
-    // Query for machine ids.
+    // Query for language ids.
     $query = \Drupal::entityQuery('node')->condition('type', 'language');
     $nids = $query->execute();
 
@@ -194,7 +220,9 @@ class ApiController extends ControllerBase {
         $notification = $nodeStorage->load($languageNode->get('field_translations_notification')[0]->getValue()['target_id']);
 
         foreach ($notification->get('field_translations') as $translation) {
-          $translations['notification'][$langKey][$translation->key] = $translation->value;
+          if (is_null($mid) || $translation->target_id == $mid) {
+            $translations['notification'][$langKey][$translation->key] = $translation->value;
+          }
         }
       }
 
@@ -202,7 +230,9 @@ class ApiController extends ControllerBase {
         $ui = $nodeStorage->load($languageNode->get('field_translations_ui')[0]->getValue()['target_id']);
 
         foreach ($ui->get('field_translations') as $translation) {
-          $translations['ui'][$langKey][$translation->key] = $translation->value;
+          if (is_null($mid) || $translation->target_id == $mid) {
+            $translations['ui'][$langKey][$translation->key] = $translation->value;
+          }
         }
       }
     }
@@ -245,13 +275,11 @@ class ApiController extends ControllerBase {
           'destinations' => [
             'left' => [
               'id' => 'left',
-              'text' => $node->get('field_bin_left_text')->value,
               'background_color' => $node->get('field_bin_left_background_color')->value,
               'color' => $node->get('field_bin_left_color')->value,
             ],
             'right' => [
               'id' => 'right',
-              'text' => $node->get('field_bin_right_text')->value,
               'background_color' => $node->get('field_bin_right_background_color')->value,
               'color' => $node->get('field_bin_right_color')->value,
             ]
