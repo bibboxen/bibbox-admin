@@ -1,9 +1,10 @@
-uuid: 56ef19fb-543d-47c9-85f1-994422d55b8c
+uuid: 86295c1d-00ad-4644-a909-a9122c2e03f5
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_translations
+    - node.type.machine
     - node.type.translations
   module:
     - translation_field
@@ -12,16 +13,18 @@ field_name: field_translations
 entity_type: node
 bundle: translations
 label: Translations
-description: 'Array of translations from key to value.'
+description: ''
 required: false
 translatable: false
-default_value:
-  -
-    key: ''
-    value: ''
-  -
-    key: ''
-    value: ''
+default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      machine: machine
+    sort:
+      field: _none
+    auto_create: 0
+    auto_create_bundle: ''
 field_type: translation

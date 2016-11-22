@@ -34,16 +34,33 @@ class TranslationWidget extends WidgetBase {
       '#type' => 'textfield',
       '#title' => t('Key'),
       '#default_value' => isset($items[$delta]->key) ? $items[$delta]->key : '',
-      '#size' => 30,
+      '#size' => 25,
       '#attributes' => array('class' => array('translation-field-key')),
     );
     $element['value'] = array(
       '#type' => 'textfield',
       '#title' => t('Value'),
       '#default_value' => isset($items[$delta]->value) ? $items[$delta]->value : '',
-      '#size' => 30,
+      '#size' => 25,
       '#attributes' => array('class' => array('translation-field-value')),
     );
+    $element['target_id'] = array(
+      '#type' => 'entity_autocomplete',
+      '#title' => t('Machine'),
+      '#target_type' => 'node',
+      '#default_value' => isset($items[$delta]->entity) ? $items[$delta]->entity : null,
+      '#selection_settings' => [
+        'target_bundles' => ['machine'],
+      ],
+      '#size' => 25,
+      '#weight'   => 5,
+      '#settings' => array(
+        'match_operator'    => 'CONTAINS',
+        'size'              => '60',
+        'autocomplete_type' => 'node',
+      ),
+      '#required' => FALSE,
+  );
 
     // If cardinality is 1, ensure a label is output for the field by wrapping
     // it in a details element.
@@ -57,7 +74,7 @@ class TranslationWidget extends WidgetBase {
     return $element;
   }
 
-  /**
+    /**
    * Validate the color text field.
    */
   public function validate($element, FormStateInterface $form_state) {

@@ -7,11 +7,9 @@ dependencies:
     - field.field.node.machine.field_bin_left
     - field.field.node.machine.field_bin_left_background_color
     - field.field.node.machine.field_bin_left_color
-    - field.field.node.machine.field_bin_left_text
     - field.field.node.machine.field_bin_right
     - field.field.node.machine.field_bin_right_background_color
     - field.field.node.machine.field_bin_right_color
-    - field.field.node.machine.field_bin_right_text
     - field.field.node.machine.field_default
     - field.field.node.machine.field_display_fines
     - field.field.node.machine.field_email
@@ -298,13 +296,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-  field_bin_left_text:
-    weight: 23
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
   field_bin_right:
     weight: 30
     settings:
@@ -320,13 +311,6 @@ content:
     type: string_textfield
   field_bin_right_color:
     weight: 28
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-  field_bin_right_text:
-    weight: 27
     settings:
       size: 60
       placeholder: ''

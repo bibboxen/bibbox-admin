@@ -8,11 +8,9 @@ dependencies:
     - field.field.node.machine.field_bin_left
     - field.field.node.machine.field_bin_left_background_color
     - field.field.node.machine.field_bin_left_color
-    - field.field.node.machine.field_bin_left_text
     - field.field.node.machine.field_bin_right
     - field.field.node.machine.field_bin_right_background_color
     - field.field.node.machine.field_bin_right_color
-    - field.field.node.machine.field_bin_right_text
     - field.field.node.machine.field_default
     - field.field.node.machine.field_display_fines
     - field.field.node.machine.field_email
@@ -68,11 +66,9 @@ hidden:
   field_bin_left: true
   field_bin_left_background_color: true
   field_bin_left_color: true
-  field_bin_left_text: true
   field_bin_right: true
   field_bin_right_background_color: true
   field_bin_right_color: true
-  field_bin_right_text: true
   field_default: true
   field_display_fines: true
   field_email: true

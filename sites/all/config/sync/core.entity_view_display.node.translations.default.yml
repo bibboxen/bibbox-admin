@@ -14,11 +14,10 @@ bundle: translations
 mode: default
 content:
   field_translations:
-    weight: 101
+    weight: 1
     label: above
     settings: {  }
     third_party_settings: {  }
     type: field_translation_formatter
-  links:
-    weight: 100
-hidden: {  }
+hidden:
+  links: true

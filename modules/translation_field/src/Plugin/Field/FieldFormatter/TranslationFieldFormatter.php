@@ -39,9 +39,18 @@ class TranslationFieldFormatter extends FormatterBase {
     $element = array();
 
     foreach ($items as $delta => $item) {
+      $itemTitle = $item->entity ? $item->entity->title->value : NULL;
+
       $element[$delta] = array(
         '#type' => 'markup',
-        '#markup' => '"' . $item->key . '": "' . $item->value . '"',
+        '#markup' =>
+          '<td class="translation-field--key">' .
+          $item->key .
+          '</td><td class="translation-field--value">' .
+          $item->value .
+          '</td><td class="translation-field--machine">' .
+          $itemTitle .
+          '</td>',
       );
     }
 

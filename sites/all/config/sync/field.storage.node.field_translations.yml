@@ -1,4 +1,4 @@
-uuid: 491a54a4-c985-4ffe-94cf-7cbf96460b98
+uuid: 54bc9a96-b665-4831-a0f4-e1d30ad60eeb
 langcode: en
 status: true
 dependencies:
@@ -9,7 +9,8 @@ id: node.field_translations
 field_name: field_translations
 entity_type: node
 type: translation
-settings: {  }
+settings:
+  target_type: node
 module: translation_field
 locked: false
 cardinality: -1
