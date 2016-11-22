@@ -70,7 +70,7 @@ class ApiController extends ControllerBase {
   }
 
   /**
-   * Push language to all machines.
+   * Push language to machine.
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
    * @param $id
@@ -84,28 +84,22 @@ class ApiController extends ControllerBase {
 
     $client = \Drupal::httpClient();
 
-    // Query for machine ids.
-    $query = \Drupal::entityQuery('node')->condition('type', 'machine');
-    $nids = $query->execute();
+    $node = \Drupal::entityManager()->getStorage('node')->load($id);
 
-    foreach ($nids as $nid) {
-      $node = \Drupal::entityManager()->getStorage('node')->load($nid);
+    $defaults = [];
+    // Merge with Default if one exists.
+    if (count($node->get('field_default'))) {
+      $defaults = $this->getTranslationsArray($node->get('field_default')[0]->getValue()['target_id']);
+    }
 
-      $defaults = [];
-      // Merge with Default if one exists.
-      if (count($node->get('field_default'))) {
-        $defaults = $this->getTranslationsArray($node->get('field_default')[0]->getValue()['target_id']);
-      }
+    $defaults = $this->array_merge_recursive_distinct_ignore_nulls($baseTranslations, $defaults);
 
-      $defaults = $this->array_merge_recursive_distinct_ignore_nulls($baseTranslations, $defaults);
+    $translations = $this->array_merge_recursive_distinct_ignore_nulls($defaults, $this->getTranslationsArray($id));
 
-      $translations = $this->array_merge_recursive_distinct_ignore_nulls($defaults, $this->getTranslationsArray($nid));
-
-      try {
-        $client->request('POST', $node->get('field_ip')->value . "/api/translations", array('json' => $translations));
-      } catch (RequestException $e) {
-        drupal_set_message(t($e->getMessage()), 'error');
-      }
+    try {
+      $client->request('POST', $node->get('field_ip')->value . "/api/translations", array('json' => $translations));
+    } catch (RequestException $e) {
+      drupal_set_message(t($e->getMessage()), 'error');
     }
 
     return new RedirectResponse($destination);

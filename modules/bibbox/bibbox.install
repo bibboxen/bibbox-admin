@@ -18,7 +18,7 @@ function bibbox_update_8001(&$sandbox) {
       'node_title' => 'Danish Notifications'
     ],
     [
-      'path' => '/translations/notification/da.json',
+      'path' => '/translations/notification/en.json',
       'node_title' => 'English Notifications'
     ],
     [
@@ -26,7 +26,7 @@ function bibbox_update_8001(&$sandbox) {
       'node_title' => 'Danish UI'
     ],
     [
-      'path' => '/translations/ui/da.json',
+      'path' => '/translations/ui/en.json',
       'node_title' => 'English UI'
     ]
   ];

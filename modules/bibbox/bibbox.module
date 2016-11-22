@@ -29,10 +29,7 @@ function bibbox_entity_operation(\Drupal\Core\Entity\EntityInterface $entity) {
       'url' => \Drupal\Core\Url::fromRoute('bibbox.restart_node', ['id' => $entity->id()]),
       'weight' => 50,
     ];
-  }
 
-  // Add entity operations to language nodes.
-  if ($entity->bundle() == 'language') {
     $operations['push_language'] = [
       'title' => t('Push language'),
       'url' => \Drupal\Core\Url::fromRoute('bibbox.push_language', ['id' => $entity->id()]),
