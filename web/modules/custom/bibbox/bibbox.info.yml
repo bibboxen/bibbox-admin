@@ -9,3 +9,5 @@ dependencies:
   - views
   - options
   - menu_ui
+  - field_ui
+  - views_ui
