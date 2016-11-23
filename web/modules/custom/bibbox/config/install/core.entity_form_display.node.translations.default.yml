@@ -1,0 +1,47 @@
+status: true
+dependencies:
+  config:
+    - field.field.node.translations.field_translations
+    - node.type.translations
+  module:
+    - translation_field
+id: node.translations.default
+targetEntityType: node
+bundle: translations
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+  field_translations:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: field_translation_widget
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 3
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: options_buttons
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
