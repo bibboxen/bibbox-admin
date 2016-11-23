@@ -7,4 +7,4 @@ dependencies:
   - translation_field
   - field_group
   - views
-  
+  - options
