@@ -59,11 +59,9 @@ third_party_settings:
     group_bins:
       children:
         - field_bin_default
-        - field_bin_left_text
         - field_bin_left_color
         - field_bin_left_background_color
         - field_bin_left
-        - field_bin_right_text
         - field_bin_right_color
         - field_bin_right_background_color
         - field_bin_right

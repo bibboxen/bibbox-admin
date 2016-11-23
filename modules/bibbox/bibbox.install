@@ -6,10 +6,7 @@
 
 use Drupal\node\Entity\Node;
 
-/**
- * Import translations from json files.
- */
-function bibbox_update_8001(&$sandbox) {
+function bibbox_install() {
   $moduleDir = dirname(drupal_get_filename('module', 'bibbox'));
 
   $translationFilesToProcess = [
