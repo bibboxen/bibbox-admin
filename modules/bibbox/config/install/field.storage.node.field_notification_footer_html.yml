@@ -1,0 +1,19 @@
+uuid: 20e70d5e-634d-4f9b-9937-d443db085312
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_notification_footer_html
+field_name: field_notification_footer_html
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -15,6 +15,8 @@ use GuzzleHttp\Exception\RequestException;
 
 /**
  * ApiController.
+ *
+ * @TODO: Move logic to service.
  */
 class ApiController extends ControllerBase {
   /**
@@ -39,7 +41,9 @@ class ApiController extends ControllerBase {
       // Merge with Default if one exists.
       if (count($node->get('field_default'))) {
         // Get default node.
-        $defaultNode = \Drupal::entityManager()->getStorage('node')->load($node->get('field_default')[0]->getValue()['target_id']);
+        $defaultNode = \Drupal::entityManager()
+          ->getStorage('node')
+          ->load($node->get('field_default')[0]->getValue()['target_id']);
 
         // Get default array.
         $default = $this->getMachineArray($defaultNode);
@@ -70,32 +74,22 @@ class ApiController extends ControllerBase {
   }
 
   /**
-   * Push language to machine.
+   * Push translations to machine.
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
    * @param $id
    * @return \Symfony\Component\HttpFoundation\RedirectResponse
    */
-  public function pushLanguage(Request $request, $id) {
+  public function pushTranslations(Request $request, $id) {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
-    $baseTranslations = $this->getTranslationsArray(NULL);
-
-    $client = \Drupal::httpClient();
-
     $node = \Drupal::entityManager()->getStorage('node')->load($id);
 
-    $defaults = [];
-    // Merge with Default if one exists.
-    if (count($node->get('field_default'))) {
-      $defaults = $this->getTranslationsArray($node->get('field_default')[0]->getValue()['target_id']);
-    }
+    $translations = $this->getTranslationsForMachine($node);
 
-    $defaults = $this->array_merge_recursive_distinct_ignore_nulls($baseTranslations, $defaults);
-
-    $translations = $this->array_merge_recursive_distinct_ignore_nulls($defaults, $this->getTranslationsArray($id));
-
+    // Send request to Bibbox.
+    $client = \Drupal::httpClient();
     try {
       $client->request('POST', $node->get('field_ip')->value . "/api/translations", array('json' => $translations));
     } catch (RequestException $e) {
@@ -150,10 +144,10 @@ class ApiController extends ControllerBase {
   }
 
   /**
- * Get json array of machines.
- *
- * @return \Symfony\Component\HttpFoundation\JsonResponse
- */
+   * Get json array of machines.
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   */
   public function machines() {
     $machines = [];
 
@@ -183,6 +177,46 @@ class ApiController extends ControllerBase {
     $machine = $this->getMachineArray($node);
 
     return new JsonResponse($machine, 200);
+  }
+
+  /**
+   * Get json array of machines.
+   *
+   * @param $id
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   */
+  public function translations($id) {
+    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+
+    $translations = $this->getTranslationsForMachine($node);
+
+    return new JsonResponse($translations, 200);
+  }
+
+  /**
+   * Get translations for machine.
+   *
+   * @param $node
+   *   The machine node.
+   * @return array
+   *   The translations for the node.
+   *   This is the result of merging:
+   *     1. All translations without a machine attached.
+   *     2. All translations with $node.field_default machine attached.
+   *     3. All translations with $node machine attached.
+   */
+  private function getTranslationsForMachine($node) {
+    $baseTranslations = $this->getTranslationsArray(NULL);
+
+    $defaults = [];
+    // Merge with Default if one exists.
+    if (count($node->get('field_default'))) {
+      $defaults = $this->getTranslationsArray($node->get('field_default')[0]->getValue()['target_id']);
+    }
+
+    $defaults = $this->array_merge_recursive_distinct_ignore_nulls($baseTranslations, $defaults);
+
+    return $this->array_merge_recursive_distinct_ignore_nulls($defaults, $this->getTranslationsArray($node->id()));
   }
 
   /**
@@ -333,12 +367,13 @@ class ApiController extends ControllerBase {
 
     // Attach notification layout status
     if (isset($node->get('field_notification_layouts_statu')->value)) {
-      $allowed = \Drupal\field\Entity\FieldConfig::loadByName('node', 'machine', 'field_notification_layouts_statu')->getSetting('allowed_values');
+      $allowed = \Drupal\field\Entity\FieldConfig::loadByName('node', 'machine', 'field_notification_layouts_statu')
+        ->getSetting('allowed_values');
       foreach ($allowed as $key => $value) {
-        $machine['notification']['layouts']['status'][$key] = false;
+        $machine['notification']['layouts']['status'][$key] = FALSE;
       }
       foreach ($node->get('field_notification_layouts_statu') as $item) {
-        $machine['notification']['layouts']['status'][$item->value] = true;
+        $machine['notification']['layouts']['status'][$item->value] = TRUE;
       }
     }
 
@@ -388,7 +423,9 @@ class ApiController extends ControllerBase {
 
     // Attach features.
     foreach ($node->get('field_features') as $ref) {
-      $feature = \Drupal::entityManager()->getStorage('node')->load($ref->getValue()['target_id']);
+      $feature = \Drupal::entityManager()
+        ->getStorage('node')
+        ->load($ref->getValue()['target_id']);
       $machine['ui']['features'][] = [
         'title' => $feature->get('title')->value,
         'icon' => $feature->get('field_icon')->value,
@@ -400,7 +437,9 @@ class ApiController extends ControllerBase {
 
     // Attach languages.
     foreach ($node->get('field_languages') as $ref) {
-      $language = \Drupal::entityManager()->getStorage('node')->load($ref->getValue()['target_id']);
+      $language = \Drupal::entityManager()
+        ->getStorage('node')
+        ->load($ref->getValue()['target_id']);
       $machine['ui']['languages'][] = [
         'title' => $language->get('title')->value,
         'text' => $language->get('field_text')->value,
@@ -465,7 +504,7 @@ class ApiController extends ControllerBase {
    * @return bool
    */
   private function parseBoolean($bool) {
-    return $bool ? true : false;
+    return $bool ? TRUE : FALSE;
   }
 
   /**
@@ -475,6 +514,6 @@ class ApiController extends ControllerBase {
    * @return int
    */
   private function parseInt($int) {
-    return isset($int) ? intval($int) : null;
+    return isset($int) ? intval($int) : NULL;
   }
 }

@@ -1,0 +1,23 @@
+uuid: a5ff1c15-2e4e-4e59-812b-f424ea51ca97
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bin_default
+    - node.type.machine
+id: node.machine.field_bin_default
+field_name: field_bin_default
+entity_type: node
+bundle: machine
+label: 'Bin Default'
+description: 'Which bin is the default bin. Left or right?'
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Left
+  off_label: Right
+field_type: boolean

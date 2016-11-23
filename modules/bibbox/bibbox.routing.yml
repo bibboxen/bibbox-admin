@@ -14,6 +14,14 @@ bibbox.machine:
     _permission: 'access content'
     _content_type_format: text/html
 
+bibbox.translations:
+  path: '/bibbox/translations/{id}'
+  defaults:
+    _controller: '\Drupal\bibbox\Controller\ApiController::translations'
+  requirements:
+    _permission: 'access content'
+    _content_type_format: text/html
+
 bibbox.push_config:
   path: '/bibbox/push_config/{id}'
   defaults:
@@ -38,10 +46,10 @@ bibbox.restart_node:
     _permission: 'access content'
     _content_type_format: text/html
 
-bibbox.push_language:
-  path: '/bibbox/push_language/{id}'
+bibbox.push_translations:
+  path: '/bibbox/push_translations/{id}'
   defaults:
-    _controller: '\Drupal\bibbox\Controller\ApiController::pushLanguage'
+    _controller: '\Drupal\bibbox\Controller\ApiController::pushTranslations'
   requirements:
     _permission: 'access content'
     _content_type_format: text/html

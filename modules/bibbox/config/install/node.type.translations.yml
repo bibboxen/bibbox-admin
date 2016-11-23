@@ -1,0 +1,17 @@
+uuid: 52bb6085-d862-41f1-860e-a20275214e40
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Translations
+type: translations
+description: 'An array of translations'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

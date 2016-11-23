@@ -1,0 +1,19 @@
+uuid: 2b8ff964-f2c7-469d-a1f2-78eab6da0e67
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_language_key
+    - node.type.language
+id: node.language.field_language_key
+field_name: field_language_key
+entity_type: node
+bundle: language
+label: 'Language key'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

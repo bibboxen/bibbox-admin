@@ -1,0 +1,21 @@
+uuid: 5e112f3f-f514-4665-8619-40e9b2f0333b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notification_date_format
+    - node.type.machine
+id: node.machine.field_notification_date_format
+field_name: field_notification_date_format
+entity_type: node
+bundle: machine
+label: 'Notification date format'
+description: 'Date format'
+required: false
+translatable: false
+default_value:
+  -
+    value: d/m/y
+default_value_callback: ''
+settings: {  }
+field_type: string

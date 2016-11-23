@@ -1,0 +1,25 @@
+uuid: e7ca7458-0d0b-4b7b-ad5d-1c0289183694
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_timeout
+    - node.type.machine
+id: node.machine.field_timeout
+field_name: field_timeout
+entity_type: node
+bundle: machine
+label: Timeout
+description: 'The number of seconds before timeout warning.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 15
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

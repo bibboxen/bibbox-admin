@@ -30,9 +30,9 @@ function bibbox_entity_operation(\Drupal\Core\Entity\EntityInterface $entity) {
       'weight' => 50,
     ];
 
-    $operations['push_language'] = [
-      'title' => t('Push language'),
-      'url' => \Drupal\Core\Url::fromRoute('bibbox.push_language', ['id' => $entity->id()]),
+    $operations['push_translations'] = [
+      'title' => t('Push translations'),
+      'url' => \Drupal\Core\Url::fromRoute('bibbox.push_translations', ['id' => $entity->id()]),
       'weight' => 50,
     ];
   }

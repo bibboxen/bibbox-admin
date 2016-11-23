@@ -1,0 +1,29 @@
+uuid: 28262e14-43eb-4469-9d6e-a32ec617e19f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_features
+    - node.type.feature
+    - node.type.machine
+id: node.machine.field_features
+field_name: field_features
+entity_type: node
+bundle: machine
+label: Features
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      feature: feature
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
