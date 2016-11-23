@@ -1,11 +1,7 @@
-uuid: ef2f0cec-4e5e-480a-b35c-114c90097095
-langcode: en
 status: true
 dependencies:
   theme:
     - bibbox_theme
-_core:
-  default_config_hash: CyX_aDKAka2_eihevNLscCHDYrzDgIqwWzFVEFRKIww
 id: bibbox_theme_primary_local_tasks
 theme: bibbox_theme
 region: header
