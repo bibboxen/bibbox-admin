@@ -8,3 +8,4 @@ dependencies:
   - field_group
   - views
   - options
+  - menu_ui
