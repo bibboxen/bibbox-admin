@@ -4,6 +4,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.storage.node.field_ip
     - node.type.machine
+    - system.menu.main
   module:
     - node
     - user
@@ -375,6 +376,15 @@ display:
     display_options:
       display_extenders: {  }
       path: machines
+      menu:
+        type: normal
+        title: Machines
+        description: ''
+        expanded: false
+        parent: ''
+        weight: 0
+        context: '0'
+        menu_name: main
     cache_metadata:
       max-age: 0
       contexts:

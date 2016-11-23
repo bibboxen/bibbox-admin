@@ -4,8 +4,6 @@ dependencies:
     - system
   theme:
     - bibbox_theme
-_core:
-  default_config_hash: 8by5KRsb7ZpmjHj0ms1d7xAG_xH54AWsOX6spDLJ59U
 id: bibbox_theme_breadcrumbs
 theme: bibbox_theme
 region: breadcrumb
