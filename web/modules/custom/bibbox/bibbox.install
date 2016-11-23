@@ -11,7 +11,7 @@ function bibbox_install() {
   // Add Add Content menu link.
   $menu_link = MenuLinkContent::create([
     'title' => 'Add Content',
-    'link' => ['uri' => 'internal:/add/content'],
+    'link' => ['uri' => 'internal:/node/add'],
     'menu_name' => 'main',
     'expanded' => FALSE,
   ]);
