@@ -1,0 +1,22 @@
+uuid: 044d8295-a82b-45d0-93b7-49cd5e5c170f
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bibbox_theme
+_core:
+  default_config_hash: 80N66GdzEvwqi1m-_GZ-ulkk8AJG9beoXcZ4-pMVKjI
+id: bibbox_theme_content
+theme: bibbox_theme
+region: content
+weight: -1
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }
