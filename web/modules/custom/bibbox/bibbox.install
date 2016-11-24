@@ -51,3 +51,22 @@ function bibbox_update_8001() {
     ->set('register', 'admin_only')
     ->save();
 }
+
+/**
+ * Update 8002.
+ *
+ * Add missing option to field.storage.node.field_notification_layouts_cin.
+ */
+function bibbox_update_8002() {
+  $options = \Drupal::config('field.storage.node.field_notification_layouts_cin')->get('settings.allowed_values');
+
+  $options[] = [
+    'value' => 'checks_ins',
+    'label' => 'New returns',
+  ];
+
+  // Set permissions.
+  \Drupal::configFactory()->getEditable('field.storage.node.field_notification_layouts_cin')
+    ->set('settings.allowed_values', $options)
+    ->save();
+}

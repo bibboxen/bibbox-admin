@@ -21,6 +21,9 @@ settings:
     -
       value: reservations_ready
       label: 'Reservations ready'
+    -
+      value: check_ins
+      label: 'New returns'
   allowed_values_function: ''
 module: options
 locked: false
