@@ -1,0 +1,142 @@
+<?php
+/**
+ * @file
+ * Contains update functions for bibbox_base_content.
+ */
+
+use Drupal\node\Entity\Node;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+
+function bibbox_base_content_install() {
+  // Add Add Content menu link.
+  $menu_link = MenuLinkContent::create([
+    'title' => 'Add Content',
+    'link' => ['uri' => 'internal:/node/add'],
+    'menu_name' => 'main',
+    'expanded' => FALSE,
+  ]);
+  $menu_link->save();
+
+  // Add Admin menu link
+  $menu_link = MenuLinkContent::create([
+    'title' => 'Admin',
+    'link' => ['uri' => 'internal:/admin'],
+    'menu_name' => 'main',
+    'expanded' => FALSE,
+  ]);
+  $menu_link->save();
+
+  // Add translations nodes.
+  $moduleDir = dirname(drupal_get_filename('module', 'bibbox'));
+
+  $translationFilesToProcess = [
+    [
+      'path' => '/translations/notification/da.json',
+      'node_title' => 'Danish Notifications'
+    ],
+    [
+      'path' => '/translations/notification/en.json',
+      'node_title' => 'English Notifications'
+    ],
+    [
+      'path' => '/translations/ui/da.json',
+      'node_title' => 'Danish UI'
+    ],
+    [
+      'path' => '/translations/ui/en.json',
+      'node_title' => 'English UI'
+    ]
+  ];
+
+  foreach ($translationFilesToProcess as $file) {
+    $string = file_get_contents($moduleDir . $file['path']);
+    $translations = json_decode($string, true);
+
+    $trans = [];
+
+    foreach ($translations as $key => $value) {
+      $trans[] = [
+        'key' => $key,
+        'value' => $value
+      ];
+    }
+
+    $node = Node::create([
+      'type'        => 'translations',
+      'title'       =>  $file['node_title'],
+      'field_translations' => $trans,
+    ]);
+    $node->save();
+  }
+
+  // Create features
+  $features =[
+    [
+      'title' => 'Borrow',
+      'text' => 'menu.borrow',
+      'require_online' => 0,
+      'url' => '/#/login/borrow',
+      'icon' => 'glyphicon-tasks',
+    ],
+    [
+      'title' => 'Status',
+      'text' => 'menu.status',
+      'require_online' => 1,
+      'url' => '/#/login/status',
+      'icon' => 'glyphicon-refresh'
+    ],
+    [
+      'title' => 'Reservations',
+      'text' => 'menu.reservations',
+      'require_online' => 1,
+      'url' => '/#/login/reservations',
+      'icon' => 'glyphicon-list-alt'
+    ],
+    [
+      'title' => 'Return',
+      'text' => 'menu.return',
+      'require_online' => 0,
+      'url' => '/#/return',
+      'icon' => 'glyphicon-time'
+    ]
+  ];
+
+  foreach ($features as $feature) {
+    $node = Node::create([
+      'type'        => 'feature',
+      'title'       =>  $feature['title'],
+      'field_text' => $feature['text'],
+      'field_require_online' => $feature['require_online'],
+      'field_url' => $feature['url'],
+      'field_icon' => $feature['icon'],
+    ]);
+    $node->save();
+  }
+
+  $languages = [
+    [
+      'title' => 'Danish',
+      'text' => 'language.da',
+      'langKey' => 'da',
+      'icon' => 'img/flags/DK.png',
+    ],
+    [
+      'title' => 'English',
+      'text' => 'language.en',
+      'langKey' => 'en',
+      'icon' => 'img/flags/GB.png',
+    ]
+  ];
+
+  foreach ($languages as $language) {
+    $node = Node::create([
+      'type'        => 'language',
+      'title'       =>  $language['title'],
+      'field_text' => $language['text'],
+      'field_language_key' => $language['langKey'],
+      'field_icon' => $language['icon'],
+    ]);
+
+    $node->save();
+  }
+}
