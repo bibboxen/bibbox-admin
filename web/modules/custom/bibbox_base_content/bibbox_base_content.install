@@ -8,7 +8,7 @@ use Drupal\node\Entity\Node;
 
 function bibbox_base_content_install() {
   // Add translations nodes.
-  $moduleDir = dirname(drupal_get_filename('module', 'bibbox'));
+  $moduleDir = dirname(drupal_get_filename('module', 'bibbox_base_content'));
 
   $translationFilesToProcess = [
     [
