@@ -1,0 +1,7 @@
+name: Bibbox
+description: Provides content for Bibbox
+package: Bibbox
+type: module
+core: 8.x
+dependencies:
+  - bibbox

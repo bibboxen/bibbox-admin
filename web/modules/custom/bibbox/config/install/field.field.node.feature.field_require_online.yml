@@ -1,0 +1,21 @@
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_require_online
+    - node.type.feature
+id: node.feature.field_require_online
+field_name: field_require_online
+entity_type: node
+bundle: feature
+label: 'Require Online'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

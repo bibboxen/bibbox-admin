@@ -1,0 +1,18 @@
+status: true
+dependencies:
+  module:
+    - user
+  theme:
+    - bibbox_theme
+id: bibbox_theme_login
+theme: bibbox_theme
+region: content
+weight: -3
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: 'User login'
+  provider: user
+  label_display: visible
+visibility: {  }

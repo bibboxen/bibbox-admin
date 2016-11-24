@@ -1,0 +1,21 @@
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_fines
+    - node.type.machine
+id: node.machine.field_display_fines
+field_name: field_display_fines
+entity_type: node
+bundle: machine
+label: 'Display fines'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

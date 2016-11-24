@@ -1,0 +1,41 @@
+<?php
+/**
+ * @file
+ * Contains Bibbox module hooks.
+ */
+
+/**
+ * Implements hook_entity_operation().
+ */
+function bibbox_entity_operation(\Drupal\Core\Entity\EntityInterface $entity) {
+  $operations = [];
+
+  // Add entity operations to machine nodes.
+  if ($entity->bundle() == 'machine') {
+    $operations['push_config'] = [
+      'title' => t('Push config'),
+      'url' => \Drupal\Core\Url::fromRoute('bibbox.push_config', ['id' => $entity->id()]),
+      'weight' => 50,
+    ];
+
+    $operations['restart_ui'] = [
+      'title' => t('Restart UI'),
+      'url' => \Drupal\Core\Url::fromRoute('bibbox.restart_ui', ['id' => $entity->id()]),
+      'weight' => 50,
+    ];
+
+    $operations['restart_node'] = [
+      'title' => t('Restart Node'),
+      'url' => \Drupal\Core\Url::fromRoute('bibbox.restart_node', ['id' => $entity->id()]),
+      'weight' => 50,
+    ];
+
+    $operations['push_translations'] = [
+      'title' => t('Push translations'),
+      'url' => \Drupal\Core\Url::fromRoute('bibbox.push_translations', ['id' => $entity->id()]),
+      'weight' => 50,
+    ];
+  }
+
+  return $operations;
+}

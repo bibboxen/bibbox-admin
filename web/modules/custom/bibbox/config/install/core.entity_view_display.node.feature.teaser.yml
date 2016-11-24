@@ -1,0 +1,15 @@
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.feature
+  module:
+    - user
+id: node.feature.teaser
+targetEntityType: node
+bundle: feature
+mode: teaser
+content:
+  links:
+    weight: 100
+hidden: {  }

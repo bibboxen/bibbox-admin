@@ -1,0 +1,17 @@
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notification_footer_text
+    - node.type.machine
+id: node.machine.field_notification_footer_text
+field_name: field_notification_footer_text
+entity_type: node
+bundle: machine
+label: 'Notification footer text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
