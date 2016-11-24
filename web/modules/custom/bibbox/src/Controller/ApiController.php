@@ -64,7 +64,14 @@ class ApiController extends ControllerBase {
       $client = \Drupal::httpClient();
 
       try {
-        $client->request('POST', $node->get('field_ip')->value . "/api/config", array('json' => $machine));
+        $client->request(
+          'POST',
+          $node->get('field_ip')->value . "/config",
+          array(
+            'json' => $machine,
+            'verify' => false
+          )
+        );
       } catch (RequestException $e) {
         drupal_set_message(t($e->getMessage()), 'error');
       }
@@ -91,7 +98,14 @@ class ApiController extends ControllerBase {
     // Send request to Bibbox.
     $client = \Drupal::httpClient();
     try {
-      $client->request('POST', $node->get('field_ip')->value . "/api/translations", array('json' => $translations));
+      $client->request(
+        'POST',
+        $node->get('field_ip')->value . "/translations",
+        array(
+          'json' => $translations,
+          'verify' => false
+        )
+      );
     } catch (RequestException $e) {
       drupal_set_message(t($e->getMessage()), 'error');
     }
@@ -113,7 +127,7 @@ class ApiController extends ControllerBase {
     $client = \Drupal::httpClient();
     $node = \Drupal::entityManager()->getStorage('node')->load($id);
     try {
-      $client->request('POST', $node->get('field_ip')->value . "/api/restart_node", array());
+      $client->request('POST', $node->get('field_ip')->value . "/restart/application", array('verify' => false));
     } catch (RequestException $e) {
       drupal_set_message(t($e->getMessage()), 'error');
     }
@@ -135,7 +149,7 @@ class ApiController extends ControllerBase {
     $client = \Drupal::httpClient();
     $node = \Drupal::entityManager()->getStorage('node')->load($id);
     try {
-      $client->request('POST', $node->get('field_ip')->value . "/api/restart_ui", array());
+      $client->request('POST', $node->get('field_ip')->value . "/restart/ui", array('verify' => false));
     } catch (RequestException $e) {
       drupal_set_message(t($e->getMessage()), 'error');
     }
@@ -429,7 +443,7 @@ class ApiController extends ControllerBase {
       $machine['ui']['features'][] = [
         'title' => $feature->get('title')->value,
         'icon' => $feature->get('field_icon')->value,
-        'require_offline' => boolval($feature->get('field_require_online')->value),
+        'require_online' => boolval($feature->get('field_require_online')->value),
         'text' => $feature->get('field_text')->value,
         'url' => $feature->get('field_url')->value,
       ];
