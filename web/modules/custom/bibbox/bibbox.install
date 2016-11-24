@@ -6,6 +6,9 @@
 
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 
+/**
+ * Install script.
+ */
 function bibbox_install() {
   // Add Add Content menu link.
   $menu_link = MenuLinkContent::create([
