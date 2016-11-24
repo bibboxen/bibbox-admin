@@ -24,4 +24,14 @@ function bibbox_install() {
     'expanded' => FALSE,
   ]);
   $menu_link->save();
+
+  // Set default values for config which require dynamic values.
+  \Drupal::configFactory()->getEditable('user.role.anonymous')
+    ->set('permissions', [])
+    ->save();
+
+  // Set default values for config which require dynamic values.
+  \Drupal::configFactory()->getEditable('user.settings')
+    ->set('register', 'admin_only')
+    ->save();
 }
