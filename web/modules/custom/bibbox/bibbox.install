@@ -70,3 +70,42 @@ function bibbox_update_8002() {
     ->set('settings.allowed_values', $options)
     ->save();
 }
+
+/**
+ * Update 8003.
+ *
+ * Add role admin.
+ */
+function bibbox_update_8003() {
+  // Set permissions.
+  \Drupal::configFactory()->getEditable('user.role.admin')
+    ->set('status', true)
+    ->set('dependencies', [])
+    ->set('id', 'admin')
+    ->set('weight', 2)
+    ->set('is_admin', null)
+    ->set('permissions', [
+      'access content overview',
+      'view own unpublished content',
+      'create feature content',
+      'delete any feature content',
+      'delete own feature content',
+      'edit any feature content',
+      'edit own feature content',
+      'create language content',
+      'delete any language content',
+      'edit any language content',
+      'edit own language content',
+      'create machine content',
+      'delete any machine content',
+      'delete own machine content',
+      'edit any machine content',
+      'edit own machine content',
+      'create translations content',
+      'delete any translations content',
+      'delete own translations content',
+      'edit any translations content',
+      'edit own translations content'
+    ])
+    ->save();
+}
