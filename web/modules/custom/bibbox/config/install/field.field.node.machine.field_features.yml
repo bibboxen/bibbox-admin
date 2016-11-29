@@ -9,7 +9,7 @@ field_name: field_features
 entity_type: node
 bundle: machine
 label: Features
-description: ''
+description: "Which features should be shown in the UI? The features will be sorted according to order. Inherited values come first. Available values and suggested order: Borrow, Status, Reservations, Return. Start typing to get autocompletion."
 required: false
 translatable: false
 default_value: {  }

@@ -8,7 +8,7 @@ field_name: field_ip
 entity_type: node
 bundle: machine
 label: IP
-description: "The IP of the machine.\r\nNB! Make sure this is Unique so machines are not mixed!"
+description: "The IP of the machine. NB! Make sure this is Unique so machines are not mixed! Should start with https:// to use ssl connection."
 required: true
 translatable: false
 default_value: {  }

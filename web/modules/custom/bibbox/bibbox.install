@@ -65,7 +65,6 @@ function bibbox_update_8002() {
     'label' => 'New returns',
   ];
 
-  // Set permissions.
   \Drupal::configFactory()->getEditable('field.storage.node.field_notification_layouts_cin')
     ->set('settings.allowed_values', $options)
     ->save();
@@ -77,7 +76,6 @@ function bibbox_update_8002() {
  * Add role admin.
  */
 function bibbox_update_8003() {
-  // Set permissions.
   \Drupal::configFactory()->getEditable('user.role.admin')
     ->set('status', true)
     ->set('label', 'Admin')
@@ -108,5 +106,53 @@ function bibbox_update_8003() {
       'edit any translations content',
       'edit own translations content'
     ])
+    ->save();
+}
+
+/**
+ * Update 8004.
+ *
+ * Added help texts.
+ */
+function bibbox_update_8004() {
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_bin_left_background_color')
+    ->set('description', 'The color value to set for the background. E.g. #ff2 or red')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_bin_left_color')
+    ->set('description', 'The color value of the text. E.g. #ff2 or red')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_bin_right_background_color')
+    ->set('description', 'The color value to set for the background. E.g. #ff2 or red')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_bin_right_color')
+    ->set('description', 'The color value of the text. E.g. #ff2 or red')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_default')
+    ->set('description', 'The Machine to inherent from. Features, Languages and bins will not override the default but extend it.')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_display_fines')
+    ->set('description', 'Should the fines button be displayed, and the fines column in the status feature?')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_features')
+    ->set('description', 'Which features should be shown in the UI? The features will be sorted according to order. Inherited values come first. Available values and suggested order: Borrow, Status, Reservations, Return. Start typing to get autocompletion.')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_image_more_materials')
+    ->set('label', 'Use image with multiple materials')
+    ->set('description', 'Which image should be displayed in UI? With 1 or more books? This only affects the image displayed in the UI.')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_ip')
+    ->set('description', 'The IP of the machine. NB! Make sure this is Unique so machines are not mixed! Should start with https:// to use ssl connection.')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_languages')
+    ->set('description', 'Languages available in UI. The languages will be sorted according to order. Inherited values come first.')
     ->save();
 }

@@ -9,7 +9,7 @@ field_name: field_languages
 entity_type: node
 bundle: machine
 label: Languages
-description: ''
+description: "Languages available in UI. The languages will be sorted according to order. Inherited values come first."
 required: false
 translatable: false
 default_value: {  }

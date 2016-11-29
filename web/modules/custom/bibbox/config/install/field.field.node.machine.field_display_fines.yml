@@ -8,7 +8,7 @@ field_name: field_display_fines
 entity_type: node
 bundle: machine
 label: 'Display fines'
-description: ''
+description: 'Should the fines button be displayed, and the fines column in the status feature?'
 required: false
 translatable: false
 default_value:

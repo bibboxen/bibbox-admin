@@ -8,7 +8,7 @@ field_name: field_bin_left_background_color
 entity_type: node
 bundle: machine
 label: 'Bin Left Background Color'
-description: 'The color value to set for the background.'
+description: "The color value to set for the background. E.g. #ff2 or red"
 required: false
 translatable: false
 default_value: {  }

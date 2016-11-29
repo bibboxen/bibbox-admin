@@ -8,7 +8,7 @@ field_name: field_bin_right_color
 entity_type: node
 bundle: machine
 label: 'Bin Right Color'
-description: 'The color value of the text'
+description: "The color value of the text. E.g. #ff2 or red"
 required: false
 translatable: false
 default_value: {  }

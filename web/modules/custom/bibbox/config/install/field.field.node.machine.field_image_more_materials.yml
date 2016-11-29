@@ -7,8 +7,8 @@ id: node.machine.field_image_more_materials
 field_name: field_image_more_materials
 entity_type: node
 bundle: machine
-label: 'Image more materials'
-description: ''
+label: 'Use image with multiple materials'
+description: "Which image should be displayed in UI? With 1 or more books? This only affects the image displayed in the UI."
 required: false
 translatable: false
 default_value:
