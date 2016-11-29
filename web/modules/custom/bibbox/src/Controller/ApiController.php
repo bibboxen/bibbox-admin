@@ -335,10 +335,6 @@ class ApiController extends ControllerBase {
           'allow_scan' => $this->parseBoolean($node->get('field_login_allow_scan')->value),
           'allow_manual' => $this->parseBoolean($node->get('field_login_allow_manual')->value),
         ],
-        // Will be attached later.
-        'features' => [],
-        // Will be attached later.
-        'languages' => [],
       ],
       'notification' => [
         'config' => [
@@ -436,30 +432,41 @@ class ApiController extends ControllerBase {
     }
 
     // Attach features.
-    foreach ($node->get('field_features') as $ref) {
-      $feature = \Drupal::entityManager()
-        ->getStorage('node')
-        ->load($ref->getValue()['target_id']);
-      $machine['ui']['features'][] = [
-        'title' => $feature->get('title')->value,
-        'icon' => $feature->get('field_icon')->value,
-        'require_online' => boolval($feature->get('field_require_online')->value),
-        'text' => $feature->get('field_text')->value,
-        'url' => $feature->get('field_url')->value,
-      ];
+    if (count($node->get('field_features'))) {
+      $machine['ui']['features'] = [];
+
+      foreach ($node->get('field_features') as $ref) {
+        $feature = \Drupal::entityManager()
+          ->getStorage('node')
+          ->load($ref->getValue()['target_id']);
+
+
+        $machine['ui']['features'][] = [
+          'title' => $feature->get('title')->value,
+          'icon' => $feature->get('field_icon')->value,
+          'require_online' => boolval($feature->get('field_require_online')->value),
+          'text' => $feature->get('field_text')->value,
+          'url' => $feature->get('field_url')->value,
+        ];
+      }
     }
 
     // Attach languages.
-    foreach ($node->get('field_languages') as $ref) {
-      $language = \Drupal::entityManager()
-        ->getStorage('node')
-        ->load($ref->getValue()['target_id']);
-      $machine['ui']['languages'][] = [
-        'title' => $language->get('title')->value,
-        'text' => $language->get('field_text')->value,
-        'langKey' => $language->get('field_language_key')->value,
-        'icon' => $language->get('field_icon')->value,
-      ];
+    if (count($node->get('field_languages'))) {
+      $machine['ui']['languages'] = [];
+
+      foreach ($node->get('field_languages') as $ref) {
+        $language = \Drupal::entityManager()
+          ->getStorage('node')
+          ->load($ref->getValue()['target_id']);
+
+        $machine['ui']['languages'][] = [
+          'title' => $language->get('title')->value,
+          'text' => $language->get('field_text')->value,
+          'langKey' => $language->get('field_language_key')->value,
+          'icon' => $language->get('field_icon')->value,
+        ];
+      }
     }
 
     return $machine;
