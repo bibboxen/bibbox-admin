@@ -1,0 +1,21 @@
+status: true
+dependencies:
+  config:
+    - field.field.node.translations.field_translations
+    - node.type.translations
+  module:
+    - translation_field
+    - user
+id: node.translations.default
+targetEntityType: node
+bundle: translations
+mode: default
+content:
+  field_translations:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: field_translation_formatter
+hidden:
+  links: true

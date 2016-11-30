@@ -1,0 +1,44 @@
+.main-menu > .menu-item {
+  background: #ccc;
+  padding: .8em;
+  list-style-type:none;
+  border-top-right-radius: .5em;
+  border-top-left-radius: .5em;
+  margin-right: .8em;
+}
+
+.main-menu > .menu-item > a:link,
+.main-menu > .menu-item > a:visited,
+.main-menu > .menu-item > a:hover,
+.main-menu > .menu-item > a:active {
+  color: #000;
+  text-decoration: none;
+}
+
+.main-menu {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-menu > .menu-item:hover {
+  background-color: #eee;
+}
+
+.field {
+  margin-bottom: 1em;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.translation-field-wrapper > .form-item {
+  display: inline-block;
+  margin-right: 1em;
+}
+
+.translation-field-wrapper > .form-item > label {
+  display: inline-block;
+}

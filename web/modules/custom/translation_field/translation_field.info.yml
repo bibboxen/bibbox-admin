@@ -1,0 +1,8 @@
+name: Translation
+description: Provides a field type to translate from one string to another
+package: Field types
+type: module
+core: 8.x
+
+dependencies:
+  - field

@@ -1,0 +1,18 @@
+status: true
+dependencies:
+  theme:
+    - bibbox_theme
+id: bibbox_theme_secondary_local_tasks
+theme: bibbox_theme
+region: sidebar_first
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Secondary tabs'
+  provider: core
+  label_display: '0'
+  primary: false
+  secondary: true
+visibility: {  }

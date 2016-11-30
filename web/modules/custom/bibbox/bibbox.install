@@ -1,0 +1,158 @@
+<?php
+/**
+ * @file
+ * Contains update/install functions for bibbox.
+ */
+
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+
+/**
+ * Install script.
+ */
+function bibbox_install() {
+  // Add Add Content menu link.
+  $menu_link = MenuLinkContent::create([
+    'title' => 'Add Content',
+    'link' => ['uri' => 'internal:/node/add'],
+    'menu_name' => 'main',
+    'expanded' => FALSE,
+  ]);
+  $menu_link->save();
+
+  // Add Admin menu link
+  $menu_link = MenuLinkContent::create([
+    'title' => 'Admin',
+    'link' => ['uri' => 'internal:/admin'],
+    'menu_name' => 'main',
+    'expanded' => FALSE,
+  ]);
+  $menu_link->save();
+
+  // Set permissions.
+  \Drupal::configFactory()->getEditable('user.role.anonymous')
+    ->set('permissions', [])
+    ->save();
+  \Drupal::configFactory()->getEditable('user.settings')
+    ->set('register', 'admin_only')
+    ->save();
+}
+
+/**
+ * Update 8001.
+ *
+ * Set permissions so anonymous users can not access content and create users.
+ */
+function bibbox_update_8001() {
+  // Set permissions.
+  \Drupal::configFactory()->getEditable('user.role.anonymous')
+    ->set('permissions', [])
+    ->save();
+  \Drupal::configFactory()->getEditable('user.settings')
+    ->set('register', 'admin_only')
+    ->save();
+}
+
+/**
+ * Update 8002.
+ *
+ * Add missing option to field.storage.node.field_notification_layouts_cin.
+ */
+function bibbox_update_8002() {
+  $options = \Drupal::config('field.storage.node.field_notification_layouts_cin')->get('settings.allowed_values');
+
+  $options[] = [
+    'value' => 'checks_ins',
+    'label' => 'New returns',
+  ];
+
+  \Drupal::configFactory()->getEditable('field.storage.node.field_notification_layouts_cin')
+    ->set('settings.allowed_values', $options)
+    ->save();
+}
+
+/**
+ * Update 8003.
+ *
+ * Add role admin.
+ */
+function bibbox_update_8003() {
+  \Drupal::configFactory()->getEditable('user.role.admin')
+    ->set('status', true)
+    ->set('label', 'Admin')
+    ->set('dependencies', [])
+    ->set('id', 'admin')
+    ->set('weight', 2)
+    ->set('is_admin', null)
+    ->set('permissions', [
+      'access content overview',
+      'view own unpublished content',
+      'create feature content',
+      'delete any feature content',
+      'delete own feature content',
+      'edit any feature content',
+      'edit own feature content',
+      'create language content',
+      'delete any language content',
+      'edit any language content',
+      'edit own language content',
+      'create machine content',
+      'delete any machine content',
+      'delete own machine content',
+      'edit any machine content',
+      'edit own machine content',
+      'create translations content',
+      'delete any translations content',
+      'delete own translations content',
+      'edit any translations content',
+      'edit own translations content'
+    ])
+    ->save();
+}
+
+/**
+ * Update 8004.
+ *
+ * Added help texts.
+ */
+function bibbox_update_8004() {
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_bin_left_background_color')
+    ->set('description', 'The color value to set for the background. E.g. #ff2 or red')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_bin_left_color')
+    ->set('description', 'The color value of the text. E.g. #ff2 or red')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_bin_right_background_color')
+    ->set('description', 'The color value to set for the background. E.g. #ff2 or red')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_bin_right_color')
+    ->set('description', 'The color value of the text. E.g. #ff2 or red')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_default')
+    ->set('description', 'The Machine to inherent from. Features, Languages and bins will not override the default but extend it.')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_display_fines')
+    ->set('description', 'Should the fines button be displayed, and the fines column in the status feature?')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_features')
+    ->set('description', 'Which features should be shown in the UI? The features will be sorted according to order. Inherited values come first. Available values and suggested order: Borrow, Status, Reservations, Return. Start typing to get autocompletion.')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_image_more_materials')
+    ->set('label', 'Use image with multiple materials')
+    ->set('description', 'Which image should be displayed in UI? With 1 or more books? This only affects the image displayed in the UI.')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_ip')
+    ->set('description', 'The IP of the machine. NB! Make sure this is Unique so machines are not mixed! Should start with https:// to use ssl connection.')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('field.field.node.machine.field_languages')
+    ->set('description', 'Languages available in UI. The languages will be sorted according to order. Inherited values come first.')
+    ->save();
+}

@@ -1,0 +1,13 @@
+name: Bibbox
+description: Provides integration with Bibbox
+package: Bibbox
+type: module
+core: 8.x
+dependencies:
+  - translation_field
+  - field_group
+  - views
+  - options
+  - menu_ui
+  - field_ui
+  - views_ui
