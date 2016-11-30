@@ -1,0 +1,21 @@
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_image_more_materials
+    - node.type.machine
+id: node.machine.field_image_more_materials
+field_name: field_image_more_materials
+entity_type: node
+bundle: machine
+label: 'Use image with multiple materials'
+description: "Which image should be displayed in UI? With 1 or more books? This only affects the image displayed in the UI."
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

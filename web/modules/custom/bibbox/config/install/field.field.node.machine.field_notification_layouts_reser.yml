@@ -1,0 +1,19 @@
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notification_layouts_reser
+    - node.type.machine
+  module:
+    - options
+id: node.machine.field_notification_layouts_reser
+field_name: field_notification_layouts_reser
+entity_type: node
+bundle: machine
+label: 'Notification layouts reservations'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

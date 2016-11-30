@@ -1,0 +1,21 @@
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notification_mailer_secure
+    - node.type.machine
+id: node.machine.field_notification_mailer_secure
+field_name: field_notification_mailer_secure
+entity_type: node
+bundle: machine
+label: 'Notification mailer secure'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

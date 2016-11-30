@@ -1,0 +1,17 @@
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notification_mailer_from
+    - node.type.machine
+id: node.machine.field_notification_mailer_from
+field_name: field_notification_mailer_from
+entity_type: node
+bundle: machine
+label: 'Notification mailer from'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

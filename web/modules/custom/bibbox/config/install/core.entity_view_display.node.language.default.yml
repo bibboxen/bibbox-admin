@@ -1,0 +1,54 @@
+status: true
+dependencies:
+  config:
+    - field.field.node.language.field_icon
+    - field.field.node.language.field_language_key
+    - field.field.node.language.field_text
+    - field.field.node.language.field_translations_notification
+    - field.field.node.language.field_translations_ui
+    - node.type.language
+  module:
+    - user
+id: node.language.default
+targetEntityType: node
+bundle: language
+mode: default
+content:
+  field_icon:
+    weight: 103
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_language_key:
+    weight: 102
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_text:
+    weight: 101
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_translations_notification:
+    weight: 104
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_translations_ui:
+    weight: 105
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  links:
+    weight: 100
+hidden: {  }
