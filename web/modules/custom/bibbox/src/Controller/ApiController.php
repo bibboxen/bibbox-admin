@@ -158,6 +158,28 @@ class ApiController extends ControllerBase {
   }
 
   /**
+   * Reboot the machine.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param $id
+   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   */
+  public function rebootMachine(Request $request, $id) {
+    // Get destination to return to after completing request.
+    $destination = $request->query->get('destination');
+
+    $client = \Drupal::httpClient();
+    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+    try {
+      $client->request('POST', $node->get('field_ip')->value . "/reboot", array('verify' => false));
+    } catch (RequestException $e) {
+      drupal_set_message(t($e->getMessage()), 'error');
+    }
+
+    return new RedirectResponse($destination);
+  }
+
+  /**
    * Get json array of machines.
    *
    * @return \Symfony\Component\HttpFoundation\JsonResponse

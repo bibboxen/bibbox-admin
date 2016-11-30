@@ -46,6 +46,14 @@ bibbox.restart_node:
     _permission: 'access content'
     _content_type_format: text/html
 
+bibbox.reboot_machine:
+  path: '/bibbox/reboot_machine/{id}'
+  defaults:
+    _controller: '\Drupal\bibbox\Controller\ApiController::rebootMachine'
+  requirements:
+    _permission: 'access content'
+    _content_type_format: text/html
+
 bibbox.push_translations:
   path: '/bibbox/push_translations/{id}'
   defaults:
