@@ -54,6 +54,14 @@ bibbox.reboot_machine:
     _permission: 'access content'
     _content_type_format: text/html
 
+bibbox.out_of_order:
+  path: '/bibbox/out_of_order/{id}'
+  defaults:
+    _controller: '\Drupal\bibbox\Controller\ApiController::outOfOrder'
+  requirements:
+    _permission: 'access content'
+    _content_type_format: text/html
+
 bibbox.push_translations:
   path: '/bibbox/push_translations/{id}'
   defaults:
