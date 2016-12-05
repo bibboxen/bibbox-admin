@@ -36,10 +36,16 @@ function bibbox_entity_operation(\Drupal\Core\Entity\EntityInterface $entity) {
       'weight' => 53,
     ];
 
+    $operations['set_out_of_order'] = [
+      'title' => t('Set in Out-of-Order'),
+      'url' => \Drupal\Core\Url::fromRoute('bibbox.out_of_order', ['id' => $entity->id()]),
+      'weight' => 54,
+    ];
+
     $operations['reboot_machine'] = [
       'title' => t('Reboot Machine'),
       'url' => \Drupal\Core\Url::fromRoute('bibbox.reboot_machine', ['id' => $entity->id()]),
-      'weight' => 54,
+      'weight' => 55,
     ];
   }
 
