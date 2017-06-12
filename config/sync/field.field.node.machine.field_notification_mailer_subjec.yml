@@ -1,0 +1,21 @@
+uuid: f277a2e9-b23d-42bd-8171-d7f3f4ec1057
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notification_mailer_subjec
+    - node.type.machine
+_core:
+  default_config_hash: a1PWg5jXSGEgAeQwzRkdyNc51m5_jSLBSaAJMnzwyj0
+id: node.machine.field_notification_mailer_subjec
+field_name: field_notification_mailer_subjec
+entity_type: node
+bundle: machine
+label: 'Notification mailer subject'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

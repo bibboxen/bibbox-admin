@@ -1,0 +1,22 @@
+uuid: d70051d1-6154-403b-b9ad-3347141ff10a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: MG0ZsNDDM0yAlX0W2TU9aUBZf1vCwkP6IKwXD7fMutw
+id: node.field_timeout
+field_name: field_timeout
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

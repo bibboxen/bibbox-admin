@@ -1,0 +1,20 @@
+uuid: 2c557128-6dc7-4513-8b88-92274c820145
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+_core:
+  default_config_hash: 8EqgefoI9PMWm4lgFiCmjxvMM2w2ub4UgpohwzxmdpQ
+name: Machine
+type: machine
+description: 'A Bibbox machine'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

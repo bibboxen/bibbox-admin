@@ -1,0 +1,9 @@
+id: node_push_translation
+label: 'Push translation to machine'
+status: true
+langcode: en
+type: node
+plugin: push_translation
+dependencies:
+  module:
+    - node

@@ -1,0 +1,25 @@
+uuid: ca8c1dfe-5484-4288-9e5a-91be091cccac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_require_online
+    - node.type.feature
+_core:
+  default_config_hash: 5dIcQe7rWUbfs1CO3fqmwO6aq9UfWn9ffTA7q5HeUJM
+id: node.feature.field_require_online
+field_name: field_require_online
+entity_type: node
+bundle: feature
+label: 'Require Online'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

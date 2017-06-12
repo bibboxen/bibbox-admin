@@ -1,0 +1,11 @@
+uuid: 80600709-8716-49ab-9654-4bdc11e012df
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node_push_translation
+label: 'Push translation to machine'
+type: node
+plugin: push_translation
+configuration: {  }

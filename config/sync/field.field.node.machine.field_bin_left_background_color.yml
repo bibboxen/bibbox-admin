@@ -1,0 +1,21 @@
+uuid: eb92d506-559c-473a-94fe-10db8cca3d5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bin_left_background_color
+    - node.type.machine
+_core:
+  default_config_hash: 3DJYaNkO2fQ-YFSQ_lvk1-UDn8XAcm0brqOkckgTsbE
+id: node.machine.field_bin_left_background_color
+field_name: field_bin_left_background_color
+entity_type: node
+bundle: machine
+label: 'Bin Left Background Color'
+description: 'The color value to set for the background. E.g. #ff2 or red'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,13 @@
+uuid: ebd588ee-674e-4619-a061-56bdd05ea7b5
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: hohZE-zAnZKHsIcH9Z3jSShMwMp0jaHgFjsl_4NqZ7s
+name: Language
+type: language
+description: Language
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

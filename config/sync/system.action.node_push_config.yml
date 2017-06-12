@@ -1,0 +1,11 @@
+uuid: c0980f73-f311-4fa4-958b-99e28dd3906c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node_push_config
+label: 'Push config to machine'
+type: node
+plugin: push_config
+configuration: {  }

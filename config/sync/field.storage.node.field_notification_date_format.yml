@@ -1,0 +1,23 @@
+uuid: 476c92c9-7313-4264-a87e-d991900a86c7
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: ra5UCYHiBcg2ZA86kUp6n2vJuMSdWvhfKi597ZLCzlM
+id: node.field_notification_date_format
+field_name: field_notification_date_format
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

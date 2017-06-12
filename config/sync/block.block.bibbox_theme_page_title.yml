@@ -1,0 +1,20 @@
+uuid: ae445799-0cdd-4967-8565-818c7b17a056
+langcode: en
+status: true
+dependencies:
+  theme:
+    - bibbox_theme
+_core:
+  default_config_hash: vXSyhcQXOopk1GreGDDiMGvxjvo7SgsL1_-ilCvbZmw
+id: bibbox_theme_page_title
+theme: bibbox_theme
+region: header
+weight: -4
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

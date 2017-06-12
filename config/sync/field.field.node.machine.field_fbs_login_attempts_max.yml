@@ -1,0 +1,21 @@
+uuid: 6830ad6a-685e-4635-b537-e7e7e2d393d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_fbs_login_attempts_max
+    - node.type.machine
+_core:
+  default_config_hash: _qYAQvG4lxuApg8j8OnRVOgm4rkIS8PzLKjYNv0_az4
+id: node.machine.field_fbs_login_attempts_max
+field_name: field_fbs_login_attempts_max
+entity_type: node
+bundle: machine
+label: 'FBS login attempts max'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

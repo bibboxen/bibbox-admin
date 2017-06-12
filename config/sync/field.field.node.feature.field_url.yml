@@ -1,0 +1,21 @@
+uuid: 8915d6d4-0bd6-463f-b329-e797def42f20
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_url
+    - node.type.feature
+_core:
+  default_config_hash: mTWq4ShQFfm3lKLtFHHEqFggM_ZXvXfke_2mtQFwlRI
+id: node.feature.field_url
+field_name: field_url
+entity_type: node
+bundle: feature
+label: URL
+description: 'The URL in the frontend.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

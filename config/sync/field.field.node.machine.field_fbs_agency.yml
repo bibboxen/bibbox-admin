@@ -1,0 +1,21 @@
+uuid: 3396a0c1-bb0d-4acb-a574-ad970202572d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_fbs_agency
+    - node.type.machine
+_core:
+  default_config_hash: G0dqUEAmCyX--IDFyHy87rB9dBxOfXryMS75ZPjzhI8
+id: node.machine.field_fbs_agency
+field_name: field_fbs_agency
+entity_type: node
+bundle: machine
+label: 'FBS agency'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

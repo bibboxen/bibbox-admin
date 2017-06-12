@@ -1,0 +1,21 @@
+uuid: bb7d07df-dde5-4dd2-9561-be85bbd04415
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 6VCObI8PZWw9ZGDpYbEi0z3ZrEFLxcm-41xfLm68XHQ
+id: node.field_notification_header_logo
+field_name: field_notification_header_logo
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

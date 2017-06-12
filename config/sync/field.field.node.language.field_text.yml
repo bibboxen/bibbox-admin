@@ -1,0 +1,21 @@
+uuid: f43a916e-354f-4118-adaf-6101a64edd4a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_text
+    - node.type.language
+_core:
+  default_config_hash: ouZ3TP5WkPut2MD7esgjWG92kP8uJxr5konMQonZRjk
+id: node.language.field_text
+field_name: field_text
+entity_type: node
+bundle: language
+label: Text
+description: 'The programmer string for the text on the language button in the UI.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

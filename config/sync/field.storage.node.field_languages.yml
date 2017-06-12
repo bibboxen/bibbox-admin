@@ -1,0 +1,21 @@
+uuid: 6130aa2f-1262-4d72-babb-850c3b286678
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: pDIggp6U1CK_SF2Z69BR5RYFEe3yinTxD8m0FA0E_A8
+id: node.field_languages
+field_name: field_languages
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

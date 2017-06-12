@@ -1,0 +1,22 @@
+uuid: 4cefd229-32f3-40dd-b483-2fc394ce93c5
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bibbox_theme
+_core:
+  default_config_hash: LcYLkbLV55fNabg4KwxxKFswSQRBJY2RKaYeLnirjEI
+id: bibbox_theme_messages
+theme: bibbox_theme
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

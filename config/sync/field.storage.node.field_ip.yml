@@ -1,0 +1,23 @@
+uuid: e887a1ea-c06d-4f99-8e34-26abdaefb396
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: FE_mE8ZhbEs8gN6OyXRuHxMdcMsvg3LKv68Qg3l7nR4
+id: node.field_ip
+field_name: field_ip
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

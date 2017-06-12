@@ -1,0 +1,22 @@
+uuid: 1248d643-35b6-422e-a343-12982b42f965
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+  theme:
+    - bibbox_theme
+_core:
+  default_config_hash: aqZfoxXlD1ZJX98bSWVF0ocX-WVM3fpgqJvfDuc7qpQ
+id: bibbox_theme_login
+theme: bibbox_theme
+region: content
+weight: -3
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: 'User login'
+  provider: user
+  label_display: visible
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: c3e59716-201b-4fbc-933a-6e1b0392ff85
+langcode: en
+status: true
+dependencies:
+  theme:
+    - bibbox_theme
+_core:
+  default_config_hash: swjB4uOyt-ZGGZSCUvpPpMNvTaJU1Bwt26TE-vK9J6I
+id: bibbox_theme_secondary_local_tasks
+theme: bibbox_theme
+region: sidebar_first
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Secondary tabs'
+  provider: core
+  label_display: '0'
+  primary: false
+  secondary: true
+visibility: {  }

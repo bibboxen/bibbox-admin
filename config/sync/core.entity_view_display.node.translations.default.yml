@@ -1,0 +1,25 @@
+uuid: 9a9550c1-0fc0-4c5a-871e-fd6fd137359a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.translations.field_translations
+    - node.type.translations
+  module:
+    - translation_field
+    - user
+_core:
+  default_config_hash: XbGWAil6XSX1UffuOO8KztTQ5DTWKUKdYkS2NwF2WDE
+id: node.translations.default
+targetEntityType: node
+bundle: translations
+mode: default
+content:
+  field_translations:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: field_translation_formatter
+hidden:
+  links: true

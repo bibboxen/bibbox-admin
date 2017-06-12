@@ -1,0 +1,29 @@
+uuid: 7219d512-9e84-48e1-ad15-8d6daddb260d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.language.field_icon
+    - field.field.node.language.field_language_key
+    - field.field.node.language.field_text
+    - field.field.node.language.field_translations_notification
+    - field.field.node.language.field_translations_ui
+    - node.type.language
+  module:
+    - user
+_core:
+  default_config_hash: nToZ-EGUWQV0yyCK4J7RNrUq336yHFGnufgpYfAYjRc
+id: node.language.teaser
+targetEntityType: node
+bundle: language
+mode: teaser
+content:
+  links:
+    weight: 100
+hidden:
+  field_icon: true
+  field_language_key: true
+  field_text: true
+  field_translations_notification: true
+  field_translations_ui: true

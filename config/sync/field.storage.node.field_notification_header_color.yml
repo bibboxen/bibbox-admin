@@ -1,0 +1,23 @@
+uuid: fd559137-056d-4997-b0e8-22ab28610dd1
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: e6CX25CFdtWhj3h3H7BapalPgP5mdNEAQJu5aHCwOw0
+id: node.field_notification_header_color
+field_name: field_notification_header_color
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

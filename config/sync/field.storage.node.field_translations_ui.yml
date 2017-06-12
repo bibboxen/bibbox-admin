@@ -1,0 +1,21 @@
+uuid: ecdb5ba1-ce47-4748-a86e-01406000312c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: x_UdFUYu7H_9GUgocZVcYhdW_Cft9SKMk4rfyIcGKPY
+id: node.field_translations_ui
+field_name: field_translations_ui
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

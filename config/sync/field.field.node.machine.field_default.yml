@@ -1,0 +1,29 @@
+uuid: ace448e5-7c66-40c4-8b30-96bfb27f91da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_default
+    - node.type.machine
+_core:
+  default_config_hash: WEimBAf-liP-XAD4Jlx__7IfuQ3AzdlcXllpdAD4cS8
+id: node.machine.field_default
+field_name: field_default
+entity_type: node
+bundle: machine
+label: Default
+description: 'The Machine to inherent from. Features, Languages and bins will not override the default but extend it.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      machine: machine
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

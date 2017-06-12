@@ -1,0 +1,27 @@
+uuid: b50b61bc-2afb-48dd-baf8-fc4298e00d5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.feature.field_icon
+    - field.field.node.feature.field_require_online
+    - field.field.node.feature.field_text
+    - field.field.node.feature.field_url
+    - node.type.feature
+  module:
+    - user
+_core:
+  default_config_hash: X0koHi7RnTaD8zpAYRk2xIRQL8yTZPF4BRwsJUNrQVc
+id: node.feature.teaser
+targetEntityType: node
+bundle: feature
+mode: teaser
+content:
+  links:
+    weight: 100
+hidden:
+  field_icon: true
+  field_require_online: true
+  field_text: true
+  field_url: true
