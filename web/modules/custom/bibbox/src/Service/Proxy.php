@@ -69,7 +69,8 @@ class Proxy {
           )
         );
       } catch (RequestException $e) {
-        drupal_set_message('Error pushing to "' . $node->get('title')->value . '" (' . $ip . ') ------- ' . $e->getMessage(), 'error');
+        drupal_set_message('Error pushing config to "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+        \Drupal::logger('bibbox')->error($e);
       }
     }
   }
@@ -102,7 +103,8 @@ class Proxy {
         )
       );
     } catch (RequestException $e) {
-      drupal_set_message('Error pushing to "' . $node->get('title')->value . '" (' . $ip . ') ------- ' . $e->getMessage(), 'error');
+      drupal_set_message('Error pushing translations to "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+      \Drupal::logger('bibbox')->error($e);
     }
   }
 
@@ -113,10 +115,14 @@ class Proxy {
    */
   public function restartUI($id) {
     $node = \Drupal::entityManager()->getStorage('node')->load($id);
+
+    $ip = $node->get('field_ip')->value;
+
     try {
-      $this->client->request('POST', $node->get('field_ip')->value . "/restart/ui", array('verify' => false));
+      $this->client->request('POST', $ip . "/restart/ui", array('verify' => false));
     } catch (RequestException $e) {
-      drupal_set_message(t($e->getMessage()), 'error');
+      drupal_set_message('Error restarting UI of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+      \Drupal::logger('bibbox')->error($e);
     }
   }
 
@@ -127,10 +133,14 @@ class Proxy {
    */
   public function restartNode($id) {
     $node = \Drupal::entityManager()->getStorage('node')->load($id);
+
+    $ip = $node->get('field_ip')->value;
+
     try {
-      $this->client->request('POST', $node->get('field_ip')->value . "/restart/application", array('verify' => false));
+      $this->client->request('POST', $ip . "/restart/application", array('verify' => false));
     } catch (RequestException $e) {
-      drupal_set_message(t($e->getMessage()), 'error');
+      drupal_set_message('Error restarting Node of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+      \Drupal::logger('bibbox')->error($e);
     }
   }
 
@@ -141,10 +151,14 @@ class Proxy {
    */
   public function rebootMachine($id) {
     $node = \Drupal::entityManager()->getStorage('node')->load($id);
+
+    $ip = $node->get('field_ip')->value;
+
     try {
-      $this->client->request('POST', $node->get('field_ip')->value . "/reboot", array('verify' => false));
+      $this->client->request('POST', $ip . "/reboot", array('verify' => false));
     } catch (RequestException $e) {
-      drupal_set_message(t($e->getMessage()), 'error');
+      drupal_set_message('Error rebooting machine of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+      \Drupal::logger('bibbox')->error($e);
     }
   }
 
@@ -155,10 +169,14 @@ class Proxy {
    */
   public function outOfOrder($id) {
     $node = \Drupal::entityManager()->getStorage('node')->load($id);
+
+    $ip = $node->get('field_ip')->value;
+
     try {
-      $this->client->request('POST', $node->get('field_ip')->value . "/outoforder", array('verify' => false));
+      $this->client->request('POST', $ip . "/outoforder", array('verify' => false));
     } catch (RequestException $e) {
-      drupal_set_message(t($e->getMessage()), 'error');
+      drupal_set_message('Error setting out of order of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+      \Drupal::logger('bibbox')->error($e);
     }
   }
 
