@@ -153,7 +153,7 @@ class Proxy {
    *
    * @param $id
    */
-  public function setOutOfOrder($id) {
+  public function outOfOrder($id) {
     $node = \Drupal::entityManager()->getStorage('node')->load($id);
     try {
       $this->client->request('POST', $node->get('field_ip')->value . "/outoforder", array('verify' => false));
