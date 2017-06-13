@@ -5,7 +5,7 @@ dependencies:
   module:
     - node
 id: node_out_of_order
-label: 'Set machine out of order'
+label: 'Out of order'
 type: node
 plugin: out_of_order
 configuration: {  }

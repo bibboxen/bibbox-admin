@@ -5,7 +5,7 @@ dependencies:
   module:
     - node
 id: node_push_config
-label: 'Push config to machine'
+label: 'Push config'
 type: node
 plugin: push_config
 configuration: {  }

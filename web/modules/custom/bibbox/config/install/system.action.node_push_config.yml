@@ -1,9 +1,9 @@
-id: node_push_config
-label: 'Push config to machine'
 status: true
-langcode: en
-type: node
-plugin: push_config
 dependencies:
   module:
     - node
+id: node_push_config
+label: 'Push config'
+type: node
+plugin: push_config
+configuration: {  }

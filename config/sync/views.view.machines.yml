@@ -154,6 +154,10 @@ display:
           selected_actions:
             - node_push_config
             - node_push_translation
+            - node_restart_ui
+            - node_restart_node
+            - node_out_of_order
+            - node_reboot_machine
           entity_type: node
           plugin_id: node_bulk_form
         title:
