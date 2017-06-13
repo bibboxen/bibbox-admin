@@ -107,6 +107,62 @@ class Proxy {
   }
 
   /**
+   * Restart the UI of the machine with $id.
+   *
+   * @param $id
+   */
+  public function restartUI($id) {
+    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+    try {
+      $this->client->request('POST', $node->get('field_ip')->value . "/restart/ui", array('verify' => false));
+    } catch (RequestException $e) {
+      drupal_set_message(t($e->getMessage()), 'error');
+    }
+  }
+
+  /**
+   * Restart the node of the machine with $id.
+   *
+   * @param $id
+   */
+  public function restartNode($id) {
+    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+    try {
+      $this->client->request('POST', $node->get('field_ip')->value . "/restart/application", array('verify' => false));
+    } catch (RequestException $e) {
+      drupal_set_message(t($e->getMessage()), 'error');
+    }
+  }
+
+  /**
+   * Reboot the machine with $id.
+   *
+   * @param $id
+   */
+  public function rebootMachine($id) {
+    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+    try {
+      $this->client->request('POST', $node->get('field_ip')->value . "/reboot", array('verify' => false));
+    } catch (RequestException $e) {
+      drupal_set_message(t($e->getMessage()), 'error');
+    }
+  }
+
+  /**
+   * Set the machine with $id out of order.
+   *
+   * @param $id
+   */
+  public function setOutOfOrder($id) {
+    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+    try {
+      $this->client->request('POST', $node->get('field_ip')->value . "/outoforder", array('verify' => false));
+    } catch (RequestException $e) {
+      drupal_set_message(t($e->getMessage()), 'error');
+    }
+  }
+
+  /**
    * Get translations for machine.
    *
    * @param $node

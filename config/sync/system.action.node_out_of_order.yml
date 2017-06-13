@@ -1,0 +1,11 @@
+uuid: 64aa298e-4516-42df-abff-8a9d37f0cd0f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node_out_of_order
+label: 'Set machine out of order'
+type: node
+plugin: out_of_order
+configuration: {  }

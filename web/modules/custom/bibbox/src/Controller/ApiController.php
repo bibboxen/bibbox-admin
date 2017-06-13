@@ -10,13 +10,9 @@ use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\HttpException;
-use GuzzleHttp\Exception\RequestException;
 
 /**
  * ApiController.
- *
- * @TODO: Move logic to service.
  */
 class ApiController extends ControllerBase {
   /**
@@ -52,28 +48,6 @@ class ApiController extends ControllerBase {
   }
 
   /**
-   * Restart Node to a machine.
-   *
-   * @param \Symfony\Component\HttpFoundation\Request $request
-   * @param $id
-   * @return \Symfony\Component\HttpFoundation\RedirectResponse
-   */
-  public function restartNode(Request $request, $id) {
-    // Get destination to return to after completing request.
-    $destination = $request->query->get('destination');
-
-    $client = \Drupal::httpClient();
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
-    try {
-      $client->request('POST', $node->get('field_ip')->value . "/restart/application", array('verify' => false));
-    } catch (RequestException $e) {
-      drupal_set_message(t($e->getMessage()), 'error');
-    }
-
-    return new RedirectResponse($destination);
-  }
-
-  /**
    * Restart UI to a machine.
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
@@ -84,13 +58,23 @@ class ApiController extends ControllerBase {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
-    $client = \Drupal::httpClient();
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
-    try {
-      $client->request('POST', $node->get('field_ip')->value . "/restart/ui", array('verify' => false));
-    } catch (RequestException $e) {
-      drupal_set_message(t($e->getMessage()), 'error');
-    }
+    \Drupal::service('bibbox.proxy')->pushTranslation($id);
+
+    return new RedirectResponse($destination);
+  }
+
+  /**
+   * Restart Node to a machine.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param $id
+   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   */
+  public function restartNode(Request $request, $id) {
+    // Get destination to return to after completing request.
+    $destination = $request->query->get('destination');
+
+    \Drupal::service('bibbox.proxy')->restartNode($id);
 
     return new RedirectResponse($destination);
   }
@@ -106,13 +90,7 @@ class ApiController extends ControllerBase {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
-    $client = \Drupal::httpClient();
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
-    try {
-      $client->request('POST', $node->get('field_ip')->value . "/reboot", array('verify' => false));
-    } catch (RequestException $e) {
-      drupal_set_message(t($e->getMessage()), 'error');
-    }
+    \Drupal::service('bibbox.proxy')->rebootMachine($id);
 
     return new RedirectResponse($destination);
   }
@@ -128,13 +106,7 @@ class ApiController extends ControllerBase {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
-    $client = \Drupal::httpClient();
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
-    try {
-      $client->request('POST', $node->get('field_ip')->value . "/outoforder", array('verify' => false));
-    } catch (RequestException $e) {
-      drupal_set_message(t($e->getMessage()), 'error');
-    }
+    \Drupal::service('bibbox.proxy')->setOutOfOrder($id);
 
     return new RedirectResponse($destination);
   }

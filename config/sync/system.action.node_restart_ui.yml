@@ -1,0 +1,11 @@
+uuid: e93e5374-f6f7-4b93-9328-6e942425464c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node_restart_ui
+label: 'Restart the UI of the machine'
+type: node
+plugin: restart_ui
+configuration: {  }

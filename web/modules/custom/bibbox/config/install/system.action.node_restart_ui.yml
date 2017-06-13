@@ -1,0 +1,9 @@
+status: true
+dependencies:
+  module:
+    - node
+id: node_restart_ui
+label: 'Restart the UI of the machine'
+type: node
+plugin: restart_ui
+configuration: {  }

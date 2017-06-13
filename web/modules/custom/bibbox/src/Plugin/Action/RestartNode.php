@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Contains the push translation action.
+ * Contains the restart node action.
  */
 
 namespace Drupal\bibbox\Plugin\Action;
@@ -10,22 +10,22 @@ use Drupal\Core\Action\ActionBase;
 use Drupal\Core\Session\AccountInterface;
 
 /**
- * Push translation to machine.
+ * Restart node to machine.
  *
  * @Action(
- *   id = "push_translation",
- *   label = @Translation("Push translation to machine"),
+ *   id = "restart_node",
+ *   label = @Translation("Restart node to machine"),
  *   type = "node"
  * )
  */
-class PushTranslation extends ActionBase {
+class RestartNode extends ActionBase {
 
   /**
    * {@inheritdoc}
    */
   public function execute($entity = NULL) {
     if (!is_null($entity)) {
-      \Drupal::service('bibbox.proxy')->pushTranslation($entity->id());
+      \Drupal::service('bibbox.proxy')->restartNode($entity->id());
     }
   }
 
