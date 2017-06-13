@@ -1,4 +1,4 @@
-uuid: af44fbda-9b6a-48a2-b46c-c5aaa9c2999f
+uuid: d9f891b6-ce2d-4f18-81f4-b0f76bba9517
 langcode: en
 status: true
 dependencies:
@@ -273,20 +273,17 @@ content:
     weight: 5
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_bin_default:
     weight: 22
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
-    region: content
   field_bin_left:
     weight: 26
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
-    region: content
   field_bin_left_background_color:
     weight: 25
     settings:
@@ -294,7 +291,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_bin_left_color:
     weight: 24
     settings:
@@ -302,14 +298,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_bin_right:
     weight: 30
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
-    region: content
   field_bin_right_background_color:
     weight: 29
     settings:
@@ -317,7 +311,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_bin_right_color:
     weight: 28
     settings:
@@ -325,7 +318,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_default:
     weight: 2
     settings:
@@ -334,14 +326,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-    region: content
   field_display_fines:
     weight: 11
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
-    region: content
   field_email:
     weight: 3
     settings:
@@ -349,7 +339,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: email_default
-    region: content
   field_fbs_agency:
     weight: 24
     settings:
@@ -357,7 +346,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_fbs_endpoint:
     weight: 23
     settings:
@@ -365,7 +353,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_fbs_location:
     weight: 25
     settings:
@@ -373,7 +360,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_fbs_login_attempts_max:
     weight: 26
     settings:
@@ -381,7 +367,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_fbs_login_attempts_time_li:
     weight: 27
     settings:
@@ -389,7 +374,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_fbs_password:
     weight: 22
     settings:
@@ -397,7 +381,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_fbs_username:
     weight: 21
     settings:
@@ -405,7 +388,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_features:
     weight: 14
     settings:
@@ -414,14 +396,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-    region: content
   field_image_more_materials:
     weight: 10
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
-    region: content
   field_ip:
     weight: 1
     settings:
@@ -429,7 +409,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_languages:
     weight: 15
     settings:
@@ -438,21 +417,18 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-    region: content
   field_login_allow_manual:
     weight: 13
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
-    region: content
   field_login_allow_scan:
     weight: 12
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
-    region: content
   field_notification_date_format:
     weight: 30
     settings:
@@ -460,7 +436,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_notification_default_lang:
     weight: 29
     settings:
@@ -468,7 +443,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_notification_footer_html:
     weight: 45
     settings:
@@ -476,7 +450,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
-    region: content
   field_notification_footer_text:
     weight: 46
     settings:
@@ -484,7 +457,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
-    region: content
   field_notification_header_brand:
     weight: 36
     settings:
@@ -492,7 +464,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
-    region: content
   field_notification_header_color:
     weight: 38
     settings:
@@ -500,7 +471,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_notification_header_logo:
     weight: 37
     settings:
@@ -508,31 +478,26 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
-    region: content
   field_notification_layouts_cin:
     weight: 48
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
-    region: content
   field_notification_layouts_cout:
     weight: 49
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
-    region: content
   field_notification_layouts_reser:
     weight: 50
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
-    region: content
   field_notification_layouts_statu:
     weight: 47
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
-    region: content
   field_notification_library_addre:
     weight: 41
     settings:
@@ -540,7 +505,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_notification_library_city:
     weight: 43
     settings:
@@ -548,7 +512,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_notification_library_name:
     weight: 40
     settings:
@@ -556,7 +519,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_notification_library_phone:
     weight: 44
     settings:
@@ -564,7 +526,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_notification_library_title:
     weight: 39
     settings:
@@ -572,7 +533,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_notification_library_zip:
     weight: 42
     settings:
@@ -580,7 +540,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_notification_mailer_from:
     weight: 34
     settings:
@@ -588,7 +547,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: email_default
-    region: content
   field_notification_mailer_host:
     weight: 31
     settings:
@@ -596,21 +554,18 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_notification_mailer_port:
     weight: 32
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
-    region: content
   field_notification_mailer_secure:
     weight: 33
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
-    region: content
   field_notification_mailer_subjec:
     weight: 35
     settings:
@@ -618,35 +573,30 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
   field_timeout:
     weight: 8
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
-    region: content
   field_timeout_idle:
     weight: 9
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
-    region: content
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
     weight: 6
     third_party_settings: {  }
-    region: content
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
     weight: 7
     third_party_settings: {  }
-    region: content
   title:
     type: string_textfield
     weight: 0
@@ -654,7 +604,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 4
@@ -663,5 +612,4 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    region: content
 hidden: {  }

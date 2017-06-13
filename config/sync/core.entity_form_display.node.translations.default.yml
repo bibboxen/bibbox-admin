@@ -1,4 +1,4 @@
-uuid: 71c141ae-7cf5-4e3c-9b3a-f4ad4785a360
+uuid: 9f352272-e095-4064-9e1d-1d8ac811c47e
 langcode: en
 status: true
 dependencies:
@@ -19,27 +19,23 @@ content:
     weight: 2
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_translations:
     weight: 26
     settings: {  }
     third_party_settings: {  }
     type: field_translation_widget
-    region: content
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
     weight: 3
     third_party_settings: {  }
-    region: content
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
     weight: 4
     third_party_settings: {  }
-    region: content
   title:
     type: string_textfield
     weight: 0
@@ -47,11 +43,9 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    region: content
   uid:
     type: options_buttons
     weight: 1
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden: {  }

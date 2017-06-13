@@ -1,4 +1,4 @@
-uuid: 885520cb-cf2c-4b8e-8a55-456f6c1fd0cb
+uuid: d5fdc8ea-37ca-406b-95af-be9667da5913
 langcode: en
 status: true
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
     - node
     - options
 _core:
-  default_config_hash: 8WdVDJiKr-e7OunQJTbgqqqk67Z2E3ETfcfuWLOlLN8
+  default_config_hash: '-a3LUkXqTxxQGDabAG385PCO3AYI8ubrw2LLYjEbWjw'
 id: node.field_notification_layouts_cin
 field_name: field_notification_layouts_cin
 entity_type: node

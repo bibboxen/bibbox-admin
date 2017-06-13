@@ -1,4 +1,4 @@
-uuid: 6cc448a4-3be9-4b2b-85a7-0d5dfba55e19
+uuid: 4862f8d8-35e8-4467-8360-6a3203dc61b9
 langcode: en
 status: true
 dependencies:
@@ -63,7 +63,6 @@ mode: teaser
 content:
   links:
     weight: 100
-    region: content
 hidden:
   field_bin_default: true
   field_bin_left: true

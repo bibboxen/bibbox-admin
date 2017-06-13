@@ -2,7 +2,7 @@ country:
   default: ''
 first_day: 0
 timezone:
-  default: Europe/Copenhagen
+  default: Europe/Berlin
   user:
     configurable: true
     warn: false

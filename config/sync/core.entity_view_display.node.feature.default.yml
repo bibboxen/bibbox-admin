@@ -1,4 +1,4 @@
-uuid: a112b56a-513d-4496-8807-118796c68a10
+uuid: 0f9d4264-e061-4b04-838b-92d47f8fca3f
 langcode: en
 status: true
 dependencies:
@@ -24,7 +24,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-    region: content
   field_require_online:
     weight: 102
     label: above
@@ -34,7 +33,6 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
-    region: content
   field_text:
     weight: 101
     label: above
@@ -42,7 +40,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-    region: content
   field_url:
     weight: 103
     label: above
@@ -50,8 +47,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-    region: content
   links:
     weight: 100
-    region: content
 hidden: {  }

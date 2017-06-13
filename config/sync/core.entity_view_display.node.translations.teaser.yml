@@ -1,4 +1,4 @@
-uuid: e21d1f22-12c5-4c6a-9909-d0ee32234725
+uuid: b7db078b-b12a-411d-b8f8-82d2e3615987
 langcode: en
 status: true
 dependencies:
@@ -17,6 +17,5 @@ mode: teaser
 content:
   links:
     weight: 100
-    region: content
 hidden:
   field_translations: true

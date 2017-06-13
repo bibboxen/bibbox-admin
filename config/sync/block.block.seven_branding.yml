@@ -1,15 +1,15 @@
-uuid: 024be243-3378-4bd6-ac63-7e13db1ea5b8
+uuid: a0b78ed5-d6c1-42f1-b9b6-91f80856642e
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - stark
+    - seven
 _core:
   default_config_hash: fRKXNB91UxDvEMkzCR8ZBsawfC6Fqbme2gtobei3gu4
-id: stark_branding
-theme: stark
+id: seven_branding
+theme: seven
 region: header
 weight: 0
 provider: null

@@ -1,5 +1,4 @@
 module:
-  action: 0
   bibbox: 0
   bibbox_base_content: 0
   block: 0
@@ -33,4 +32,3 @@ theme:
   bibbox_theme: 0
 _core:
   default_config_hash: m2GVq11UAOVuNgj8x0t5fMOPujpvQQ_zxLoaly1BMEU
-profile: minimal
