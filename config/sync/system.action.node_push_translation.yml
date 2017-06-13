@@ -1,0 +1,11 @@
+uuid: 766954d1-12f7-4f0d-897d-7c3708265bdc
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node_push_translation
+label: 'Push translations'
+type: node
+plugin: push_translation
+configuration: {  }

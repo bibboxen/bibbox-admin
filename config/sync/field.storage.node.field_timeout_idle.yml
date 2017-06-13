@@ -1,0 +1,22 @@
+uuid: 38bb6280-053c-46a2-8a47-ab9d08fa212c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 7Xrq6iY635qUXZsbCVDcXzVgBnlFXoaF8jY2a3CK0PE
+id: node.field_timeout_idle
+field_name: field_timeout_idle
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

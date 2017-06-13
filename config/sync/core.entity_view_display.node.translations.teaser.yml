@@ -1,0 +1,21 @@
+uuid: b7db078b-b12a-411d-b8f8-82d2e3615987
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.translations.field_translations
+    - node.type.translations
+  module:
+    - user
+_core:
+  default_config_hash: MwAKBnQiNVBmAZPxuagPtpGyTEtMokuOg86xugzh5_s
+id: node.translations.teaser
+targetEntityType: node
+bundle: translations
+mode: teaser
+content:
+  links:
+    weight: 100
+hidden:
+  field_translations: true

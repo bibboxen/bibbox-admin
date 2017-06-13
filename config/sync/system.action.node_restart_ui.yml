@@ -1,0 +1,11 @@
+uuid: 6915b361-bc5b-4d3e-9532-86ae066bb88c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node_restart_ui
+label: 'Restart UI'
+type: node
+plugin: restart_ui
+configuration: {  }

@@ -1,0 +1,30 @@
+uuid: f591e104-ed76-4400-9974-6616dc8acc79
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_languages
+    - node.type.language
+    - node.type.machine
+_core:
+  default_config_hash: o6sevb9QLSQLM2emFMRvHczkQp2oyd1VZW8yfmEyhrE
+id: node.machine.field_languages
+field_name: field_languages
+entity_type: node
+bundle: machine
+label: Languages
+description: 'Languages available in UI. The languages will be sorted according to order. Inherited values come first.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      language: language
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,21 @@
+uuid: f8763c79-636a-445a-98f1-e8d73e331837
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notification_header_color
+    - node.type.machine
+_core:
+  default_config_hash: '-C_yXmtSfahE5sq1l56eON0_4Dee5C0MhYFR8KqkyLU'
+id: node.machine.field_notification_header_color
+field_name: field_notification_header_color
+entity_type: node
+bundle: machine
+label: 'Notification header color'
+description: 'Hex color value (without #)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

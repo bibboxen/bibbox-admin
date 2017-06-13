@@ -1,0 +1,21 @@
+uuid: 15e88012-6f51-43b8-aabb-d61742b89427
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ip
+    - node.type.machine
+_core:
+  default_config_hash: 0OHKy1G64rQv7_z4-04dvj71In5mxoG_b3n5sOOKqoA
+id: node.machine.field_ip
+field_name: field_ip
+entity_type: node
+bundle: machine
+label: IP
+description: 'The IP of the machine. NB! Make sure this is Unique so machines are not mixed! Should start with https:// to use ssl connection.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

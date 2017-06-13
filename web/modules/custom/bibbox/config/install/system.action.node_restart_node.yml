@@ -1,0 +1,9 @@
+status: true
+dependencies:
+  module:
+    - node
+id: node_restart_node
+label: 'Restart node'
+type: node
+plugin: restart_node
+configuration: {  }

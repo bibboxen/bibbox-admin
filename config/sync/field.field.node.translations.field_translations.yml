@@ -1,0 +1,32 @@
+uuid: 2727708a-b139-4c36-94b5-78cc0d9927a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_translations
+    - node.type.machine
+    - node.type.translations
+  module:
+    - translation_field
+_core:
+  default_config_hash: 9q3Cfo4ICFK6iTHE7STGgd-Kgq7E249Sr9rkQVNNAHI
+id: node.translations.field_translations
+field_name: field_translations
+entity_type: node
+bundle: translations
+label: Translations
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      machine: machine
+    sort:
+      field: _none
+    auto_create: 0
+    auto_create_bundle: ''
+field_type: translation

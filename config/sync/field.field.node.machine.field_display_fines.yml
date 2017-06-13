@@ -1,0 +1,25 @@
+uuid: 4177721e-6684-4445-b23d-be7d34865f2f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_fines
+    - node.type.machine
+_core:
+  default_config_hash: 56fmlwL4e_uwYQz6wbOzKy6Cs2jsim9iMIADyjfa6P4
+id: node.machine.field_display_fines
+field_name: field_display_fines
+entity_type: node
+bundle: machine
+label: 'Display fines'
+description: 'Should the fines button be displayed, and the fines column in the status feature?'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

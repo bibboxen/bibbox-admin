@@ -1,0 +1,23 @@
+uuid: ba5c8551-2442-40d8-bf1a-502f432ac32c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: SlUXhRKh7mdJELYbzej4_aV1fWTp2_XW6ylUr6IdgX8
+id: node.field_notification_mailer_subjec
+field_name: field_notification_mailer_subjec
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

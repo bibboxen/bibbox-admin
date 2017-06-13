@@ -1,0 +1,11 @@
+uuid: d529a823-d5ba-4558-9145-52e3ff8ff306
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node_restart_node
+label: 'Restart node'
+type: node
+plugin: restart_node
+configuration: {  }

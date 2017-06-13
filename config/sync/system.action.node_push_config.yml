@@ -1,0 +1,11 @@
+uuid: 200b4e38-5b6c-4c26-b4b7-277311872087
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node_push_config
+label: 'Push config'
+type: node
+plugin: push_config
+configuration: {  }

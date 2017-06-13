@@ -1,0 +1,9 @@
+status: true
+dependencies:
+  module:
+    - node
+id: node_reboot_machine
+label: 'Reboot machine'
+type: node
+plugin: reboot_machine
+configuration: {  }

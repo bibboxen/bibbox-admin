@@ -1,0 +1,21 @@
+uuid: c0fcb124-58ef-4e79-b1e7-9387b560efa7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_icon
+    - node.type.language
+_core:
+  default_config_hash: ktmDKAljtJv0LhE4adevNBGMuZz_M8NzStHmtCBy3Ig
+id: node.language.field_icon
+field_name: field_icon
+entity_type: node
+bundle: language
+label: Icon
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

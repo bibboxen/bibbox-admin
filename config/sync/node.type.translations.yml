@@ -1,0 +1,19 @@
+uuid: 7b211c55-1865-4ee1-a155-d5d590e81b6a
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: zPpMFmjEj8f8cn1NEJTgZNTgWSf6GNTiFb4WgqmD5GU
+name: Translations
+type: translations
+description: 'An array of translations'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

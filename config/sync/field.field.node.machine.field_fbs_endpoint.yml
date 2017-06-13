@@ -1,0 +1,21 @@
+uuid: b48e93ce-b8e7-4038-bdbe-1b1df01991c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_fbs_endpoint
+    - node.type.machine
+_core:
+  default_config_hash: JtHDkduV-iyS4L63KOBaz4bRB9-7ZpC6DT9qSLkHbEM
+id: node.machine.field_fbs_endpoint
+field_name: field_fbs_endpoint
+entity_type: node
+bundle: machine
+label: 'FBS endpoint'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

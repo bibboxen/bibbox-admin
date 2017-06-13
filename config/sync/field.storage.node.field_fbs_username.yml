@@ -1,0 +1,23 @@
+uuid: 321f7688-89e8-4411-a7ab-42d1f5b3222e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: kZE6pcdma0Jm6lQdcJ8BfBjNjvhcAojxMkt2MVGzI2g
+id: node.field_fbs_username
+field_name: field_fbs_username
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

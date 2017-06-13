@@ -1,0 +1,20 @@
+uuid: ff04bd05-d142-44e1-b2cc-dd61aebda259
+langcode: en
+status: true
+dependencies:
+  theme:
+    - bibbox_theme
+_core:
+  default_config_hash: 1eAQ9LRxxjBViX8N8tfI3HnVCgLQtMmA6vROi2EtafY
+id: bibbox_theme_local_actions
+theme: bibbox_theme
+region: content
+weight: -4
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

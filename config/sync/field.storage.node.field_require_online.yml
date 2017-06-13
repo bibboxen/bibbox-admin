@@ -1,0 +1,20 @@
+uuid: c8d2f501-340a-4f1e-b987-9b46c727ce9d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: HtlymtrgqJgX7kdO85sT9m9xK0diEUCm2dicLqeuL6U
+id: node.field_require_online
+field_name: field_require_online
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
