@@ -63,6 +63,7 @@ mode: teaser
 content:
   links:
     weight: 100
+    region: content
 hidden:
   field_bin_default: true
   field_bin_left: true

@@ -25,6 +25,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_language_key:
     weight: 102
     label: above
@@ -32,6 +33,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_text:
     weight: 101
     label: above
@@ -39,6 +41,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_translations_notification:
     weight: 104
     label: above
@@ -46,6 +49,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_translations_ui:
     weight: 105
     label: above
@@ -53,6 +57,8 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   links:
     weight: 100
+    region: content
 hidden: {  }
