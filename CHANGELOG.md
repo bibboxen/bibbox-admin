@@ -1,19 +1,21 @@
-# Bibbox Administration
+# CHANGELOG (bibbox admin)
 
-### In develop
+## In develop
 
+## v1.1.0
 
+* Added bulk operations to machines view.
+* Updated drupal to 8.3.3.
 
-### v1.0.2
+## v1.0.2
 
 * Updated pager to show 100 elements og full.
 * Added out of order button.
 
-### v1.0.1
+## v1.0.1
 
 * Added reboot operation.
 
-### v1.0.0
-https://github.com/bibboxen/bibbox-admin/tree/v1.0.0
+## v1.0.0
 
 * First version.
