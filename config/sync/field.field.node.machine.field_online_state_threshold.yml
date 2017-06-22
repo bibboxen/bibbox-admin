@@ -1,0 +1,25 @@
+uuid: a29e2447-adef-4d2c-9a5b-689ee4347421
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_online_state_threshold
+    - node.type.machine
+id: node.machine.field_online_state_threshold
+field_name: field_online_state_threshold
+entity_type: node
+bundle: machine
+label: 'Online State - threshold'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 5
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

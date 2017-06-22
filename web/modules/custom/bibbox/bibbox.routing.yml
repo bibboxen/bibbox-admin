@@ -1,5 +1,5 @@
 bibbox.machines:
-  path: '/bibbox/machines'
+  path: '/bibbox/machine'
   defaults:
     _controller: '\Drupal\bibbox\Controller\ApiController::machines'
   requirements:

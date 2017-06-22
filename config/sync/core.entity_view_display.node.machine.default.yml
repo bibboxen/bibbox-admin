@@ -48,6 +48,9 @@ dependencies:
     - field.field.node.machine.field_notification_mailer_port
     - field.field.node.machine.field_notification_mailer_secure
     - field.field.node.machine.field_notification_mailer_subjec
+    - field.field.node.machine.field_online_state_offline_to
+    - field.field.node.machine.field_online_state_online_to
+    - field.field.node.machine.field_online_state_threshold
     - field.field.node.machine.field_timeout
     - field.field.node.machine.field_timeout_idle
     - node.type.machine
@@ -537,6 +540,33 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_online_state_offline_to:
+    weight: 47
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_online_state_online_to:
+    weight: 46
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_online_state_threshold:
+    weight: 45
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
     region: content
   field_timeout:
     weight: 4
