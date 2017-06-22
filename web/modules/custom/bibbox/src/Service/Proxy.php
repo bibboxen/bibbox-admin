@@ -275,14 +275,14 @@ class Proxy {
         'endpoint' => $node->get('field_fbs_endpoint')->value,
         'agency' => $node->get('field_fbs_agency')->value,
         'location' => $node->get('field_fbs_location')->value,
-        'loginAttempts' => (object) [
+        'loginAttempts' => [
           'max' => $this->parseInt($node->get('field_fbs_login_attempts_max')->value),
           'timeLimit' => $this->parseInt($node->get('field_fbs_login_attempts_time_li')->value),
         ],
-        'onlineState' => (object) [
-          'threshold' => $node->get('field_online_state_threshold')->value,
-          'onlineTimeout' => $node->get('field_online_state_online_to')->value,
-          'offlineTimeout' => $node->get('field_online_state_offline_to')->value,
+        'onlineState' => [
+          'threshold' => $this->parseInt($node->get('field_online_state_threshold')->value),
+          'onlineTimeout' => $this->parseInt($node->get('field_online_state_online_to')->value),
+          'offlineTimeout' => $this->parseInt($node->get('field_online_state_offline_to')->value),
         ]
       ],
       'ui' => [
