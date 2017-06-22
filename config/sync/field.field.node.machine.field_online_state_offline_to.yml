@@ -1,0 +1,25 @@
+uuid: 76e93465-5517-4e78-810a-70157525a9b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_online_state_offline_to
+    - node.type.machine
+id: node.machine.field_online_state_offline_to
+field_name: field_online_state_offline_to
+entity_type: node
+bundle: machine
+label: 'Online State - offline timeout'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 3000
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

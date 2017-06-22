@@ -192,7 +192,7 @@ class Proxy {
    *     2. All translations with $node.field_default machine attached.
    *     3. All translations with $node machine attached.
    */
-  private function getTranslationsForMachine($node) {
+  public function getTranslationsForMachine($node) {
     $baseTranslations = $this->getTranslationsArray(NULL);
 
     $defaults = [];
@@ -214,7 +214,7 @@ class Proxy {
    *
    * @return array
    */
-  private function getTranslationsArray($mid) {
+  public function getTranslationsArray($mid) {
     $translations = [
       'ui' => [],
       'notification' => [],
@@ -264,7 +264,7 @@ class Proxy {
    * @return array
    *   Machine represented as array.
    */
-  private function getMachineArray($node) {
+  public function getMachineArray($node) {
     // Create machine object.
     $machine = [
       'title' => $node->get('title')->value,
@@ -279,6 +279,11 @@ class Proxy {
           'max' => $this->parseInt($node->get('field_fbs_login_attempts_max')->value),
           'timeLimit' => $this->parseInt($node->get('field_fbs_login_attempts_time_li')->value),
         ],
+        'onlineState' => (object) [
+          'threshold' => $node->get('field_online_state_threshold')->value,
+          'onlineTimeout' => $node->get('field_online_state_online_to')->value,
+          'offlineTimeout' => $node->get('field_online_state_offline_to')->value,
+        ]
       ],
       'ui' => [
         'timeout' => [
