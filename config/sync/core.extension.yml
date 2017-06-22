@@ -1,6 +1,5 @@
 module:
   bibbox: 0
-  bibbox_base_content: 0
   block: 0
   dblog: 0
   dynamic_page_cache: 0
