@@ -1,6 +1,9 @@
+uuid: null
+langcode: en
 status: true
 dependencies: {  }
 id: admin
+label: Admin
 weight: 2
 is_admin: null
 permissions:
@@ -25,4 +28,3 @@ permissions:
   - 'delete own translations content'
   - 'edit any translations content'
   - 'edit own translations content'
-label: Admin

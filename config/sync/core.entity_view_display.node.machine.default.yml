@@ -182,6 +182,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_bin_left:
     weight: 21
     label: above
@@ -190,6 +191,7 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     type: number_integer
+    region: content
   field_bin_left_background_color:
     weight: 20
     label: above
@@ -197,6 +199,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_bin_left_color:
     weight: 19
     label: above
@@ -204,6 +207,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_bin_right:
     weight: 25
     label: above
@@ -212,6 +216,7 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     type: number_integer
+    region: content
   field_bin_right_background_color:
     weight: 24
     label: above
@@ -219,6 +224,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_bin_right_color:
     weight: 23
     label: above
@@ -226,6 +232,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_default:
     weight: 1
     label: above
@@ -233,6 +240,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_display_fines:
     weight: 8
     label: above
@@ -242,12 +250,14 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_email:
     weight: 4
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_fbs_agency:
     weight: 17
     label: above
@@ -255,6 +265,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_fbs_endpoint:
     weight: 16
     label: above
@@ -262,6 +273,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_fbs_location:
     weight: 18
     label: above
@@ -269,6 +281,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_fbs_login_attempts_max:
     weight: 19
     label: above
@@ -276,6 +289,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_fbs_login_attempts_time_li:
     weight: 20
     label: above
@@ -283,6 +297,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_fbs_password:
     weight: 15
     label: above
@@ -290,6 +305,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_fbs_username:
     weight: 14
     label: above
@@ -297,6 +313,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_features:
     weight: 5
     label: above
@@ -304,6 +321,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_image_more_materials:
     weight: 9
     label: above
@@ -313,6 +331,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_ip:
     weight: 2
     label: above
@@ -320,6 +339,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_languages:
     weight: 6
     label: above
@@ -327,6 +347,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_login_allow_manual:
     weight: 7
     label: above
@@ -336,6 +357,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_login_allow_scan:
     weight: 6
     label: above
@@ -345,6 +367,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_notification_date_format:
     weight: 24
     label: above
@@ -352,6 +375,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_notification_default_lang:
     weight: 23
     label: above
@@ -359,24 +383,28 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_notification_footer_html:
     weight: 39
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   field_notification_footer_text:
     weight: 40
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_notification_header_brand:
     weight: 30
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_notification_header_color:
     weight: 32
     label: above
@@ -384,36 +412,42 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_notification_header_logo:
     weight: 31
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_notification_layouts_cin:
     weight: 42
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   field_notification_layouts_cout:
     weight: 43
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   field_notification_layouts_reser:
     weight: 44
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   field_notification_layouts_statu:
     weight: 41
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   field_notification_library_addre:
     weight: 35
     label: above
@@ -421,6 +455,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_notification_library_city:
     weight: 37
     label: above
@@ -428,6 +463,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_notification_library_name:
     weight: 34
     label: above
@@ -435,6 +471,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_notification_library_phone:
     weight: 38
     label: above
@@ -442,6 +479,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_notification_library_title:
     weight: 33
     label: above
@@ -449,6 +487,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_notification_library_zip:
     weight: 36
     label: above
@@ -456,12 +495,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_notification_mailer_from:
     weight: 28
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
+    region: content
   field_notification_mailer_host:
     weight: 25
     label: above
@@ -469,6 +510,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_notification_mailer_port:
     weight: 26
     label: above
@@ -477,6 +519,7 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     type: number_integer
+    region: content
   field_notification_mailer_secure:
     weight: 27
     label: above
@@ -486,6 +529,7 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
   field_notification_mailer_subjec:
     weight: 29
     label: above
@@ -493,6 +537,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_timeout:
     weight: 4
     label: above
@@ -501,6 +546,7 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     type: number_integer
+    region: content
   field_timeout_idle:
     weight: 5
     label: above
@@ -509,8 +555,10 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     type: number_integer
+    region: content
   links:
     weight: 3
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden: {  }
