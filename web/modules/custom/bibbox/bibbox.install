@@ -4,30 +4,10 @@
  * Contains update/install functions for bibbox.
  */
 
-use Drupal\menu_link_content\Entity\MenuLinkContent;
-
 /**
  * Install script.
  */
 function bibbox_install() {
-  // Add Add Content menu link.
-  $menu_link = MenuLinkContent::create([
-    'title' => 'Add Content',
-    'link' => ['uri' => 'internal:/node/add'],
-    'menu_name' => 'main',
-    'expanded' => FALSE,
-  ]);
-  $menu_link->save();
-
-  // Add Admin menu link
-  $menu_link = MenuLinkContent::create([
-    'title' => 'Admin',
-    'link' => ['uri' => 'internal:/admin'],
-    'menu_name' => 'main',
-    'expanded' => FALSE,
-  ]);
-  $menu_link->save();
-
   // Set permissions.
   \Drupal::configFactory()->getEditable('user.role.anonymous')
     ->set('permissions', [])
