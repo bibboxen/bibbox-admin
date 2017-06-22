@@ -173,6 +173,9 @@ third_party_settings:
         - field_fbs_location
         - field_fbs_login_attempts_max
         - field_fbs_login_attempts_time_li
+        - field_online_state_threshold
+        - field_online_state_online_to
+        - field_online_state_offline_to
       parent_name: ''
       weight: 8
       format_type: details
@@ -185,11 +188,9 @@ third_party_settings:
     group_bins:
       children:
         - field_bin_default
-        - field_bin_left_text
         - field_bin_left_color
         - field_bin_left_background_color
         - field_bin_left
-        - field_bin_right_text
         - field_bin_right_color
         - field_bin_right_background_color
         - field_bin_right
@@ -623,21 +624,21 @@ content:
     type: string_textfield
     region: content
   field_online_state_offline_to:
-    weight: 53
+    weight: 30
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_online_state_online_to:
-    weight: 52
+    weight: 29
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_online_state_threshold:
-    weight: 51
+    weight: 28
     settings:
       placeholder: ''
     third_party_settings: {  }

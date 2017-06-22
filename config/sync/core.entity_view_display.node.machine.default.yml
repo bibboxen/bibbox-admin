@@ -141,6 +141,9 @@ third_party_settings:
         - field_fbs_location
         - field_fbs_login_attempts_max
         - field_fbs_login_attempts_time_li
+        - field_online_state_threshold
+        - field_online_state_online_to
+        - field_online_state_offline_to
       parent_name: ''
       weight: 7
       format_type: details
@@ -542,7 +545,7 @@ content:
     type: string
     region: content
   field_online_state_offline_to:
-    weight: 47
+    weight: 23
     label: above
     settings:
       thousand_separator: ''
@@ -551,7 +554,7 @@ content:
     type: number_integer
     region: content
   field_online_state_online_to:
-    weight: 46
+    weight: 22
     label: above
     settings:
       thousand_separator: ''
@@ -560,7 +563,7 @@ content:
     type: number_integer
     region: content
   field_online_state_threshold:
-    weight: 45
+    weight: 21
     label: above
     settings:
       thousand_separator: ''
@@ -588,7 +591,7 @@ content:
     region: content
   links:
     weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden: {  }
