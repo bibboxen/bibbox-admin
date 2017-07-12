@@ -1,0 +1,23 @@
+uuid: 784f1196-2141-4844-97e8-26852c594cd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notification_layouts_reser
+    - node.type.machine
+  module:
+    - options
+_core:
+  default_config_hash: 6u_fzxqxLfVQY_e6xhCtB5y10wRr9C9RvgJh75uUdu0
+id: node.machine.field_notification_layouts_reser
+field_name: field_notification_layouts_reser
+entity_type: node
+bundle: machine
+label: 'Notification layouts reservations'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,23 @@
+uuid: 50d2d0a3-5b16-4d4c-91ec-d5a536552ca8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: bxBPiugkxsQu6dEVGRs13HWTlIM7SkXcWRoItaUn82Y
+id: node.field_notification_library_city
+field_name: field_notification_library_city
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

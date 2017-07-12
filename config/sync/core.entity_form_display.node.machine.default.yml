@@ -1,0 +1,692 @@
+uuid: d9f891b6-ce2d-4f18-81f4-b0f76bba9517
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.machine.field_bin_default
+    - field.field.node.machine.field_bin_left
+    - field.field.node.machine.field_bin_left_background_color
+    - field.field.node.machine.field_bin_left_color
+    - field.field.node.machine.field_bin_right
+    - field.field.node.machine.field_bin_right_background_color
+    - field.field.node.machine.field_bin_right_color
+    - field.field.node.machine.field_default
+    - field.field.node.machine.field_display_fines
+    - field.field.node.machine.field_email
+    - field.field.node.machine.field_fbs_agency
+    - field.field.node.machine.field_fbs_endpoint
+    - field.field.node.machine.field_fbs_location
+    - field.field.node.machine.field_fbs_login_attempts_max
+    - field.field.node.machine.field_fbs_login_attempts_time_li
+    - field.field.node.machine.field_fbs_password
+    - field.field.node.machine.field_fbs_username
+    - field.field.node.machine.field_features
+    - field.field.node.machine.field_image_more_materials
+    - field.field.node.machine.field_ip
+    - field.field.node.machine.field_languages
+    - field.field.node.machine.field_login_allow_manual
+    - field.field.node.machine.field_login_allow_scan
+    - field.field.node.machine.field_notification_date_format
+    - field.field.node.machine.field_notification_default_lang
+    - field.field.node.machine.field_notification_footer_html
+    - field.field.node.machine.field_notification_footer_text
+    - field.field.node.machine.field_notification_header_brand
+    - field.field.node.machine.field_notification_header_color
+    - field.field.node.machine.field_notification_header_logo
+    - field.field.node.machine.field_notification_layouts_cin
+    - field.field.node.machine.field_notification_layouts_cout
+    - field.field.node.machine.field_notification_layouts_reser
+    - field.field.node.machine.field_notification_layouts_statu
+    - field.field.node.machine.field_notification_library_addre
+    - field.field.node.machine.field_notification_library_city
+    - field.field.node.machine.field_notification_library_name
+    - field.field.node.machine.field_notification_library_phone
+    - field.field.node.machine.field_notification_library_title
+    - field.field.node.machine.field_notification_library_zip
+    - field.field.node.machine.field_notification_mailer_from
+    - field.field.node.machine.field_notification_mailer_host
+    - field.field.node.machine.field_notification_mailer_port
+    - field.field.node.machine.field_notification_mailer_secure
+    - field.field.node.machine.field_notification_mailer_subjec
+    - field.field.node.machine.field_online_state_offline_to
+    - field.field.node.machine.field_online_state_online_to
+    - field.field.node.machine.field_online_state_threshold
+    - field.field.node.machine.field_timeout
+    - field.field.node.machine.field_timeout_idle
+    - node.type.machine
+  module:
+    - field_group
+    - text
+third_party_settings:
+  field_group:
+    group_notifications:
+      children:
+        - group_notifications_config
+        - group_notifications_library
+        - group_notifications_mailer
+        - group_notifications_header
+        - group_notifications_footer
+        - group_notifications_layout
+      parent_name: ''
+      weight: 9
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: Notifications
+    group_notifications_mailer:
+      children:
+        - field_notification_mailer_host
+        - field_notification_mailer_port
+        - field_notification_mailer_secure
+        - field_notification_mailer_from
+        - field_notification_mailer_subjec
+      parent_name: group_notifications
+      weight: 22
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Notifications mailer'
+    group_notifications_header:
+      children:
+        - field_notification_header_brand
+        - field_notification_header_logo
+        - field_notification_header_color
+      parent_name: group_notifications
+      weight: 23
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Notifications header'
+    group_notifications_footer:
+      children:
+        - field_notification_footer_html
+        - field_notification_footer_text
+      parent_name: group_notifications
+      weight: 24
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Notifications footer'
+    group_notifications_library:
+      children:
+        - field_notification_library_title
+        - field_notification_library_name
+        - field_notification_library_addre
+        - field_notification_library_zip
+        - field_notification_library_city
+        - field_notification_library_phone
+      parent_name: group_notifications
+      weight: 21
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Notifications library'
+    group_notifications_layout:
+      children:
+        - field_notification_layouts_statu
+        - field_notification_layouts_cin
+        - field_notification_layouts_cout
+        - field_notification_layouts_reser
+      parent_name: group_notifications
+      weight: 25
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Notifications layout'
+    group_notifications_config:
+      children:
+        - field_notification_default_lang
+        - field_notification_date_format
+      parent_name: group_notifications
+      weight: 20
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Notifications config'
+    group_fbs:
+      children:
+        - field_fbs_username
+        - field_fbs_password
+        - field_fbs_endpoint
+        - field_fbs_agency
+        - field_fbs_location
+        - field_fbs_login_attempts_max
+        - field_fbs_login_attempts_time_li
+        - field_online_state_threshold
+        - field_online_state_online_to
+        - field_online_state_offline_to
+      parent_name: ''
+      weight: 8
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: FBS
+    group_bins:
+      children:
+        - field_bin_default
+        - field_bin_left_color
+        - field_bin_left_background_color
+        - field_bin_left
+        - field_bin_right_color
+        - field_bin_right_background_color
+        - field_bin_right
+      parent_name: ''
+      weight: 7
+      format_type: details
+      format_settings:
+        label: Bins
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: Bins
+    group_features:
+      children:
+        - field_features
+      parent_name: ''
+      weight: 5
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: Features
+    group_languages:
+      children:
+        - field_languages
+      parent_name: ''
+      weight: 6
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: Languages
+    group_ui:
+      children:
+        - field_timeout
+        - field_timeout_idle
+        - field_image_more_materials
+        - field_display_fines
+        - field_login_allow_scan
+        - field_login_allow_manual
+      parent_name: ''
+      weight: 4
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: UI
+    group_basic:
+      children:
+        - title
+        - field_ip
+        - field_default
+        - field_email
+        - uid
+        - created
+        - promote
+        - sticky
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        label: Basic
+        open: true
+        required_fields: true
+        id: ''
+        classes: ''
+      label: Basic
+_core:
+  default_config_hash: LHCnAe5KmyusyLvw2oPYxT_Oljjcn1_O4hQloshctv8
+id: node.machine.default
+targetEntityType: node
+bundle: machine
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_bin_default:
+    weight: 22
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_bin_left:
+    weight: 26
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_bin_left_background_color:
+    weight: 25
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_bin_left_color:
+    weight: 24
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_bin_right:
+    weight: 30
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_bin_right_background_color:
+    weight: 29
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_bin_right_color:
+    weight: 28
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_default:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_display_fines:
+    weight: 11
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_email:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_fbs_agency:
+    weight: 24
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_fbs_endpoint:
+    weight: 23
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_fbs_location:
+    weight: 25
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_fbs_login_attempts_max:
+    weight: 26
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_fbs_login_attempts_time_li:
+    weight: 27
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_fbs_password:
+    weight: 22
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_fbs_username:
+    weight: 21
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_features:
+    weight: 14
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_image_more_materials:
+    weight: 10
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_ip:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_languages:
+    weight: 15
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_login_allow_manual:
+    weight: 13
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_login_allow_scan:
+    weight: 12
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_notification_date_format:
+    weight: 30
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_notification_default_lang:
+    weight: 29
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_notification_footer_html:
+    weight: 45
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_notification_footer_text:
+    weight: 46
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_notification_header_brand:
+    weight: 36
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_notification_header_color:
+    weight: 38
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_notification_header_logo:
+    weight: 37
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_notification_layouts_cin:
+    weight: 48
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_notification_layouts_cout:
+    weight: 49
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_notification_layouts_reser:
+    weight: 50
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_notification_layouts_statu:
+    weight: 47
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_notification_library_addre:
+    weight: 41
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_notification_library_city:
+    weight: 43
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_notification_library_name:
+    weight: 40
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_notification_library_phone:
+    weight: 44
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_notification_library_title:
+    weight: 39
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_notification_library_zip:
+    weight: 42
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_notification_mailer_from:
+    weight: 34
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_notification_mailer_host:
+    weight: 31
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_notification_mailer_port:
+    weight: 32
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_notification_mailer_secure:
+    weight: 33
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_notification_mailer_subjec:
+    weight: 35
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_online_state_offline_to:
+    weight: 30
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_online_state_online_to:
+    weight: 29
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_online_state_threshold:
+    weight: 28
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_timeout:
+    weight: 8
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_timeout_idle:
+    weight: 9
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 6
+    third_party_settings: {  }
+    region: content
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 7
+    third_party_settings: {  }
+    region: content
+  title:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  uid:
+    type: entity_reference_autocomplete
+    weight: 4
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }

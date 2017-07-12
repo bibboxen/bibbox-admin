@@ -1,0 +1,22 @@
+uuid: 1621729e-d313-44a9-a28c-100dece7afef
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bibbox_theme
+_core:
+  default_config_hash: divXSd5K-o7Sxf4GC8B_q4nH7-20rSnYS_rD-GwSCi0
+id: bibbox_theme_breadcrumbs
+theme: bibbox_theme
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

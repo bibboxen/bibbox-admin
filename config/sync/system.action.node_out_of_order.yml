@@ -1,0 +1,11 @@
+uuid: 7a53331f-aedd-40b8-8dc5-0ef3b2cb3fdc
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node_out_of_order
+label: 'Out of order'
+type: node
+plugin: out_of_order
+configuration: {  }

@@ -1,0 +1,13 @@
+uuid: 69aec916-79bb-49fb-9ac3-febc2e9c353a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: U9HspszLxcw6pZmRacFa6yDbbheyMN-We4fPbrWWHGg
+id: node_save_action
+label: 'Save content'
+type: node
+plugin: node_save_action
+configuration: {  }

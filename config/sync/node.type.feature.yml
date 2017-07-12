@@ -1,0 +1,13 @@
+uuid: a7626caa-3de9-479e-b2e1-e1e09d1f54b2
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 6A8oqAzBg_yrTrJtaF3B3l8toccZGMQ_jL_rIsVNvmA
+name: Feature
+type: feature
+description: 'UI features'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

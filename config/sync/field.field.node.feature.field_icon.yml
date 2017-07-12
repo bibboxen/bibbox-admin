@@ -1,0 +1,21 @@
+uuid: 2ddb4d3d-1476-4c3f-8def-5c72e044a892
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_icon
+    - node.type.feature
+_core:
+  default_config_hash: KD3J019Akp3BYdwz_NizpEoJkcrHB0I8LsXH3qbszPE
+id: node.feature.field_icon
+field_name: field_icon
+entity_type: node
+bundle: feature
+label: Icon
+description: 'The name of the icon to use.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

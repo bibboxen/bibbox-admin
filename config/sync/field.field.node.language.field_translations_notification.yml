@@ -1,0 +1,30 @@
+uuid: f53ae4f7-aa65-40f3-a63c-28fd09b91c24
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_translations_notification
+    - node.type.language
+    - node.type.translations
+_core:
+  default_config_hash: n3lUqa2o_w60vMVluaREGJDQXelzTzJlgQOjGdwPOHk
+id: node.language.field_translations_notification
+field_name: field_translations_notification
+entity_type: node
+bundle: language
+label: 'Translations Notification'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      translations: translations
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

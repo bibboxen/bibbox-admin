@@ -1,0 +1,21 @@
+uuid: 1155de04-0372-44e2-8a09-2219648ab5f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notification_header_brand
+    - node.type.machine
+_core:
+  default_config_hash: JN74zYWkCDfxvshgm6CoRL8awDxrFnR0myjmMOu_v-g
+id: node.machine.field_notification_header_brand
+field_name: field_notification_header_brand
+entity_type: node
+bundle: machine
+label: 'Notification header brand'
+description: 'Base64 encoded brand image'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,23 @@
+uuid: dab3e106-f8b1-4d40-bac8-dcdefd20fdb9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notification_layouts_cin
+    - node.type.machine
+  module:
+    - options
+_core:
+  default_config_hash: Dm-uOuCv4IKamVWe_dYb3FA0fS0hWaP-uWzxqCl-0AE
+id: node.machine.field_notification_layouts_cin
+field_name: field_notification_layouts_cin
+entity_type: node
+bundle: machine
+label: 'Notification layouts checkin'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

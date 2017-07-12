@@ -1,0 +1,23 @@
+uuid: f97b6114-52c8-498c-9ffc-ca65a26f6055
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notification_footer_html
+    - node.type.machine
+  module:
+    - text
+_core:
+  default_config_hash: vHlKy7bVwaVmuZYhKsY1Urjp26MpQOia764XGhT_uPY
+id: node.machine.field_notification_footer_html
+field_name: field_notification_footer_html
+entity_type: node
+bundle: machine
+label: 'Notification footer html'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

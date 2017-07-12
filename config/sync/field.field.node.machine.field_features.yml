@@ -1,0 +1,31 @@
+uuid: 1b814fbd-7557-423a-8a71-22da2a1ab8a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_features
+    - node.type.feature
+    - node.type.machine
+_core:
+  default_config_hash: u22wKpI5VttgDcFCKW92q6BXiNNPOAernjdOn9ZAuMk
+id: node.machine.field_features
+field_name: field_features
+entity_type: node
+bundle: machine
+label: Features
+description: 'Which features should be shown in the UI? The features will be sorted according to order. Inherited values come first. Available values and suggested order: Borrow, Status, Reservations, Return. Start typing to get autocompletion.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      feature: feature
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

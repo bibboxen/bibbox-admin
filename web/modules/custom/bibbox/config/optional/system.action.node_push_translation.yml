@@ -1,0 +1,9 @@
+status: true
+dependencies:
+  module:
+    - node
+id: node_push_translation
+label: 'Push translations'
+type: node
+plugin: push_translation
+configuration: {  }

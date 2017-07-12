@@ -1,0 +1,9 @@
+status: true
+dependencies:
+  module:
+    - node
+id: node_restart_ui
+label: 'Restart UI'
+type: node
+plugin: restart_ui
+configuration: {  }

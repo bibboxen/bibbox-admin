@@ -1,0 +1,27 @@
+uuid: a0f1d19c-55b1-48cc-9236-fcfe65b955dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notification_mailer_port
+    - node.type.machine
+_core:
+  default_config_hash: dcHDzUdVVo6-Wdj1IAN0_sXGdHHYZDgCjgnHUqQo0ho
+id: node.machine.field_notification_mailer_port
+field_name: field_notification_mailer_port
+entity_type: node
+bundle: machine
+label: 'Notification mailer port'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 25
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,25 @@
+uuid: a369bb9e-590e-434e-80d4-2909d4a9ba44
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bin_right
+    - node.type.machine
+_core:
+  default_config_hash: RQ0_dS4pUTwkHVXX40FwEY7X7IkjcHO3c9GztZZbL0Q
+id: node.machine.field_bin_right
+field_name: field_bin_right
+entity_type: node
+bundle: machine
+label: 'Bin Right'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

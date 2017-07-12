@@ -1,0 +1,57 @@
+uuid: 9f352272-e095-4064-9e1d-1d8ac811c47e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.translations.field_translations
+    - node.type.translations
+  module:
+    - translation_field
+_core:
+  default_config_hash: JuNdpwmXbUicqThDrN_0EJ_hjYMuvVm_m7R7ZDy7Y8g
+id: node.translations.default
+targetEntityType: node
+bundle: translations
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_translations:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: field_translation_widget
+    region: content
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 3
+    third_party_settings: {  }
+    region: content
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    third_party_settings: {  }
+    region: content
+  title:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  uid:
+    type: options_buttons
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

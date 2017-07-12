@@ -1,0 +1,20 @@
+uuid: 7a8df7a3-2816-4094-a16c-0a9300fc490a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: j4uZU-mVZt8hPpYfF3xGlDTNiLee8grA6JcusRE-zsY
+id: node.field_login_allow_manual
+field_name: field_login_allow_manual
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

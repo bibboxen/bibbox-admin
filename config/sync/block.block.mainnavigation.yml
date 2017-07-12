@@ -1,0 +1,26 @@
+uuid: 86812641-d65f-45ca-8ed8-ccd9df714001
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - adminimal_theme
+_core:
+  default_config_hash: n3ekonRMfaAaKJLDhx5A1n8HrzctDBOsiVy-KsFa9jo
+id: mainnavigation
+theme: adminimal_theme
+region: header
+weight: -3
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility: {  }

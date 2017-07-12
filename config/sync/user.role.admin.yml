@@ -1,0 +1,30 @@
+uuid: 34830b56-4e7a-4494-8718-aece75622ac4
+langcode: en
+status: true
+dependencies: {  }
+id: admin
+label: Admin
+weight: 2
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'view own unpublished content'
+  - 'create feature content'
+  - 'delete any feature content'
+  - 'delete own feature content'
+  - 'edit any feature content'
+  - 'edit own feature content'
+  - 'create language content'
+  - 'delete any language content'
+  - 'edit any language content'
+  - 'edit own language content'
+  - 'create machine content'
+  - 'delete any machine content'
+  - 'delete own machine content'
+  - 'edit any machine content'
+  - 'edit own machine content'
+  - 'create translations content'
+  - 'delete any translations content'
+  - 'delete own translations content'
+  - 'edit any translations content'
+  - 'edit own translations content'

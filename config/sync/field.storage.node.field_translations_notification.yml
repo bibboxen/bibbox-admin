@@ -1,0 +1,21 @@
+uuid: 769a62f8-085d-4fb9-9cea-9febf7d7f6bf
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 0YUrIt9dCo4nbIXXoYdldCTKPhRCD1Jgm5xmgqKnjQM
+id: node.field_translations_notification
+field_name: field_translations_notification
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

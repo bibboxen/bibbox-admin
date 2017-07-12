@@ -1,0 +1,23 @@
+uuid: e20833bc-39d0-4fc7-ab0e-a5279b9c7c26
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: Ov3y1ytk-EHQ2HG2ZoEMagE0ntnp5v2W5lf8U_dNMGo
+id: node.field_fbs_login_attempts_time_li
+field_name: field_fbs_login_attempts_time_li
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

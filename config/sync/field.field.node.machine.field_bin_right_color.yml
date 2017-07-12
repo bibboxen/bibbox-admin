@@ -1,0 +1,21 @@
+uuid: 85a1f1bb-5119-4906-952f-5568392bed65
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bin_right_color
+    - node.type.machine
+_core:
+  default_config_hash: SQwWHFsFif1Ip8H_3PPfvmjJ1n3nqm7BYqRfgFDFAuY
+id: node.machine.field_bin_right_color
+field_name: field_bin_right_color
+entity_type: node
+bundle: machine
+label: 'Bin Right Color'
+description: 'The color value of the text. E.g. #ff2 or red'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

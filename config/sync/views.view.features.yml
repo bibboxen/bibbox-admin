@@ -1,17 +1,21 @@
+uuid: 8d68531a-5dbd-4e66-b774-0f1f6f949e66
+langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
-    - field.storage.node.field_ip
-    - node.type.machine
+    - field.storage.node.field_require_online
+    - field.storage.node.field_url
+    - node.type.feature
     - system.menu.main
   module:
     - node
     - user
-id: machines
-label: Machines
+_core:
+  default_config_hash: vDb128_4y02TFdn3FubeYUCjgZ4iaoBxkmTWko0vy8Y
+id: features
+label: Features
 module: views
-description: 'Contains a list of machines'
+description: ''
 tag: ''
 base_table: node_field_data
 base_field: nid
@@ -71,40 +75,64 @@ display:
           quantity: 9
       style:
         type: table
-        options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: true
-          override: true
-          sticky: false
-          caption: ''
-          summary: ''
-          description: ''
-          columns:
-            title: title
-          info:
-            title:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-          default: '-1'
-          empty_table: false
       row:
-        type: 'entity:node'
-        options:
-          view_mode: teaser
+        type: fields
       fields:
         title:
           id: title
           table: node_field_data
           field: title
+          entity_type: node
+          entity_field: title
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            trim: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: true
+          plugin_id: field
           relationship: none
           group_type: group
           admin_label: ''
           label: Title
+          exclude: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_require_online:
+          id: field_require_online
+          table: node__field_require_online
+          field: field_require_online
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Require Online'
           exclude: false
           alter:
             alter_text: false
@@ -124,8 +152,8 @@ display:
             target: ''
             nl2br: false
             max_length: 0
-            word_boundary: false
-            ellipsis: false
+            word_boundary: true
+            ellipsis: true
             more_link: false
             more_link_text: ''
             more_link_path: ''
@@ -137,7 +165,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: false
+          element_label_colon: true
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -146,9 +174,11 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: string
+          type: boolean
           settings:
-            link_to_entity: true
+            format: default
+            format_custom_true: ''
+            format_custom_false: ''
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -159,17 +189,15 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: node
-          entity_field: title
           plugin_id: field
-        field_ip:
-          id: field_ip
-          table: node__field_ip
-          field: field_ip
+        field_url:
+          id: field_url
+          table: node__field_url
+          field: field_url
           relationship: none
           group_type: group
           admin_label: ''
-          label: IP
+          label: URL
           exclude: false
           alter:
             alter_text: false
@@ -225,57 +253,6 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        operations:
-          id: operations
-          table: node
-          field: operations
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Operations links'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          destination: true
-          entity_type: node
-          plugin_id: entity_operations
       filters:
         status:
           value: '1'
@@ -293,7 +270,7 @@ display:
           table: node_field_data
           field: type
           value:
-            machine: machine
+            feature: feature
           entity_type: node
           entity_field: type
           plugin_id: bundle
@@ -311,7 +288,7 @@ display:
           expose:
             operator_id: combine_op
             label: Search
-            description: 'Search by Title, IP'
+            description: 'Search by Title'
             use_operator: false
             operator: combine_op
             identifier: combine
@@ -335,7 +312,6 @@ display:
             group_items: {  }
           fields:
             title: title
-            field_ip: field_ip
           plugin_id: combine
       sorts:
         created:
@@ -353,7 +329,7 @@ display:
           expose:
             label: ''
           granularity: second
-      title: Machines
+      title: Features
       header: {  }
       footer: {  }
       empty: {  }
@@ -370,7 +346,8 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_ip'
+        - 'config:field.storage.node.field_require_online'
+        - 'config:field.storage.node.field_url'
   page_1:
     display_plugin: page
     id: page_1
@@ -378,16 +355,12 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: machines
+      path: features
       menu:
         type: normal
-        title: Machines
-        description: ''
-        expanded: false
-        parent: ''
-        weight: -50
-        context: '0'
+        title: Features
         menu_name: main
+        weight: -49
     cache_metadata:
       max-age: 0
       contexts:
@@ -398,4 +371,5 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_ip'
+        - 'config:field.storage.node.field_require_online'
+        - 'config:field.storage.node.field_url'

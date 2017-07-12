@@ -1,0 +1,25 @@
+uuid: 5ad6fd20-e4f8-4edc-9681-50f9645fb046
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_login_allow_manual
+    - node.type.machine
+_core:
+  default_config_hash: '-go-RW8oQkWytRYbmie9MWpknWnrSB9F44cgO8mTnhc'
+id: node.machine.field_login_allow_manual
+field_name: field_login_allow_manual
+entity_type: node
+bundle: machine
+label: 'Login: allow manual'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

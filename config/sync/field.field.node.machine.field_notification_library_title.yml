@@ -1,0 +1,21 @@
+uuid: d0e134e1-877a-4eff-8f1b-f4908b387db3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notification_library_title
+    - node.type.machine
+_core:
+  default_config_hash: UktLHWHT0Lwje_85-y0aga5ySKA9eAUyydMDbiMUPg8
+id: node.machine.field_notification_library_title
+field_name: field_notification_library_title
+entity_type: node
+bundle: machine
+label: 'Notification library title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

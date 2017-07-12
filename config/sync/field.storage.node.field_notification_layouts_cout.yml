@@ -1,0 +1,38 @@
+uuid: 9e0d58c5-1d13-4fd1-962d-e6e2b5e4ac3f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+_core:
+  default_config_hash: AZC7Kfwgm8tUDRfW13zE6NEv8-Q1AMnGeyv5q96PP-Y
+id: node.field_notification_layouts_cout
+field_name: field_notification_layouts_cout
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: fines
+      label: Fines
+    -
+      value: loans
+      label: Loans
+    -
+      value: loans_new
+      label: 'New loans'
+    -
+      value: reservations
+      label: Reservations
+    -
+      value: reservations_ready
+      label: 'Reservations ready'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

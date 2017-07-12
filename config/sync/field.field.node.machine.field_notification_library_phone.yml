@@ -1,0 +1,21 @@
+uuid: 217dfb65-4e9e-4483-921f-0f75a3f6d8de
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notification_library_phone
+    - node.type.machine
+_core:
+  default_config_hash: 7VB1KMS-me13mQ9T8A8DNSJZUSOPYA9hWajPSGevMnA
+id: node.machine.field_notification_library_phone
+field_name: field_notification_library_phone
+entity_type: node
+bundle: machine
+label: 'Notification library phone'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

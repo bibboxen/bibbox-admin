@@ -1,0 +1,11 @@
+uuid: 9ee0c678-14ad-4ac5-bca5-c090d9865653
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node_reboot_machine
+label: 'Reboot machine'
+type: node
+plugin: reboot_machine
+configuration: {  }
