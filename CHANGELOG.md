@@ -2,7 +2,11 @@
 
 ## In develop
 
-## v1.1.0
+## v1.0.4
+
+* Fixed "Restart UI" and "Set out of order" actions.
+
+## v1.0.3
 
 * Added bulk operations to machines view.
 * Updated drupal to 8.3.3.
