@@ -58,7 +58,7 @@ class ApiController extends ControllerBase {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
-    \Drupal::service('bibbox.proxy')->pushTranslation($id);
+    \Drupal::service('bibbox.proxy')->restartUI($id);
 
     return new RedirectResponse($destination);
   }
@@ -106,7 +106,7 @@ class ApiController extends ControllerBase {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
-    \Drupal::service('bibbox.proxy')->setOutOfOrder($id);
+    \Drupal::service('bibbox.proxy')->outOfOrder($id);
 
     return new RedirectResponse($destination);
   }
