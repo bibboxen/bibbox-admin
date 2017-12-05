@@ -19,8 +19,8 @@ function bibbox_theme_preprocess_field(&$variables, $hook) {
   $fields = ['field_notification_header_brand', 'field_notification_header_logo'];
   if (in_array($element['#field_name'], $fields)) {
     $node = $element['#object'];
-    $values= $node->get('field_notification_header_logo')->getValue();
-    $variables['alt_text']  = reset($values)['alt'];
+    $values= $node->get($element['#field_name'])->getValue();
+    $variables['alt_text'] = reset($values)['alt'];
     $variables['color'] = $node->field_notification_header_color->value;
   }
 }
