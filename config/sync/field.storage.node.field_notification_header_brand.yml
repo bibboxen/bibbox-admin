@@ -1,18 +1,27 @@
-uuid: ba072daf-d09f-4572-83eb-25cf14d4579d
+uuid: ee138924-a646-4f12-9513-39a3e030b290
 langcode: en
 status: true
 dependencies:
   module:
+    - file
+    - image
     - node
-_core:
-  default_config_hash: HCGYotRaNy69aWM2a77fGXYce1pfOMcUmAmNuHraxho
 id: node.field_notification_header_brand
 field_name: field_notification_header_brand
 entity_type: node
-type: string_long
+type: image
 settings:
-  case_sensitive: false
-module: core
+  uri_scheme: public
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  target_type: file
+  display_field: false
+  display_default: false
+module: image
 locked: false
 cardinality: 1
 translatable: true

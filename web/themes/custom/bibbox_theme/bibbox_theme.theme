@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the bibbox theme.
+ */
+
+use Drupal\Component\Utility\Xss;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_preprocess_HOOK() for HTML document templates.
+ *
+ * Add header background color to header images.
+ */
+function bibbox_theme_preprocess_field(&$variables, $hook) {
+  $element = $variables['element'];
+
+  $fields = ['field_notification_header_brand', 'field_notification_header_logo'];
+  if (in_array($element['#field_name'], $fields)) {
+    $node = $element['#object'];
+    $values= $node->get('field_notification_header_logo')->getValue();
+    $variables['alt_text']  = reset($values)['alt'];
+    $variables['color'] = $node->field_notification_header_color->value;
+  }
+}

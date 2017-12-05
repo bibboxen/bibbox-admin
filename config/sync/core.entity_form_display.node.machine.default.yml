@@ -53,9 +53,11 @@ dependencies:
     - field.field.node.machine.field_online_state_threshold
     - field.field.node.machine.field_timeout
     - field.field.node.machine.field_timeout_idle
+    - image.style.thumbnail
     - node.type.machine
   module:
     - field_group
+    - image
     - text
 third_party_settings:
   field_group:
@@ -490,12 +492,12 @@ content:
     type: string_textarea
     region: content
   field_notification_header_brand:
-    weight: 36
+    weight: 51
     settings:
-      rows: 5
-      placeholder: ''
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
-    type: string_textarea
+    type: image_image
     region: content
   field_notification_header_color:
     weight: 38
@@ -506,12 +508,12 @@ content:
     type: string_textfield
     region: content
   field_notification_header_logo:
-    weight: 37
+    weight: 52
     settings:
-      rows: 5
-      placeholder: ''
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
-    type: string_textarea
+    type: image_image
     region: content
   field_notification_layouts_cin:
     weight: 48

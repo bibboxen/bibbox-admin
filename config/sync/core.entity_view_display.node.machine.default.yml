@@ -56,6 +56,7 @@ dependencies:
     - node.type.machine
   module:
     - field_group
+    - image
     - options
     - text
     - user
@@ -405,11 +406,13 @@ content:
     type: basic_string
     region: content
   field_notification_header_brand:
-    weight: 30
+    weight: 45
     label: above
-    settings: {  }
+    settings:
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
-    type: basic_string
+    type: image
     region: content
   field_notification_header_color:
     weight: 32
@@ -420,11 +423,13 @@ content:
     type: string
     region: content
   field_notification_header_logo:
-    weight: 31
+    weight: 46
     label: above
-    settings: {  }
+    settings:
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
-    type: basic_string
+    type: image
     region: content
   field_notification_layouts_cin:
     weight: 42

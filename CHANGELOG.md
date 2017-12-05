@@ -2,6 +2,8 @@
 
 ## In develop
 
+* Change brand and logo to use image fields.
+
 ## v1.0.4
 
 * Fixed "Restart UI" and "Set out of order" actions.

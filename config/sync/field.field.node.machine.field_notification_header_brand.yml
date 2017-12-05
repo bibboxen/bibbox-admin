@@ -1,21 +1,38 @@
-uuid: 1155de04-0372-44e2-8a09-2219648ab5f4
+uuid: 3befcb7e-6df9-4aa7-8429-3f76d4dea676
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_notification_header_brand
     - node.type.machine
-_core:
-  default_config_hash: JN74zYWkCDfxvshgm6CoRL8awDxrFnR0myjmMOu_v-g
+  module:
+    - image
 id: node.machine.field_notification_header_brand
 field_name: field_notification_header_brand
 entity_type: node
 bundle: machine
 label: 'Notification header brand'
-description: 'Base64 encoded brand image'
+description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
-field_type: string_long
+settings:
+  file_directory: notification
+  file_extensions: 'png jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image
