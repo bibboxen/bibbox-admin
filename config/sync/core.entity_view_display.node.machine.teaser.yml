@@ -31,8 +31,8 @@ dependencies:
     - field.field.node.machine.field_notification_default_lang
     - field.field.node.machine.field_notification_footer_html
     - field.field.node.machine.field_notification_footer_text
-    - field.field.node.machine.field_notification_header_brand
     - field.field.node.machine.field_notification_header_color
+    - field.field.node.machine.field_notification_header_text
     - field.field.node.machine.field_notification_layouts_cin
     - field.field.node.machine.field_notification_layouts_cout
     - field.field.node.machine.field_notification_layouts_reser
@@ -94,8 +94,8 @@ hidden:
   field_notification_default_lang: true
   field_notification_footer_html: true
   field_notification_footer_text: true
-  field_notification_header_brand: true
   field_notification_header_color: true
+  field_notification_header_text: true
   field_notification_layouts_cin: true
   field_notification_layouts_cout: true
   field_notification_layouts_reser: true

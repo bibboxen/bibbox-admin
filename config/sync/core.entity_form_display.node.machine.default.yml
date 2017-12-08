@@ -30,9 +30,9 @@ dependencies:
     - field.field.node.machine.field_notification_default_lang
     - field.field.node.machine.field_notification_footer_html
     - field.field.node.machine.field_notification_footer_text
-    - field.field.node.machine.field_notification_header_brand
     - field.field.node.machine.field_notification_header_color
-    - field.field.node.machine.field_notification_header_logo
+    - field.field.node.machine.field_notification_header_text
+    - field.field.node.machine.field_notification_header_text_c
     - field.field.node.machine.field_notification_layouts_cin
     - field.field.node.machine.field_notification_layouts_cout
     - field.field.node.machine.field_notification_layouts_reser
@@ -53,11 +53,9 @@ dependencies:
     - field.field.node.machine.field_online_state_threshold
     - field.field.node.machine.field_timeout
     - field.field.node.machine.field_timeout_idle
-    - image.style.thumbnail
     - node.type.machine
   module:
     - field_group
-    - image
     - text
 third_party_settings:
   field_group:
@@ -96,9 +94,9 @@ third_party_settings:
       label: 'Notifications mailer'
     group_notifications_header:
       children:
-        - field_notification_header_brand
-        - field_notification_header_logo
         - field_notification_header_color
+        - field_notification_header_text_c
+        - field_notification_header_text
       parent_name: group_notifications
       weight: 23
       format_type: details
@@ -113,7 +111,7 @@ third_party_settings:
         - field_notification_footer_html
         - field_notification_footer_text
       parent_name: group_notifications
-      weight: 24
+      weight: 25
       format_type: details
       format_settings:
         id: ''
@@ -145,7 +143,7 @@ third_party_settings:
         - field_notification_layouts_cout
         - field_notification_layouts_reser
       parent_name: group_notifications
-      weight: 25
+      weight: 26
       format_type: details
       format_settings:
         id: ''
@@ -491,14 +489,6 @@ content:
     third_party_settings: {  }
     type: string_textarea
     region: content
-  field_notification_header_brand:
-    weight: 51
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
-    type: image_image
-    region: content
   field_notification_header_color:
     weight: 38
     settings:
@@ -507,13 +497,21 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_notification_header_logo:
-    weight: 52
+  field_notification_header_text:
+    weight: 40
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: image_image
+    type: string_textfield
+    region: content
+  field_notification_header_text_c:
+    weight: 39
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_notification_layouts_cin:
     weight: 48

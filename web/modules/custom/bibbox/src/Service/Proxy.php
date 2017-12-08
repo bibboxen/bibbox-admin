@@ -268,39 +268,6 @@ class Proxy {
    *
    */
   public function getMachineArray($node) {
-
-    $brand = $node->get('field_notification_header_brand')->entity;
-    if ($brand->get('status')->value) {
-      $type = $brand->getMimeType();
-
-      $values= $node->get('field_notification_header_brand')->getValue();
-      $brand_alt_text = reset($values)['alt'];
-
-      $path =  \Drupal::service('file_system')->realpath($brand->getFileUri());
-      $data = file_get_contents($path);
-      $brand = 'data:image/' . $type . ';base64,' . base64_encode($data);
-    }
-    else {
-      $brand_alt_text = '';
-      $brand = NULL;
-    }
-
-    $logo = $node->get('field_notification_header_logo')->entity;
-    if ($logo->get('status')->value) {
-      $type = $logo->getMimeType();
-
-      $values= $node->get('field_notification_header_logo')->getValue();
-      $logo_alt_text = reset($values)['alt'];
-
-      $path =  \Drupal::service('file_system')->realpath($logo->getFileUri());
-      $data = file_get_contents($path);
-      $logo = 'data:image/' . $type . ';base64,' . base64_encode($data);
-    }
-    else {
-      $logo_alt_text = '';
-      $logo = NULL;
-    }
-
     // Create machine object.
     $machine = [
       'title' => $node->get('title')->value,
@@ -363,14 +330,8 @@ class Proxy {
           'subject' => $node->get('field_notification_mailer_subjec')->value,
         ],
         'header' => [
-          'brand' => [
-            'base64' => $brand,
-            'alt' => $brand_alt_text,
-          ],
-          'logo' => [
-            'base64' => $logo,
-            'alt' => $logo_alt_text,
-          ],
+          'text' => $node->get('field_notification_header_text')->value,
+          'text_color' => $node->get('field_notification_header_text_c')->value,
           'color' => $node->get('field_notification_header_color')->value,
         ],
         'footer' => [

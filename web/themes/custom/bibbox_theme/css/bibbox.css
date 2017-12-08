@@ -42,3 +42,7 @@
 .translation-field-wrapper > .form-item > label {
   display: inline-block;
 }
+
+.field--name-field-notification-header-text .field__item {
+  padding: 4px;
+}

@@ -15,12 +15,9 @@ use Drupal\Core\Form\FormStateInterface;
  */
 function bibbox_theme_preprocess_field(&$variables, $hook) {
   $element = $variables['element'];
-
-  $fields = ['field_notification_header_brand', 'field_notification_header_logo'];
-  if (in_array($element['#field_name'], $fields)) {
+  if ($element['#field_name'] == 'field_notification_header_text') {
     $node = $element['#object'];
-    $values= $node->get($element['#field_name'])->getValue();
-    $variables['alt_text'] = reset($values)['alt'];
     $variables['color'] = $node->field_notification_header_color->value;
+    $variables['text_color'] = $node->field_notification_header_text_c->value;
   }
 }

@@ -30,9 +30,9 @@ dependencies:
     - field.field.node.machine.field_notification_default_lang
     - field.field.node.machine.field_notification_footer_html
     - field.field.node.machine.field_notification_footer_text
-    - field.field.node.machine.field_notification_header_brand
     - field.field.node.machine.field_notification_header_color
-    - field.field.node.machine.field_notification_header_logo
+    - field.field.node.machine.field_notification_header_text
+    - field.field.node.machine.field_notification_header_text_c
     - field.field.node.machine.field_notification_layouts_cin
     - field.field.node.machine.field_notification_layouts_cout
     - field.field.node.machine.field_notification_layouts_reser
@@ -56,7 +56,6 @@ dependencies:
     - node.type.machine
   module:
     - field_group
-    - image
     - options
     - text
     - user
@@ -90,9 +89,9 @@ third_party_settings:
         - field_notification_mailer_secure
         - field_notification_mailer_from
         - field_notification_mailer_subjec
-        - field_notification_header_brand
-        - field_notification_header_logo
         - field_notification_header_color
+        - field_notification_header_text_c
+        - field_notification_header_text
         - field_notification_library_title
         - field_notification_library_name
         - field_notification_library_addre
@@ -405,16 +404,15 @@ content:
     third_party_settings: {  }
     type: basic_string
     region: content
-  field_notification_header_brand:
-    weight: 45
+  field_notification_header_color:
+    weight: 30
     label: above
     settings:
-      image_style: ''
-      image_link: ''
+      link_to_entity: false
     third_party_settings: {  }
-    type: image
+    type: string
     region: content
-  field_notification_header_color:
+  field_notification_header_text:
     weight: 32
     label: above
     settings:
@@ -422,14 +420,13 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-  field_notification_header_logo:
-    weight: 46
+  field_notification_header_text_c:
+    weight: 31
     label: above
     settings:
-      image_style: ''
-      image_link: ''
+      link_to_entity: false
     third_party_settings: {  }
-    type: image
+    type: string
     region: content
   field_notification_layouts_cin:
     weight: 42
