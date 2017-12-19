@@ -31,9 +31,8 @@ dependencies:
     - field.field.node.machine.field_notification_default_lang
     - field.field.node.machine.field_notification_footer_html
     - field.field.node.machine.field_notification_footer_text
-    - field.field.node.machine.field_notification_header_brand
     - field.field.node.machine.field_notification_header_color
-    - field.field.node.machine.field_notification_header_logo
+    - field.field.node.machine.field_notification_header_text
     - field.field.node.machine.field_notification_layouts_cin
     - field.field.node.machine.field_notification_layouts_cout
     - field.field.node.machine.field_notification_layouts_reser
@@ -49,6 +48,9 @@ dependencies:
     - field.field.node.machine.field_notification_mailer_port
     - field.field.node.machine.field_notification_mailer_secure
     - field.field.node.machine.field_notification_mailer_subjec
+    - field.field.node.machine.field_online_state_offline_to
+    - field.field.node.machine.field_online_state_online_to
+    - field.field.node.machine.field_online_state_threshold
     - field.field.node.machine.field_timeout
     - field.field.node.machine.field_timeout_idle
     - node.type.machine
@@ -92,9 +94,8 @@ hidden:
   field_notification_default_lang: true
   field_notification_footer_html: true
   field_notification_footer_text: true
-  field_notification_header_brand: true
   field_notification_header_color: true
-  field_notification_header_logo: true
+  field_notification_header_text: true
   field_notification_layouts_cin: true
   field_notification_layouts_cout: true
   field_notification_layouts_reser: true
@@ -110,5 +111,8 @@ hidden:
   field_notification_mailer_port: true
   field_notification_mailer_secure: true
   field_notification_mailer_subjec: true
+  field_online_state_offline_to: true
+  field_online_state_online_to: true
+  field_online_state_threshold: true
   field_timeout: true
   field_timeout_idle: true

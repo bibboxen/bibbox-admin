@@ -1,16 +1,16 @@
-uuid: ba072daf-d09f-4572-83eb-25cf14d4579d
+uuid: 675a766b-8f7f-4f1b-8034-afe29ddba912
 langcode: en
 status: true
 dependencies:
   module:
     - node
-_core:
-  default_config_hash: HCGYotRaNy69aWM2a77fGXYce1pfOMcUmAmNuHraxho
-id: node.field_notification_header_brand
-field_name: field_notification_header_brand
+id: node.field_notification_header_text
+field_name: field_notification_header_text
 entity_type: node
-type: string_long
+type: string
 settings:
+  max_length: 255
+  is_ascii: false
   case_sensitive: false
 module: core
 locked: false

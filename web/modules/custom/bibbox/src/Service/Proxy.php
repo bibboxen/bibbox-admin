@@ -263,6 +263,9 @@ class Proxy {
    *
    * @return array
    *   Machine represented as array.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   *
    */
   public function getMachineArray($node) {
     // Create machine object.
@@ -327,8 +330,8 @@ class Proxy {
           'subject' => $node->get('field_notification_mailer_subjec')->value,
         ],
         'header' => [
-          'brand' => $node->get('field_notification_header_brand')->value,
-          'logo' => $node->get('field_notification_header_logo')->value,
+          'text' => $node->get('field_notification_header_text')->value,
+          'text_color' => $node->get('field_notification_header_text_c')->value,
           'color' => $node->get('field_notification_header_color')->value,
         ],
         'footer' => [

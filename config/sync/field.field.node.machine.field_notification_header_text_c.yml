@@ -1,0 +1,21 @@
+uuid: 16262e9f-93cc-4433-a9b5-4d283292a3f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notification_header_text_c
+    - node.type.machine
+id: node.machine.field_notification_header_text_c
+field_name: field_notification_header_text_c
+entity_type: node
+bundle: machine
+label: 'Notification header text color'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: FFFFFF
+default_value_callback: ''
+settings: {  }
+field_type: string
