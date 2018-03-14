@@ -1,0 +1,19 @@
+uuid: d3166d17-05ea-4b9b-8d39-68c94d2f32d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_logstash_host
+    - node.type.machine
+id: node.machine.field_logstash_host
+field_name: field_logstash_host
+entity_type: node
+bundle: machine
+label: 'Logstash Host'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
