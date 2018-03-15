@@ -357,6 +357,7 @@ class Proxy {
       'config' => [
         'machine_name' => $node->get('field_machine_name')->value,
         'location' => $node->get('field_location')->value,
+        'ip' => $node->get('field_ip')->value,
         'logstash_host' => $node->get('field_logstash_host')->value,
         'logstash_port' => $node->get('field_logstash_port')->value,
         'matomo_host' => $node->get('field_matomo_host')->value,
