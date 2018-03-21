@@ -30,6 +30,7 @@ dependencies:
     - field.field.node.machine.field_logstash_host
     - field.field.node.machine.field_logstash_port
     - field.field.node.machine.field_machine_name
+    - field.field.node.machine.field_matomo_endpoint
     - field.field.node.machine.field_matomo_host
     - field.field.node.machine.field_matomo_site_id
     - field.field.node.machine.field_notification_date_format
@@ -261,6 +262,7 @@ third_party_settings:
         - field_logstash_host
         - field_logstash_port
         - field_matomo_host
+        - field_matomo_endpoint
         - field_matomo_site_id
         - field_email
         - uid
@@ -286,7 +288,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 11
+    weight: 12
     settings: {  }
     third_party_settings: {  }
     region: content
@@ -359,7 +361,7 @@ content:
     type: boolean_checkbox
     region: content
   field_email:
-    weight: 9
+    weight: 10
     settings:
       size: 60
       placeholder: ''
@@ -500,6 +502,14 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_matomo_endpoint:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_matomo_host:
     weight: 7
     settings:
@@ -509,7 +519,7 @@ content:
     type: string_textfield
     region: content
   field_matomo_site_id:
-    weight: 8
+    weight: 9
     settings:
       size: 60
       placeholder: ''
@@ -721,7 +731,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 12
+    weight: 13
     third_party_settings: {  }
     region: content
   status:
@@ -735,7 +745,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 13
+    weight: 14
     third_party_settings: {  }
     region: content
   title:
@@ -748,7 +758,7 @@ content:
     region: content
   uid:
     type: entity_reference_autocomplete
-    weight: 10
+    weight: 11
     settings:
       match_operator: CONTAINS
       size: 60

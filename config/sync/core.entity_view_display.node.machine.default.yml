@@ -30,6 +30,7 @@ dependencies:
     - field.field.node.machine.field_logstash_host
     - field.field.node.machine.field_logstash_port
     - field.field.node.machine.field_machine_name
+    - field.field.node.machine.field_matomo_endpoint
     - field.field.node.machine.field_matomo_host
     - field.field.node.machine.field_matomo_site_id
     - field.field.node.machine.field_notification_date_format
@@ -173,6 +174,7 @@ third_party_settings:
         - field_logstash_host
         - field_logstash_port
         - field_matomo_host
+        - field_matomo_endpoint
         - field_matomo_site_id
       parent_name: ''
       weight: 2
@@ -419,6 +421,14 @@ content:
     third_party_settings: {  }
     type: string
     region: content
+  field_matomo_endpoint:
+    weight: 18
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   field_matomo_host:
     weight: 17
     label: above
@@ -428,7 +438,7 @@ content:
     type: string
     region: content
   field_matomo_site_id:
-    weight: 18
+    weight: 19
     label: above
     settings:
       link_to_entity: false
