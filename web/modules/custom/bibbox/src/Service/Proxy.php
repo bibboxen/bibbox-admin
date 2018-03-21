@@ -364,6 +364,7 @@ class Proxy {
         ],
         'matomo' => [
           'host' => $node->get('field_matomo_host')->value,
+          'endpoint' => $node->get('field_matomo_endpoint')->value,
           'site_id' => $node->get('field_matomo_site_id')->value,
         ],
       ]
