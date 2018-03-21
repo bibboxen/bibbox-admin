@@ -24,8 +24,15 @@ dependencies:
     - field.field.node.machine.field_image_more_materials
     - field.field.node.machine.field_ip
     - field.field.node.machine.field_languages
+    - field.field.node.machine.field_location
     - field.field.node.machine.field_login_allow_manual
     - field.field.node.machine.field_login_allow_scan
+    - field.field.node.machine.field_logstash_host
+    - field.field.node.machine.field_logstash_port
+    - field.field.node.machine.field_machine_name
+    - field.field.node.machine.field_matomo_endpoint
+    - field.field.node.machine.field_matomo_host
+    - field.field.node.machine.field_matomo_site_id
     - field.field.node.machine.field_notification_date_format
     - field.field.node.machine.field_notification_default_lang
     - field.field.node.machine.field_notification_footer_html
@@ -156,12 +163,19 @@ third_party_settings:
       label: FBS
     group_basic:
       children:
+        - field_machine_name
+        - field_location
         - field_default
         - field_ip
         - links
         - field_email
         - field_features
         - field_languages
+        - field_logstash_host
+        - field_logstash_port
+        - field_matomo_host
+        - field_matomo_endpoint
+        - field_matomo_site_id
       parent_name: ''
       weight: 2
       format_type: details
@@ -240,7 +254,7 @@ content:
     type: string
     region: content
   field_default:
-    weight: 1
+    weight: 9
     label: above
     settings:
       link: true
@@ -258,7 +272,7 @@ content:
     type: boolean
     region: content
   field_email:
-    weight: 4
+    weight: 12
     label: above
     settings: {  }
     third_party_settings: {  }
@@ -321,7 +335,7 @@ content:
     type: string
     region: content
   field_features:
-    weight: 5
+    weight: 13
     label: above
     settings:
       link: true
@@ -339,7 +353,7 @@ content:
     type: boolean
     region: content
   field_ip:
-    weight: 2
+    weight: 10
     label: above
     settings:
       link_to_entity: false
@@ -347,12 +361,20 @@ content:
     type: string
     region: content
   field_languages:
-    weight: 6
+    weight: 14
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  field_location:
+    weight: 8
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
   field_login_allow_manual:
     weight: 7
@@ -373,6 +395,55 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
+  field_logstash_host:
+    weight: 15
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_logstash_port:
+    weight: 16
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_machine_name:
+    weight: 7
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_matomo_endpoint:
+    weight: 18
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_matomo_host:
+    weight: 17
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_matomo_site_id:
+    weight: 19
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
   field_notification_date_format:
     weight: 24
@@ -592,7 +663,7 @@ content:
     type: number_integer
     region: content
   links:
-    weight: 3
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }

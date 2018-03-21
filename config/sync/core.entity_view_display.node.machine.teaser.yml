@@ -96,6 +96,7 @@ hidden:
   field_notification_footer_text: true
   field_notification_header_color: true
   field_notification_header_text: true
+  field_notification_header_text_c: true
   field_notification_layouts_cin: true
   field_notification_layouts_cout: true
   field_notification_layouts_reser: true
