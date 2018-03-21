@@ -1,0 +1,23 @@
+uuid: b81bd82b-f4dc-4479-9376-de6f310da6f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_logstash_port
+    - node.type.machine
+id: node.machine.field_logstash_port
+field_name: field_logstash_port
+entity_type: node
+bundle: machine
+label: 'Logstash Port'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -354,6 +354,20 @@ class Proxy {
           'reservations' => [],
         ],
       ],
+      'config' => [
+        'machine_name' => $node->get('field_machine_name')->value,
+        'location' => $node->get('field_location')->value,
+        'address' => $node->get('field_ip')->value,
+        'logstash' => [
+          'host' => $node->get('field_logstash_host')->value,
+          'port' => $node->get('field_logstash_port')->value,
+        ],
+        'matomo' => [
+          'host' => $node->get('field_matomo_host')->value,
+          'endpoint' => $node->get('field_matomo_endpoint')->value,
+          'site_id' => $node->get('field_matomo_site_id')->value,
+        ],
+      ]
     ];
 
     // Attach notification layout status
