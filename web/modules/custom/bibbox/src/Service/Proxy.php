@@ -357,11 +357,15 @@ class Proxy {
       'config' => [
         'machine_name' => $node->get('field_machine_name')->value,
         'location' => $node->get('field_location')->value,
-        'ip' => $node->get('field_ip')->value,
-        'logstash_host' => $node->get('field_logstash_host')->value,
-        'logstash_port' => $node->get('field_logstash_port')->value,
-        'matomo_host' => $node->get('field_matomo_host')->value,
-        'matomo_site_id' => $node->get('field_matomo_site_id')->value,
+        'address' => $node->get('field_ip')->value,
+        'logstash' => [
+          'host' => $node->get('field_logstash_host')->value,
+          'port' => $node->get('field_logstash_port')->value,
+        ],
+        'matomo' => [
+          'host' => $node->get('field_matomo_host')->value,
+          'site_id' => $node->get('field_matomo_site_id')->value,
+        ],
       ]
     ];
 
