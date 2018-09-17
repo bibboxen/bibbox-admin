@@ -112,6 +112,22 @@ class ApiController extends ControllerBase {
   }
 
   /**
+   * Clear printer queue.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param $id
+   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   */
+  public function clearPrinterQueue(Request $request, $id) {
+    // Get destination to return to after completing request.
+    $destination = $request->query->get('destination');
+
+    \Drupal::service('bibbox.proxy')->clearPrinterQueue($id);
+
+    return new RedirectResponse($destination);
+  }
+
+  /**
    * Get json array of machines.
    *
    * @return \Symfony\Component\HttpFoundation\JsonResponse

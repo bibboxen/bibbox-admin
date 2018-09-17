@@ -2,6 +2,17 @@
 
 ## In develop
 
+## 1.2.1
+
+* Added clear printer queue command.
+
+## 1.2.0
+
+* Drupal update.
+* Added new config options.
+
+## v1.1.0
+
 * Change brand and logo to use image fields.
 
 ## v1.0.4
