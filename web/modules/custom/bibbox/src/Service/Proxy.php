@@ -181,6 +181,24 @@ class Proxy {
   }
 
   /**
+   * Clear the printer queue of the machine with $id.
+   *
+   * @param $id
+   */
+  public function clearPrinterQueue($id) {
+    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+
+    $ip = $node->get('field_ip')->value;
+
+    try {
+      $this->client->request('POST', $ip . "/clearprinter", array('verify' => false));
+    } catch (RequestException $e) {
+      drupal_set_message('Error clearing printer queue of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+      \Drupal::logger('bibbox')->error($e);
+    }
+  }
+
+  /**
    * Get translations for machine.
    *
    * @param $node
