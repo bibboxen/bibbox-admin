@@ -62,6 +62,14 @@ bibbox.out_of_order:
     _permission: 'access content'
     _content_type_format: text/html
 
+bibbox.clear_printer_queue:
+  path: '/bibbox/clear_printer_queue/{id}'
+  defaults:
+    _controller: '\Drupal\bibbox\Controller\ApiController::clearPrinterQueue'
+  requirements:
+    _permission: 'access content'
+    _content_type_format: text/html
+
 bibbox.push_translations:
   path: '/bibbox/push_translations/{id}'
   defaults:

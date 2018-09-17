@@ -47,6 +47,12 @@ function bibbox_entity_operation(\Drupal\Core\Entity\EntityInterface $entity) {
       'url' => \Drupal\Core\Url::fromRoute('bibbox.reboot_machine', ['id' => $entity->id()]),
       'weight' => 55,
     ];
+
+    $operations['clear_printer_queue'] = [
+      'title' => t('Clear printer queue'),
+      'url' => \Drupal\Core\Url::fromRoute('bibbox.clear_printer_queue', ['id' => $entity->id()]),
+      'weight' => 56,
+    ];
   }
 
   return $operations;
