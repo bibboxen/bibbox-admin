@@ -2,6 +2,10 @@
 
 ## In develop
 
+## 1.2.2
+
+* Updated to Drupal 8.6.2.
+
 ## 1.2.1
 
 * Added clear printer queue command.
