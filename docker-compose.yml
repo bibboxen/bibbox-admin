@@ -1,0 +1,73 @@
+version: "3"
+
+networks:
+  frontend:
+    external: true
+  app:
+    driver: bridge
+    internal: false
+
+services:
+  mariadb:
+    image: mariadb:10.3
+    networks:
+      - app
+    ports:
+      - '3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: db
+      MYSQL_PASSWORD: db
+      MYSQL_DATABASE: db
+
+  phpfpm:
+    image: itkdev/php7.2-fpm:latest
+    networks:
+      - app
+    restart: always
+    environment:
+      - PHP_XDEBUG=${PHP_XDEBUG:-0}
+      - PHP_XDEBUG_REMOTE_AUTOSTART=${PHP_XDEBUG_REMOTE_AUTOSTART:-0}
+      - PHP_XDEBUG_REMOTE_HOST=${PHP_XDEBUG_REMOTE_HOST:-0.0.0.0}
+      - PHP_XDEBUG_REMOTE_CONNECT_BACK=${PHP_XDEBUG_REMOTE_CONNECT_BACK:-0}
+      # - PHP_MAIL=1 # Uncomment to enable mailhog
+    depends_on:
+      - mariadb
+    volumes:
+      - .:/app:delegated
+
+  nginx:
+    image: nginx:latest
+    networks:
+      - app
+      - frontend
+    depends_on:
+      - phpfpm
+      - memcached
+    # ports:
+    #   - '80'
+    volumes:
+      - ${PWD}/.docker/vhost.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./:/app:delegated
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=frontend"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.rule=Host(`${COMPOSE_DOMAIN}`)"
+
+  memcached:
+    image: 'memcached:latest'
+    networks:
+      - app
+    ports:
+      - '11211'
+    environment:
+      - MEMCACHED_CACHE_SIZE=64
+
+  mailhog:
+    image: mailhog/mailhog
+    networks:
+      - app
+    restart: always
+    ports:
+      - "1025"
+      - "8025"

@@ -1,6 +1,8 @@
 # CHANGELOG (bibbox admin)
 
-## In develop
+## 1.4.0
+
+* Updated to Drupal 8.7.10.
 
 ## 1.2.2
 
