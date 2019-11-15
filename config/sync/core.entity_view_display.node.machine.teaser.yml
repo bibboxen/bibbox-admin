@@ -88,8 +88,15 @@ hidden:
   field_image_more_materials: true
   field_ip: true
   field_languages: true
+  field_location: true
   field_login_allow_manual: true
   field_login_allow_scan: true
+  field_logstash_host: true
+  field_logstash_port: true
+  field_machine_name: true
+  field_matomo_endpoint: true
+  field_matomo_host: true
+  field_matomo_site_id: true
   field_notification_date_format: true
   field_notification_default_lang: true
   field_notification_footer_html: true
