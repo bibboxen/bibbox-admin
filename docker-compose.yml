@@ -1,8 +1,17 @@
 version: "3"
 
+networks:
+  frontend:
+    external: true
+  app:
+    driver: bridge
+    internal: false
+
 services:
   mariadb:
     image: mariadb:10.3
+    networks:
+      - app
     ports:
       - '3306'
     environment:
@@ -13,6 +22,8 @@ services:
 
   phpfpm:
     image: itkdev/php7.2-fpm:latest
+    networks:
+      - app
     restart: always
     environment:
       - PHP_XDEBUG=${PHP_XDEBUG:-0}
@@ -27,6 +38,9 @@ services:
 
   nginx:
     image: nginx:latest
+    networks:
+      - app
+      - frontend
     depends_on:
       - phpfpm
       - memcached
@@ -36,10 +50,14 @@ services:
       - ${PWD}/.docker/vhost.conf:/etc/nginx/conf.d/default.conf:ro
       - ./:/app:delegated
     labels:
-      - "traefik.frontend.rule=Host:${COMPOSE_PROJECT_NAME}.docker.localhost"
+      - "traefik.enable=true"
+      - "traefik.docker.network=frontend"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.rule=Host(`${COMPOSE_DOMAIN}`)"
 
   memcached:
     image: 'memcached:latest'
+    networks:
+      - app
     ports:
       - '11211'
     environment:
@@ -47,16 +65,9 @@ services:
 
   mailhog:
     image: mailhog/mailhog
+    networks:
+      - app
     restart: always
     ports:
       - "1025"
       - "8025"
-
-  reverse-proxy:
-    image: traefik  # The official Traefik docker image
-    command: --api --docker  # Enables the web UI and tells Traefik to listen to docker
-    ports:
-      - "80"
-      - "8080"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock  # So that Traefik can listen to the Docker events
