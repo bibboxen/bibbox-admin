@@ -9,7 +9,7 @@
   Drupal.behaviors.mybehavior = {
     attach: function (context, settings) {
       $('#edit-field-screen-on-0-value').timepicker({ 'timeFormat': 'H:i:s' });
-      $('#edit-field-screen-o-0-value').timepicker({ 'timeFormat': 'H:i:s' });
+      $('#edit-field-screen-off-0-value').timepicker({ 'timeFormat': 'H:i:s' });
     }
   };
 
