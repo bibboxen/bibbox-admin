@@ -3,3 +3,10 @@ bibbox-styling:
   css:
     base:
       css/bibbox.css: {}
+      css/jquery.timepicker.min.css: {}
+  js:
+    js/jquery.timepicker.min.js: {}
+    js/bibbox.js: {}
+
+  dependencies:
+    - core/jquery

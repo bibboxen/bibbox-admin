@@ -1,0 +1,19 @@
+uuid: ea3903ae-c9fa-4d0d-b4c6-340239218930
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_screen_on
+    - node.type.machine
+id: node.machine.field_screen_on
+field_name: field_screen_on
+entity_type: node
+bundle: machine
+label: 'Screen on'
+description: 'When should the screen be turn on'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -25,14 +25,22 @@ dependencies:
     - field.field.node.machine.field_image_more_materials
     - field.field.node.machine.field_ip
     - field.field.node.machine.field_languages
+    - field.field.node.machine.field_location
     - field.field.node.machine.field_login_allow_manual
     - field.field.node.machine.field_login_allow_scan
+    - field.field.node.machine.field_logstash_host
+    - field.field.node.machine.field_logstash_port
+    - field.field.node.machine.field_machine_name
+    - field.field.node.machine.field_matomo_endpoint
+    - field.field.node.machine.field_matomo_host
+    - field.field.node.machine.field_matomo_site_id
     - field.field.node.machine.field_notification_date_format
     - field.field.node.machine.field_notification_default_lang
     - field.field.node.machine.field_notification_footer_html
     - field.field.node.machine.field_notification_footer_text
     - field.field.node.machine.field_notification_header_color
     - field.field.node.machine.field_notification_header_text
+    - field.field.node.machine.field_notification_header_text_c
     - field.field.node.machine.field_notification_layouts_cin
     - field.field.node.machine.field_notification_layouts_cout
     - field.field.node.machine.field_notification_layouts_reser
@@ -51,6 +59,8 @@ dependencies:
     - field.field.node.machine.field_online_state_offline_to
     - field.field.node.machine.field_online_state_online_to
     - field.field.node.machine.field_online_state_threshold
+    - field.field.node.machine.field_screen_off
+    - field.field.node.machine.field_screen_on
     - field.field.node.machine.field_timeout
     - field.field.node.machine.field_timeout_idle
     - node.type.machine
@@ -122,5 +132,7 @@ hidden:
   field_online_state_offline_to: true
   field_online_state_online_to: true
   field_online_state_threshold: true
+  field_screen_off: true
+  field_screen_on: true
   field_timeout: true
   field_timeout_idle: true
