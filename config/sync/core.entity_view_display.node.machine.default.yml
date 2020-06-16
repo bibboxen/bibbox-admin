@@ -58,6 +58,8 @@ dependencies:
     - field.field.node.machine.field_online_state_offline_to
     - field.field.node.machine.field_online_state_online_to
     - field.field.node.machine.field_online_state_threshold
+    - field.field.node.machine.field_screen_off
+    - field.field.node.machine.field_screen_on
     - field.field.node.machine.field_timeout
     - field.field.node.machine.field_timeout_idle
     - node.type.machine
@@ -167,6 +169,8 @@ third_party_settings:
         - field_location
         - field_default
         - field_ip
+        - field_screen_on
+        - field_screen_off
         - links
         - field_email
         - field_features
@@ -272,7 +276,7 @@ content:
     type: boolean
     region: content
   field_email:
-    weight: 12
+    weight: 14
     label: above
     settings: {  }
     third_party_settings: {  }
@@ -335,7 +339,7 @@ content:
     type: string
     region: content
   field_features:
-    weight: 13
+    weight: 15
     label: above
     settings:
       link: true
@@ -361,7 +365,7 @@ content:
     type: string
     region: content
   field_languages:
-    weight: 14
+    weight: 16
     label: above
     settings:
       link: true
@@ -397,7 +401,7 @@ content:
     type: boolean
     region: content
   field_logstash_host:
-    weight: 15
+    weight: 17
     label: above
     settings:
       link_to_entity: false
@@ -405,7 +409,7 @@ content:
     type: string
     region: content
   field_logstash_port:
-    weight: 16
+    weight: 18
     label: above
     settings:
       thousand_separator: ''
@@ -422,7 +426,7 @@ content:
     type: string
     region: content
   field_matomo_endpoint:
-    weight: 18
+    weight: 20
     label: above
     settings:
       link_to_entity: false
@@ -430,7 +434,7 @@ content:
     type: string
     region: content
   field_matomo_host:
-    weight: 17
+    weight: 19
     label: above
     settings:
       link_to_entity: false
@@ -438,7 +442,7 @@ content:
     type: string
     region: content
   field_matomo_site_id:
-    weight: 19
+    weight: 21
     label: above
     settings:
       link_to_entity: false
@@ -644,6 +648,22 @@ content:
     third_party_settings: {  }
     type: number_integer
     region: content
+  field_screen_off:
+    weight: 12
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_screen_on:
+    weight: 11
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   field_timeout:
     weight: 4
     label: above
@@ -663,7 +683,7 @@ content:
     type: number_integer
     region: content
   links:
-    weight: 11
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
