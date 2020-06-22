@@ -58,6 +58,8 @@ dependencies:
     - field.field.node.machine.field_online_state_offline_to
     - field.field.node.machine.field_online_state_online_to
     - field.field.node.machine.field_online_state_threshold
+    - field.field.node.machine.field_screen_off
+    - field.field.node.machine.field_screen_on
     - field.field.node.machine.field_timeout
     - field.field.node.machine.field_timeout_idle
     - node.type.machine
@@ -258,6 +260,8 @@ third_party_settings:
         - field_machine_name
         - field_location
         - field_ip
+        - field_screen_on
+        - field_screen_off
         - field_default
         - field_logstash_host
         - field_logstash_port
@@ -288,7 +292,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 12
+    weight: 14
     settings: {  }
     third_party_settings: {  }
     region: content
@@ -345,7 +349,7 @@ content:
     type: string_textfield
     region: content
   field_default:
-    weight: 4
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60
@@ -362,7 +366,7 @@ content:
     type: boolean_checkbox
     region: content
   field_email:
-    weight: 10
+    weight: 12
     settings:
       size: 60
       placeholder: ''
@@ -483,7 +487,7 @@ content:
     type: boolean_checkbox
     region: content
   field_logstash_host:
-    weight: 5
+    weight: 7
     settings:
       size: 60
       placeholder: ''
@@ -491,7 +495,7 @@ content:
     type: string_textfield
     region: content
   field_logstash_port:
-    weight: 6
+    weight: 8
     settings:
       placeholder: ''
     third_party_settings: {  }
@@ -506,7 +510,7 @@ content:
     type: string_textfield
     region: content
   field_matomo_endpoint:
-    weight: 8
+    weight: 10
     settings:
       size: 60
       placeholder: ''
@@ -514,7 +518,7 @@ content:
     type: string_textfield
     region: content
   field_matomo_host:
-    weight: 7
+    weight: 9
     settings:
       size: 60
       placeholder: ''
@@ -522,7 +526,7 @@ content:
     type: string_textfield
     region: content
   field_matomo_site_id:
-    weight: 9
+    weight: 11
     settings:
       size: 60
       placeholder: ''
@@ -716,6 +720,22 @@ content:
     third_party_settings: {  }
     type: number
     region: content
+  field_screen_off:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_screen_on:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_timeout:
     weight: 8
     settings:
@@ -734,7 +754,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 13
+    weight: 15
     third_party_settings: {  }
     region: content
   status:
@@ -748,7 +768,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 14
+    weight: 16
     third_party_settings: {  }
     region: content
   title:
@@ -761,7 +781,7 @@ content:
     region: content
   uid:
     type: entity_reference_autocomplete
-    weight: 11
+    weight: 13
     settings:
       match_operator: CONTAINS
       size: 60

@@ -380,6 +380,10 @@ class Proxy {
           'host' => $node->get('field_logstash_host')->value,
           'port' => $node->get('field_logstash_port')->value,
         ],
+        'screen' => [
+          'on' => $node->get('field_screen_on')->value,
+          'off' => $node->get('field_screen_off')->value,
+        ],
         'matomo' => [
           'host' => $node->get('field_matomo_host')->value,
           'endpoint' => $node->get('field_matomo_endpoint')->value,
