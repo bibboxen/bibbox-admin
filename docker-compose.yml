@@ -35,6 +35,7 @@ services:
       - mariadb
     volumes:
       - .:/app:delegated
+      - drush-cache:/root/.drush
 
   nginx:
     image: nginx:latest
@@ -71,3 +72,7 @@ services:
     ports:
       - "1025"
       - "8025"
+
+# Drush cache volume to persist cache between runs.
+volumes:
+  drush-cache:
