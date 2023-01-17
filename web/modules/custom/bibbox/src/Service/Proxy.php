@@ -389,6 +389,9 @@ class Proxy {
           'endpoint' => $node->get('field_matomo_endpoint')->value,
           'site_id' => $node->get('field_matomo_site_id')->value,
         ],
+        'keys' => [
+          'public' => $node->get('field_public_key')->value,
+        ],
       ]
     ];
 
