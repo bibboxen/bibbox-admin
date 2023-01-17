@@ -22,7 +22,7 @@ services:
       - MYSQL_DATABASE=db
 
   phpfpm:
-    image: itkdev/php7.4-fpm:latest
+    image: itkdev/php8.1-fpm:latest
     networks:
       - app
     environment:

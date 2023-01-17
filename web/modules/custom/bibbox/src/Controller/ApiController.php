@@ -18,11 +18,12 @@ class ApiController extends ControllerBase {
   /**
    * Push config to a machine.
    *
-   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param Request $request
    * @param $id
-   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   *
+   * @return RedirectResponse
    */
-  public function pushConfig(Request $request, $id) {
+  public function pushConfig(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
@@ -34,11 +35,12 @@ class ApiController extends ControllerBase {
   /**
    * Push translations to machine.
    *
-   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param Request $request
    * @param $id
-   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   *
+   * @return RedirectResponse
    */
-  public function pushTranslations(Request $request, $id) {
+  public function pushTranslations(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
@@ -50,11 +52,12 @@ class ApiController extends ControllerBase {
   /**
    * Restart UI to a machine.
    *
-   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param Request $request
    * @param $id
-   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   *
+   * @return RedirectResponse
    */
-  public function restartUI(Request $request, $id) {
+  public function restartUI(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
@@ -66,11 +69,12 @@ class ApiController extends ControllerBase {
   /**
    * Restart Node to a machine.
    *
-   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param Request $request
    * @param $id
-   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   *
+   * @return RedirectResponse
    */
-  public function restartNode(Request $request, $id) {
+  public function restartNode(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
@@ -82,11 +86,12 @@ class ApiController extends ControllerBase {
   /**
    * Reboot the machine.
    *
-   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param Request $request
    * @param $id
-   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   *
+   * @return RedirectResponse
    */
-  public function rebootMachine(Request $request, $id) {
+  public function rebootMachine(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
@@ -98,11 +103,11 @@ class ApiController extends ControllerBase {
   /**
    * Out of order.
    *
-   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param Request $request
    * @param $id
-   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   * @return RedirectResponse
    */
-  public function outOfOrder(Request $request, $id) {
+  public function outOfOrder(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
@@ -114,11 +119,11 @@ class ApiController extends ControllerBase {
   /**
    * Clear printer queue.
    *
-   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param Request $request
    * @param $id
-   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   * @return RedirectResponse
    */
-  public function clearPrinterQueue(Request $request, $id) {
+  public function clearPrinterQueue(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
@@ -130,9 +135,12 @@ class ApiController extends ControllerBase {
   /**
    * Get json array of machines.
    *
-   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   * @return JsonResponse
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function machines() {
+  public function machines(): JsonResponse {
     $machines = [];
 
     // Query for machine ids.
@@ -153,9 +161,13 @@ class ApiController extends ControllerBase {
    * Get json array of machines.
    *
    * @param $id
-   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   *
+   * @return JsonResponse
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function machine($id) {
+  public function machine($id): JsonResponse {
     $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $machine = \Drupal::service('bibbox.proxy')->getMachineArray($node);
@@ -167,9 +179,13 @@ class ApiController extends ControllerBase {
    * Get json array of machines.
    *
    * @param $id
+   *
    * @return \Symfony\Component\HttpFoundation\JsonResponse
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function translations($id) {
+  public function translations($id): JsonResponse {
     $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $translations = \Drupal::service('bibbox.proxy')->getTranslationsForMachine($node);

@@ -10,13 +10,13 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Client;
 
 class Proxy {
-  private $client = NULL;
+  private readonly Client $client;
 
   /**
    * Default construct.
    *
-   * Load koba configuration.
    * @param Client $client
+   *   HTTP client to make request to a given bibbox.
    */
   public function __construct(Client $client) {
     $this->client = $client;
@@ -25,10 +25,16 @@ class Proxy {
   /**
    * Push config to machine with $id.
    *
-   * @param $id
+   * @param int $id
+   *
+   * @return void
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \GuzzleHttp\Exception\GuzzleException
    * @throws \HttpException
    */
-  public function pushConfig($id) {
+  public function pushConfig(int $id): void {
     // Load node.
     $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
@@ -78,10 +84,16 @@ class Proxy {
   /**
    * Push translation to machine with $id.
    *
-   * @param $id
+   * @param int $id
+   *
+   * @return void
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \GuzzleHttp\Exception\GuzzleException
    * @throws \HttpException
    */
-  public function pushTranslation($id) {
+  public function pushTranslation(int $id): void {
     $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $translations = $this->getTranslationsForMachine($node);
@@ -111,9 +123,14 @@ class Proxy {
   /**
    * Restart the UI of the machine with $id.
    *
-   * @param $id
+   * @param int $id
+   *
+   * @return void
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \GuzzleHttp\Exception\GuzzleException
    */
-  public function restartUI($id) {
+  public function restartUI(int $id): void {
     $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $ip = $node->get('field_ip')->value;
@@ -129,9 +146,14 @@ class Proxy {
   /**
    * Restart the node of the machine with $id.
    *
-   * @param $id
+   * @param int $id
+   *
+   * @return void
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \GuzzleHttp\Exception\GuzzleException
    */
-  public function restartNode($id) {
+  public function restartNode(int $id): void {
     $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $ip = $node->get('field_ip')->value;
@@ -147,9 +169,15 @@ class Proxy {
   /**
    * Reboot the machine with $id.
    *
-   * @param $id
+   * @param int $id
+   *
+   * @return void
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \GuzzleHttp\Exception\GuzzleException
    */
-  public function rebootMachine($id) {
+  public function rebootMachine(int $id): void {
     $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $ip = $node->get('field_ip')->value;
@@ -165,9 +193,15 @@ class Proxy {
   /**
    * Set the machine with $id out of order.
    *
-   * @param $id
+   * @param int $id
+   *
+   * @return void
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \GuzzleHttp\Exception\GuzzleException
    */
-  public function outOfOrder($id) {
+  public function outOfOrder(int $id): void {
     $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $ip = $node->get('field_ip')->value;
@@ -183,9 +217,15 @@ class Proxy {
   /**
    * Clear the printer queue of the machine with $id.
    *
-   * @param $id
+   * @param int $id
+   *
+   * @return void
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \GuzzleHttp\Exception\GuzzleException
    */
-  public function clearPrinterQueue($id) {
+  public function clearPrinterQueue(int $id): void {
     $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $ip = $node->get('field_ip')->value;
@@ -210,7 +250,7 @@ class Proxy {
    *     2. All translations with $node.field_default machine attached.
    *     3. All translations with $node machine attached.
    */
-  public function getTranslationsForMachine($node) {
+  public function getTranslationsForMachine($node): array {
     $baseTranslations = $this->getTranslationsArray(NULL);
 
     $defaults = [];
@@ -228,12 +268,15 @@ class Proxy {
   /**
    * Get an array representation of all translations.
    *
-   * @param $mid
+   * @param int|null $mid
    *   Optionally. Get only the translations where Machine.id == $mid.
    *
-   * @return array
+   * @return array|array[]
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function getTranslationsArray($mid) {
+  public function getTranslationsArray(?int $mid = null): array {
     $translations = [
       'ui' => [],
       'notification' => [],
@@ -284,9 +327,9 @@ class Proxy {
    *   Machine represented as array.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-   *
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function getMachineArray($node) {
+  public function getMachineArray($node): array {
     // Create machine object.
     $machine = [
       'title' => $node->get('title')->value,
@@ -522,7 +565,7 @@ class Proxy {
    *
    * Modified to ignore null values in array2.
    */
-  private function array_merge_recursive_distinct_ignore_nulls(array &$array1, array &$array2) {
+  private function array_merge_recursive_distinct_ignore_nulls(array &$array1, array &$array2): array {
     $merged = $array1;
 
     foreach ($array2 as $key => &$value) {
@@ -543,9 +586,10 @@ class Proxy {
    * Parse the boolean string value from drupal to true/false.
    *
    * @param $bool
+   *
    * @return bool
    */
-  private function parseBoolean($bool) {
+  private function parseBoolean($bool): bool {
     return $bool ? TRUE : FALSE;
   }
 
@@ -553,9 +597,10 @@ class Proxy {
    * Parse the int string value from drupal to true/false.
    *
    * @param $int
-   * @return int
+   *
+   * @return int|null
    */
-  private function parseInt($int) {
+  private function parseInt($int): ?int {
     return isset($int) ? intval($int) : NULL;
   }
 
