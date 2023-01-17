@@ -140,7 +140,7 @@ class ApiController extends ControllerBase {
     $nids = $query->execute();
 
     foreach ($nids as $nid) {
-      $node = \Drupal::entityManager()->getStorage('node')->load($nid);
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
       // Add machine to $machines.
       $machines[] = \Drupal::service('bibbox.proxy')->getMachineArray($node);
@@ -156,7 +156,7 @@ class ApiController extends ControllerBase {
    * @return \Symfony\Component\HttpFoundation\JsonResponse
    */
   public function machine($id) {
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $machine = \Drupal::service('bibbox.proxy')->getMachineArray($node);
 
@@ -170,7 +170,7 @@ class ApiController extends ControllerBase {
    * @return \Symfony\Component\HttpFoundation\JsonResponse
    */
   public function translations($id) {
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $translations = \Drupal::service('bibbox.proxy')->getTranslationsForMachine($node);
 

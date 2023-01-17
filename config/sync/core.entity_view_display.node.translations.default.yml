@@ -16,11 +16,11 @@ bundle: translations
 mode: default
 content:
   field_translations:
-    weight: 1
+    type: field_translation_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: field_translation_formatter
+    weight: 1
     region: content
 hidden:
   links: true

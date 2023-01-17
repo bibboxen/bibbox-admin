@@ -81,16 +81,17 @@ third_party_settings:
         - field_bin_right_color
         - field_bin_right_background_color
         - field_bin_right
+      label: Bins
       parent_name: ''
+      region: content
       weight: 2
       format_type: details
       format_settings:
         label: Bins
-        open: true
-        id: ''
         classes: ''
+        id: ''
+        open: true
         required_fields: false
-      label: Bins
     group_notifications:
       children:
         - field_notification_default_lang
@@ -115,16 +116,17 @@ third_party_settings:
         - field_notification_layouts_cin
         - field_notification_layouts_cout
         - field_notification_layouts_reser
+      label: Notifications
       parent_name: ''
+      region: content
       weight: 4
       format_type: details
       format_settings:
         label: Notifications
-        open: true
-        id: ''
         classes: ''
+        id: ''
+        open: true
         required_fields: false
-      label: Notifications
     group_ui:
       children:
         - field_timeout
@@ -133,16 +135,17 @@ third_party_settings:
         - field_login_allow_manual
         - field_display_fines
         - field_image_more_materials
+      label: UI
       parent_name: ''
+      region: content
       weight: 1
       format_type: details
       format_settings:
         label: UI
-        open: true
-        id: ''
         classes: ''
+        id: ''
+        open: true
         required_fields: false
-      label: UI
     group_fbs:
       children:
         - field_fbs_username
@@ -155,16 +158,17 @@ third_party_settings:
         - field_online_state_threshold
         - field_online_state_online_to
         - field_online_state_offline_to
+      label: FBS
       parent_name: ''
+      region: content
       weight: 3
       format_type: details
       format_settings:
         label: FBS
-        open: true
-        id: ''
         classes: ''
+        id: ''
+        open: true
         required_fields: false
-      label: FBS
     group_basic:
       children:
         - field_machine_name
@@ -182,16 +186,17 @@ third_party_settings:
         - field_matomo_host
         - field_matomo_endpoint
         - field_matomo_site_id
+      label: Basic
       parent_name: ''
+      region: content
       weight: 0
       format_type: details
       format_settings:
         label: Basic
-        open: true
-        id: ''
         classes: ''
+        id: ''
+        open: true
         required_fields: false
-      label: Basic
 _core:
   default_config_hash: YFiJ79xO7eJUWSLhl6asjs4fk5yxgPod5-uJW5QyEzY
 id: node.machine.default
@@ -200,495 +205,495 @@ bundle: machine
 mode: default
 content:
   field_bin_default:
-    weight: 17
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 17
     region: content
   field_bin_left:
-    weight: 21
+    type: number_integer
     label: above
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_integer
+    weight: 21
     region: content
   field_bin_left_background_color:
-    weight: 20
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 20
     region: content
   field_bin_left_color:
-    weight: 19
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 19
     region: content
   field_bin_right:
-    weight: 25
+    type: number_integer
     label: above
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_integer
+    weight: 25
     region: content
   field_bin_right_background_color:
-    weight: 24
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 24
     region: content
   field_bin_right_color:
-    weight: 23
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 23
     region: content
   field_default:
-    weight: 9
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 9
     region: content
   field_display_fines:
-    weight: 8
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 8
     region: content
   field_email:
-    weight: 14
+    type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 14
     region: content
   field_fbs_agency:
-    weight: 17
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 17
     region: content
   field_fbs_endpoint:
-    weight: 16
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 16
     region: content
   field_fbs_location:
-    weight: 18
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 18
     region: content
   field_fbs_login_attempts_max:
-    weight: 19
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 19
     region: content
   field_fbs_login_attempts_time_li:
-    weight: 20
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 20
     region: content
   field_fbs_password:
-    weight: 15
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 15
     region: content
   field_fbs_username:
-    weight: 14
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 14
     region: content
   field_features:
-    weight: 15
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 15
     region: content
   field_image_more_materials:
-    weight: 9
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 9
     region: content
   field_ip:
-    weight: 10
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 10
     region: content
   field_languages:
-    weight: 16
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 16
     region: content
   field_location:
-    weight: 8
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 8
     region: content
   field_login_allow_manual:
-    weight: 7
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 7
     region: content
   field_login_allow_scan:
-    weight: 6
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 6
     region: content
   field_logstash_host:
-    weight: 17
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 17
     region: content
   field_logstash_port:
-    weight: 18
+    type: number_integer
     label: above
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_integer
+    weight: 18
     region: content
   field_machine_name:
-    weight: 7
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 7
     region: content
   field_matomo_endpoint:
-    weight: 20
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 20
     region: content
   field_matomo_host:
-    weight: 19
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 19
     region: content
   field_matomo_site_id:
-    weight: 21
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 21
     region: content
   field_notification_date_format:
-    weight: 24
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 24
     region: content
   field_notification_default_lang:
-    weight: 23
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 23
     region: content
   field_notification_footer_html:
-    weight: 39
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 39
     region: content
   field_notification_footer_text:
-    weight: 40
+    type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 40
     region: content
   field_notification_header_color:
-    weight: 30
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 30
     region: content
   field_notification_header_text:
-    weight: 32
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 32
     region: content
   field_notification_header_text_c:
-    weight: 31
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 31
     region: content
   field_notification_layouts_cin:
-    weight: 42
+    type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 42
     region: content
   field_notification_layouts_cout:
-    weight: 43
+    type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 43
     region: content
   field_notification_layouts_reser:
-    weight: 44
+    type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 44
     region: content
   field_notification_layouts_statu:
-    weight: 41
+    type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 41
     region: content
   field_notification_library_addre:
-    weight: 35
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 35
     region: content
   field_notification_library_city:
-    weight: 37
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 37
     region: content
   field_notification_library_name:
-    weight: 34
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 34
     region: content
   field_notification_library_phone:
-    weight: 38
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 38
     region: content
   field_notification_library_title:
-    weight: 33
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 33
     region: content
   field_notification_library_zip:
-    weight: 36
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 36
     region: content
   field_notification_mailer_from:
-    weight: 28
+    type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 28
     region: content
   field_notification_mailer_host:
-    weight: 25
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 25
     region: content
   field_notification_mailer_port:
-    weight: 26
+    type: number_integer
     label: above
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_integer
+    weight: 26
     region: content
   field_notification_mailer_secure:
-    weight: 27
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 27
     region: content
   field_notification_mailer_subjec:
-    weight: 29
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 29
     region: content
   field_online_state_offline_to:
-    weight: 23
+    type: number_integer
     label: above
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_integer
+    weight: 23
     region: content
   field_online_state_online_to:
-    weight: 22
+    type: number_integer
     label: above
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_integer
+    weight: 22
     region: content
   field_online_state_threshold:
-    weight: 21
+    type: number_integer
     label: above
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_integer
+    weight: 21
     region: content
   field_screen_off:
-    weight: 12
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 12
     region: content
   field_screen_on:
-    weight: 11
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 11
     region: content
   field_timeout:
-    weight: 4
+    type: number_integer
     label: above
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_integer
+    weight: 4
     region: content
   field_timeout_idle:
-    weight: 5
+    type: number_integer
     label: above
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_integer
+    weight: 5
     region: content
   links:
-    weight: 13
-    region: content
     settings: {  }
     third_party_settings: {  }
+    weight: 13
+    region: content
 hidden:
   field_private_key: true
   field_public_key: true

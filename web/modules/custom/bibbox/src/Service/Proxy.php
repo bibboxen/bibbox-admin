@@ -30,7 +30,7 @@ class Proxy {
    */
   public function pushConfig($id) {
     // Load node.
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     // Get machine array.
     $machine = $this->getMachineArray($node);
@@ -40,7 +40,7 @@ class Proxy {
       // Merge with Default if one exists.
       if (count($node->get('field_default'))) {
         // Get default node.
-        $defaultNode = \Drupal::entityManager()
+        $defaultNode = \Drupal::entityTypeManager()
           ->getStorage('node')
           ->load($node->get('field_default')[0]->getValue()['target_id']);
 
@@ -69,7 +69,7 @@ class Proxy {
           )
         );
       } catch (RequestException $e) {
-        drupal_set_message('Error pushing config to "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+        \Drupal::messenger()->addError('Error pushing config to "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
         \Drupal::logger('bibbox')->error($e);
       }
     }
@@ -82,7 +82,7 @@ class Proxy {
    * @throws \HttpException
    */
   public function pushTranslation($id) {
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $translations = $this->getTranslationsForMachine($node);
 
@@ -103,7 +103,7 @@ class Proxy {
         )
       );
     } catch (RequestException $e) {
-      drupal_set_message('Error pushing translations to "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+      \Drupal::messenger()->addError('Error pushing translations to "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
       \Drupal::logger('bibbox')->error($e);
     }
   }
@@ -114,14 +114,14 @@ class Proxy {
    * @param $id
    */
   public function restartUI($id) {
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $ip = $node->get('field_ip')->value;
 
     try {
       $this->client->request('POST', $ip . "/restart/ui", array('verify' => false));
     } catch (RequestException $e) {
-      drupal_set_message('Error restarting UI of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+      \Drupal::messenger()->addError('Error restarting UI of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
       \Drupal::logger('bibbox')->error($e);
     }
   }
@@ -132,14 +132,14 @@ class Proxy {
    * @param $id
    */
   public function restartNode($id) {
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $ip = $node->get('field_ip')->value;
 
     try {
       $this->client->request('POST', $ip . "/restart/application", array('verify' => false));
     } catch (RequestException $e) {
-      drupal_set_message('Error restarting Node of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+      \Drupal::messenger()->addError('Error restarting Node of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
       \Drupal::logger('bibbox')->error($e);
     }
   }
@@ -150,14 +150,14 @@ class Proxy {
    * @param $id
    */
   public function rebootMachine($id) {
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $ip = $node->get('field_ip')->value;
 
     try {
       $this->client->request('POST', $ip . "/reboot", array('verify' => false));
     } catch (RequestException $e) {
-      drupal_set_message('Error rebooting machine of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+      \Drupal::messenger()->addError('Error rebooting machine of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
       \Drupal::logger('bibbox')->error($e);
     }
   }
@@ -168,14 +168,14 @@ class Proxy {
    * @param $id
    */
   public function outOfOrder($id) {
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $ip = $node->get('field_ip')->value;
 
     try {
       $this->client->request('POST', $ip . "/outoforder", array('verify' => false));
     } catch (RequestException $e) {
-      drupal_set_message('Error setting out of order of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+      \Drupal::messenger()->addError('Error setting out of order of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
       \Drupal::logger('bibbox')->error($e);
     }
   }
@@ -186,14 +186,14 @@ class Proxy {
    * @param $id
    */
   public function clearPrinterQueue($id) {
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $ip = $node->get('field_ip')->value;
 
     try {
       $this->client->request('POST', $ip . "/clearprinter", array('verify' => false));
     } catch (RequestException $e) {
-      drupal_set_message('Error clearing printer queue of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+      \Drupal::messenger()->addError('Error clearing printer queue of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
       \Drupal::logger('bibbox')->error($e);
     }
   }
@@ -221,7 +221,8 @@ class Proxy {
 
     $defaults = $this->array_merge_recursive_distinct_ignore_nulls($baseTranslations, $defaults);
 
-    return $this->array_merge_recursive_distinct_ignore_nulls($defaults, $this->getTranslationsArray($node->id()));
+    $translationsArray = $this->getTranslationsArray($node->id());
+    return $this->array_merge_recursive_distinct_ignore_nulls($defaults, $translationsArray);
   }
 
   /**
@@ -238,7 +239,7 @@ class Proxy {
       'notification' => [],
     ];
 
-    $nodeStorage = \Drupal::entityManager()->getStorage('node');
+    $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
 
     // Query for language ids.
     $query = \Drupal::entityQuery('node')->condition('type', 'language');
@@ -456,7 +457,7 @@ class Proxy {
       $machine['ui']['features'] = [];
 
       foreach ($node->get('field_features') as $ref) {
-        $feature = \Drupal::entityManager()
+        $feature = \Drupal::entityTypeManager()
           ->getStorage('node')
           ->load($ref->getValue()['target_id']);
 
@@ -476,7 +477,7 @@ class Proxy {
       $machine['ui']['languages'] = [];
 
       foreach ($node->get('field_languages') as $ref) {
-        $language = \Drupal::entityManager()
+        $language = \Drupal::entityTypeManager()
           ->getStorage('node')
           ->load($ref->getValue()['target_id']);
 
