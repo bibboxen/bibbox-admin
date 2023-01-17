@@ -211,8 +211,8 @@ class ApiController extends ControllerBase {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function exposePrivateKey(Request $request): Response {
-    $ip = $request->headers->get('x-real-ip', '', []);
-    $node = $this->getMachineFromIp(reset($ip));
+    $ip = \Drupal::request()->server->get('REMOTE_ADDR', '', []);
+    $node = $this->getMachineFromIp($ip);
     $node = reset($node);
 
     $key = $node->get('field_private_key')->getValue()[0] ?? [];
@@ -241,10 +241,10 @@ class ApiController extends ControllerBase {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function accessPrivateKey(AccountInterface $account): AccessResultNeutral|AccessResult|AccessResultAllowed {
-    $ip = \Drupal::request()->headers->get('x-real-ip', '', []);
+    $ip = \Drupal::request()->server->get('REMOTE_ADDR', '', []);
     $nodes = [];
-    if (!empty($ip) && is_array($ip)) {
-      $nodes = $this->getMachineFromIp(reset($ip));
+    if (!empty($ip)) {
+      $nodes = $this->getMachineFromIp($ip);
     }
 
     return AccessResult::allowedIf(!empty($nodes));
