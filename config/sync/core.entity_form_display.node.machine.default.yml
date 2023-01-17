@@ -58,6 +58,8 @@ dependencies:
     - field.field.node.machine.field_online_state_offline_to
     - field.field.node.machine.field_online_state_online_to
     - field.field.node.machine.field_online_state_threshold
+    - field.field.node.machine.field_private_key
+    - field.field.node.machine.field_public_key
     - field.field.node.machine.field_screen_off
     - field.field.node.machine.field_screen_on
     - field.field.node.machine.field_timeout
@@ -283,6 +285,19 @@ third_party_settings:
         id: ''
         classes: ''
       label: Basic
+    group_offline_encrypt:
+      children:
+        - field_public_key
+        - field_private_key
+      parent_name: ''
+      weight: 20
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Offline (encrypt)'
 _core:
   default_config_hash: LHCnAe5KmyusyLvw2oPYxT_Oljjcn1_O4hQloshctv8
 id: node.machine.default
@@ -719,6 +734,22 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: number
+    region: content
+  field_private_key:
+    weight: 123
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_public_key:
+    weight: 122
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
     region: content
   field_screen_off:
     weight: 5
