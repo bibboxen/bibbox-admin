@@ -219,7 +219,6 @@ third_party_settings:
       weight: 7
       format_type: details
       format_settings:
-        label: Bins
         classes: ''
         id: ''
         open: false
@@ -293,15 +292,14 @@ third_party_settings:
       weight: 3
       format_type: details
       format_settings:
-        label: Basic
         classes: ''
         id: ''
         open: true
         required_fields: true
     group_offline_encrypt:
       children:
-        - field_public_key
         - field_private_key
+        - field_public_key
       label: 'Offline (encrypt)'
       region: content
       parent_name: ''
@@ -759,7 +757,7 @@ content:
     third_party_settings: {  }
   field_public_key:
     type: string_textarea
-    weight: 122
+    weight: 124
     region: content
     settings:
       rows: 5

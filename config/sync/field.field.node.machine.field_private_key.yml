@@ -10,7 +10,7 @@ field_name: field_private_key
 entity_type: node
 bundle: machine
 label: 'Private key'
-description: ''
+description: 'OpenSSL can be used the generate private key: <code>openssl genrsa -out private_key.pem 4096</code>'
 required: false
 translatable: false
 default_value: {  }

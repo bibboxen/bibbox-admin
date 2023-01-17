@@ -87,7 +87,6 @@ third_party_settings:
       weight: 2
       format_type: details
       format_settings:
-        label: Bins
         classes: ''
         id: ''
         open: true
@@ -122,7 +121,6 @@ third_party_settings:
       weight: 4
       format_type: details
       format_settings:
-        label: Notifications
         classes: ''
         id: ''
         open: true
@@ -141,7 +139,6 @@ third_party_settings:
       weight: 1
       format_type: details
       format_settings:
-        label: UI
         classes: ''
         id: ''
         open: true
@@ -164,7 +161,6 @@ third_party_settings:
       weight: 3
       format_type: details
       format_settings:
-        label: FBS
         classes: ''
         id: ''
         open: true
@@ -186,13 +182,13 @@ third_party_settings:
         - field_matomo_host
         - field_matomo_endpoint
         - field_matomo_site_id
+        - field_public_key
       label: Basic
       parent_name: ''
       region: content
       weight: 0
       format_type: details
       format_settings:
-        label: Basic
         classes: ''
         id: ''
         open: true
@@ -655,6 +651,13 @@ content:
     third_party_settings: {  }
     weight: 21
     region: content
+  field_public_key:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 22
+    region: content
   field_screen_off:
     type: string
     label: above
@@ -696,4 +699,3 @@ content:
     region: content
 hidden:
   field_private_key: true
-  field_public_key: true

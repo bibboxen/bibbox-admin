@@ -10,7 +10,7 @@ field_name: field_public_key
 entity_type: node
 bundle: machine
 label: 'Public key'
-description: ''
+description: "The public key can be generated base on the private key with OpenSSL: <code>openssl rsa -pubout -in private_key.pem -out public_key.pem\r\n</code>"
 required: false
 translatable: false
 default_value: {  }
