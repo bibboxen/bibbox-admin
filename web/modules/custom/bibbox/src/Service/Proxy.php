@@ -435,7 +435,7 @@ class Proxy {
         ],
         'keys' => [
           'public' => $node->get('field_public_key')->value,
-          'url' => 'https://'.\Drupal::request()->server->get('SERVER_ADDR', '', 'localhost').'/bibbox/private.pem'
+          'url' => 'https://'.\Drupal::request()->server->get('HTTP_HOST', '', 'localhost').'/bibbox/private.pem'
         ],
       ]
     ];
