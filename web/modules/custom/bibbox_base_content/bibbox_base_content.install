@@ -7,7 +7,7 @@
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\node\Entity\Node;
 
-function bibbox_base_content_install() {
+function bibbox_base_content_install(): void {
   // Add translations nodes.
   $moduleDir = dirname(drupal_get_filename('module', 'bibbox_base_content'));
 

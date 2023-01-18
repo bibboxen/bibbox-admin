@@ -1,0 +1,19 @@
+uuid: 1cbe29fd-d6a9-401f-b638-0a976bdbcacb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_public_key
+    - node.type.machine
+id: node.machine.field_public_key
+field_name: field_public_key
+entity_type: node
+bundle: machine
+label: 'Public key'
+description: "The public key can be generated base on the private key with OpenSSL: <code>openssl rsa -pubout -in private_key.pem -out public_key.pem\r\n</code>"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

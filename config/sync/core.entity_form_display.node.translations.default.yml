@@ -17,48 +17,48 @@ content:
   created:
     type: datetime_timestamp
     weight: 2
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   field_translations:
+    type: field_translation_widget
     weight: 26
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: field_translation_widget
-    region: content
   promote:
     type: boolean_checkbox
+    weight: 3
+    region: content
     settings:
       display_label: true
-    weight: 3
     third_party_settings: {  }
-    region: content
   status:
     type: boolean_checkbox
+    weight: 121
+    region: content
     settings:
       display_label: true
-    weight: 121
     third_party_settings: {  }
-    region: content
   sticky:
     type: boolean_checkbox
+    weight: 4
+    region: content
     settings:
       display_label: true
-    weight: 4
     third_party_settings: {  }
-    region: content
   title:
     type: string_textfield
     weight: 0
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    region: content
   uid:
     type: options_buttons
     weight: 1
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden: {  }

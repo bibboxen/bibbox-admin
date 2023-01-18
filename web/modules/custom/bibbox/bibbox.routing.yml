@@ -77,3 +77,11 @@ bibbox.push_translations:
   requirements:
     _permission: 'access content'
     _content_type_format: text/html
+
+bibbox.expose_private_key:
+  path: '/bibbox/private.pem'
+  defaults:
+    _controller: '\Drupal\bibbox\Controller\ApiController::exposePrivateKey'
+  requirements:
+    _custom_access: '\Drupal\bibbox\Controller\ApiController::accessPrivateKey'
+    _content_type_format: text/plain

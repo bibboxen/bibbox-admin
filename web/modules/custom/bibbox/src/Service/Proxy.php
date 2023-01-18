@@ -10,13 +10,13 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Client;
 
 class Proxy {
-  private $client = NULL;
+  private readonly Client $client;
 
   /**
    * Default construct.
    *
-   * Load koba configuration.
    * @param Client $client
+   *   HTTP client to make request to a given bibbox.
    */
   public function __construct(Client $client) {
     $this->client = $client;
@@ -25,12 +25,18 @@ class Proxy {
   /**
    * Push config to machine with $id.
    *
-   * @param $id
+   * @param int $id
+   *
+   * @return void
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \GuzzleHttp\Exception\GuzzleException
    * @throws \HttpException
    */
-  public function pushConfig($id) {
+  public function pushConfig(int $id): void {
     // Load node.
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     // Get machine array.
     $machine = $this->getMachineArray($node);
@@ -40,7 +46,7 @@ class Proxy {
       // Merge with Default if one exists.
       if (count($node->get('field_default'))) {
         // Get default node.
-        $defaultNode = \Drupal::entityManager()
+        $defaultNode = \Drupal::entityTypeManager()
           ->getStorage('node')
           ->load($node->get('field_default')[0]->getValue()['target_id']);
 
@@ -69,7 +75,7 @@ class Proxy {
           )
         );
       } catch (RequestException $e) {
-        drupal_set_message('Error pushing config to "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+        \Drupal::messenger()->addError('Error pushing config to "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
         \Drupal::logger('bibbox')->error($e);
       }
     }
@@ -78,11 +84,17 @@ class Proxy {
   /**
    * Push translation to machine with $id.
    *
-   * @param $id
+   * @param int $id
+   *
+   * @return void
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \GuzzleHttp\Exception\GuzzleException
    * @throws \HttpException
    */
-  public function pushTranslation($id) {
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+  public function pushTranslation(int $id): void {
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $translations = $this->getTranslationsForMachine($node);
 
@@ -103,7 +115,7 @@ class Proxy {
         )
       );
     } catch (RequestException $e) {
-      drupal_set_message('Error pushing translations to "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+      \Drupal::messenger()->addError('Error pushing translations to "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
       \Drupal::logger('bibbox')->error($e);
     }
   }
@@ -111,17 +123,22 @@ class Proxy {
   /**
    * Restart the UI of the machine with $id.
    *
-   * @param $id
+   * @param int $id
+   *
+   * @return void
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \GuzzleHttp\Exception\GuzzleException
    */
-  public function restartUI($id) {
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+  public function restartUI(int $id): void {
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $ip = $node->get('field_ip')->value;
 
     try {
       $this->client->request('POST', $ip . "/restart/ui", array('verify' => false));
     } catch (RequestException $e) {
-      drupal_set_message('Error restarting UI of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+      \Drupal::messenger()->addError('Error restarting UI of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
       \Drupal::logger('bibbox')->error($e);
     }
   }
@@ -129,17 +146,22 @@ class Proxy {
   /**
    * Restart the node of the machine with $id.
    *
-   * @param $id
+   * @param int $id
+   *
+   * @return void
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \GuzzleHttp\Exception\GuzzleException
    */
-  public function restartNode($id) {
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+  public function restartNode(int $id): void {
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $ip = $node->get('field_ip')->value;
 
     try {
       $this->client->request('POST', $ip . "/restart/application", array('verify' => false));
     } catch (RequestException $e) {
-      drupal_set_message('Error restarting Node of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+      \Drupal::messenger()->addError('Error restarting Node of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
       \Drupal::logger('bibbox')->error($e);
     }
   }
@@ -147,17 +169,23 @@ class Proxy {
   /**
    * Reboot the machine with $id.
    *
-   * @param $id
+   * @param int $id
+   *
+   * @return void
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \GuzzleHttp\Exception\GuzzleException
    */
-  public function rebootMachine($id) {
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+  public function rebootMachine(int $id): void {
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $ip = $node->get('field_ip')->value;
 
     try {
       $this->client->request('POST', $ip . "/reboot", array('verify' => false));
     } catch (RequestException $e) {
-      drupal_set_message('Error rebooting machine of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+      \Drupal::messenger()->addError('Error rebooting machine of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
       \Drupal::logger('bibbox')->error($e);
     }
   }
@@ -165,17 +193,23 @@ class Proxy {
   /**
    * Set the machine with $id out of order.
    *
-   * @param $id
+   * @param int $id
+   *
+   * @return void
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \GuzzleHttp\Exception\GuzzleException
    */
-  public function outOfOrder($id) {
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+  public function outOfOrder(int $id): void {
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $ip = $node->get('field_ip')->value;
 
     try {
       $this->client->request('POST', $ip . "/outoforder", array('verify' => false));
     } catch (RequestException $e) {
-      drupal_set_message('Error setting out of order of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+      \Drupal::messenger()->addError('Error setting out of order of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
       \Drupal::logger('bibbox')->error($e);
     }
   }
@@ -183,17 +217,23 @@ class Proxy {
   /**
    * Clear the printer queue of the machine with $id.
    *
-   * @param $id
+   * @param int $id
+   *
+   * @return void
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \GuzzleHttp\Exception\GuzzleException
    */
-  public function clearPrinterQueue($id) {
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+  public function clearPrinterQueue(int $id): void {
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $ip = $node->get('field_ip')->value;
 
     try {
       $this->client->request('POST', $ip . "/clearprinter", array('verify' => false));
     } catch (RequestException $e) {
-      drupal_set_message('Error clearing printer queue of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
+      \Drupal::messenger()->addError('Error clearing printer queue of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
       \Drupal::logger('bibbox')->error($e);
     }
   }
@@ -210,7 +250,7 @@ class Proxy {
    *     2. All translations with $node.field_default machine attached.
    *     3. All translations with $node machine attached.
    */
-  public function getTranslationsForMachine($node) {
+  public function getTranslationsForMachine($node): array {
     $baseTranslations = $this->getTranslationsArray(NULL);
 
     $defaults = [];
@@ -221,24 +261,28 @@ class Proxy {
 
     $defaults = $this->array_merge_recursive_distinct_ignore_nulls($baseTranslations, $defaults);
 
-    return $this->array_merge_recursive_distinct_ignore_nulls($defaults, $this->getTranslationsArray($node->id()));
+    $translationsArray = $this->getTranslationsArray($node->id());
+    return $this->array_merge_recursive_distinct_ignore_nulls($defaults, $translationsArray);
   }
 
   /**
    * Get an array representation of all translations.
    *
-   * @param $mid
+   * @param int|null $mid
    *   Optionally. Get only the translations where Machine.id == $mid.
    *
-   * @return array
+   * @return array|array[]
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function getTranslationsArray($mid) {
+  public function getTranslationsArray(?int $mid = null): array {
     $translations = [
       'ui' => [],
       'notification' => [],
     ];
 
-    $nodeStorage = \Drupal::entityManager()->getStorage('node');
+    $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
 
     // Query for language ids.
     $query = \Drupal::entityQuery('node')->condition('type', 'language');
@@ -283,9 +327,9 @@ class Proxy {
    *   Machine represented as array.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-   *
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function getMachineArray($node) {
+  public function getMachineArray($node): array {
     // Create machine object.
     $machine = [
       'title' => $node->get('title')->value,
@@ -389,6 +433,10 @@ class Proxy {
           'endpoint' => $node->get('field_matomo_endpoint')->value,
           'site_id' => $node->get('field_matomo_site_id')->value,
         ],
+        'keys' => [
+          'public' => $node->get('field_public_key')->value,
+          'url' => 'https://'.\Drupal::request()->server->get('SERVER_ADDR', '', 'localhost').'/bibbox/private.pem'
+        ],
       ]
     ];
 
@@ -453,7 +501,7 @@ class Proxy {
       $machine['ui']['features'] = [];
 
       foreach ($node->get('field_features') as $ref) {
-        $feature = \Drupal::entityManager()
+        $feature = \Drupal::entityTypeManager()
           ->getStorage('node')
           ->load($ref->getValue()['target_id']);
 
@@ -473,7 +521,7 @@ class Proxy {
       $machine['ui']['languages'] = [];
 
       foreach ($node->get('field_languages') as $ref) {
-        $language = \Drupal::entityManager()
+        $language = \Drupal::entityTypeManager()
           ->getStorage('node')
           ->load($ref->getValue()['target_id']);
 
@@ -518,7 +566,7 @@ class Proxy {
    *
    * Modified to ignore null values in array2.
    */
-  private function array_merge_recursive_distinct_ignore_nulls(array &$array1, array &$array2) {
+  private function array_merge_recursive_distinct_ignore_nulls(array &$array1, array &$array2): array {
     $merged = $array1;
 
     foreach ($array2 as $key => &$value) {
@@ -539,9 +587,10 @@ class Proxy {
    * Parse the boolean string value from drupal to true/false.
    *
    * @param $bool
+   *
    * @return bool
    */
-  private function parseBoolean($bool) {
+  private function parseBoolean($bool): bool {
     return $bool ? TRUE : FALSE;
   }
 
@@ -549,9 +598,10 @@ class Proxy {
    * Parse the int string value from drupal to true/false.
    *
    * @param $int
-   * @return int
+   *
+   * @return int|null
    */
-  private function parseInt($int) {
+  private function parseInt($int): ?int {
     return isset($int) ? intval($int) : NULL;
   }
 

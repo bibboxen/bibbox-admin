@@ -6,10 +6,16 @@
 
 namespace Drupal\bibbox\Controller;
 
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultAllowed;
+use Drupal\Core\Access\AccessResultNeutral;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Route;
 
 /**
  * ApiController.
@@ -18,11 +24,12 @@ class ApiController extends ControllerBase {
   /**
    * Push config to a machine.
    *
-   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param Request $request
    * @param $id
-   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   *
+   * @return RedirectResponse
    */
-  public function pushConfig(Request $request, $id) {
+  public function pushConfig(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
@@ -34,11 +41,12 @@ class ApiController extends ControllerBase {
   /**
    * Push translations to machine.
    *
-   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param Request $request
    * @param $id
-   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   *
+   * @return RedirectResponse
    */
-  public function pushTranslations(Request $request, $id) {
+  public function pushTranslations(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
@@ -50,11 +58,12 @@ class ApiController extends ControllerBase {
   /**
    * Restart UI to a machine.
    *
-   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param Request $request
    * @param $id
-   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   *
+   * @return RedirectResponse
    */
-  public function restartUI(Request $request, $id) {
+  public function restartUI(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
@@ -66,11 +75,12 @@ class ApiController extends ControllerBase {
   /**
    * Restart Node to a machine.
    *
-   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param Request $request
    * @param $id
-   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   *
+   * @return RedirectResponse
    */
-  public function restartNode(Request $request, $id) {
+  public function restartNode(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
@@ -82,11 +92,12 @@ class ApiController extends ControllerBase {
   /**
    * Reboot the machine.
    *
-   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param Request $request
    * @param $id
-   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   *
+   * @return RedirectResponse
    */
-  public function rebootMachine(Request $request, $id) {
+  public function rebootMachine(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
@@ -98,11 +109,11 @@ class ApiController extends ControllerBase {
   /**
    * Out of order.
    *
-   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param Request $request
    * @param $id
-   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   * @return RedirectResponse
    */
-  public function outOfOrder(Request $request, $id) {
+  public function outOfOrder(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
@@ -114,11 +125,11 @@ class ApiController extends ControllerBase {
   /**
    * Clear printer queue.
    *
-   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @param Request $request
    * @param $id
-   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   * @return RedirectResponse
    */
-  public function clearPrinterQueue(Request $request, $id) {
+  public function clearPrinterQueue(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
@@ -130,9 +141,12 @@ class ApiController extends ControllerBase {
   /**
    * Get json array of machines.
    *
-   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   * @return JsonResponse
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function machines() {
+  public function machines(): JsonResponse {
     $machines = [];
 
     // Query for machine ids.
@@ -140,7 +154,7 @@ class ApiController extends ControllerBase {
     $nids = $query->execute();
 
     foreach ($nids as $nid) {
-      $node = \Drupal::entityManager()->getStorage('node')->load($nid);
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
       // Add machine to $machines.
       $machines[] = \Drupal::service('bibbox.proxy')->getMachineArray($node);
@@ -153,10 +167,14 @@ class ApiController extends ControllerBase {
    * Get json array of machines.
    *
    * @param $id
-   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   *
+   * @return JsonResponse
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function machine($id) {
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+  public function machine($id): JsonResponse {
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $machine = \Drupal::service('bibbox.proxy')->getMachineArray($node);
 
@@ -167,13 +185,89 @@ class ApiController extends ControllerBase {
    * Get json array of machines.
    *
    * @param $id
-   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   *
+   * @return JsonResponse
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function translations($id) {
-    $node = \Drupal::entityManager()->getStorage('node')->load($id);
+  public function translations($id): JsonResponse {
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $translations = \Drupal::service('bibbox.proxy')->getTranslationsForMachine($node);
 
     return new JsonResponse($translations, 200);
   }
+
+  /**
+   * Get private offline decrypt certificate based on the request IP.
+   *
+   * @param Request $request
+   *
+   * @return Response
+   *   The private certificate
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  public function exposePrivateKey(Request $request): Response {
+    $ip = \Drupal::request()->server->get('REMOTE_ADDR', '', []);
+    $node = $this->getMachineFromIp($ip);
+    $node = reset($node);
+
+    $key = $node->get('field_private_key')->getValue()[0] ?? [];
+    if (empty($key)) {
+      // Fallback to key defined at the default machine.
+      $nid = $node->get('field_default')[0]->getValue()['target_id'];
+      $defaultNode = \Drupal::entityTypeManager()
+        ->getStorage('node')
+        ->load($nid);
+
+      $key = $defaultNode->get('field_private_key')->getValue()[0];
+    }
+    $key = $key['value'];
+
+    return new Response($key, Response::HTTP_OK, ['Content-Type' => 'text/plain']);
+  }
+
+  /**
+   * Access callback to only allow access based request IP.
+   *
+   * @param \Drupal\Core\Session\AccountInterface $account
+   *
+   * @return AccessResultNeutral|AccessResult|AccessResultAllowed
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  public function accessPrivateKey(AccountInterface $account): AccessResultNeutral|AccessResult|AccessResultAllowed {
+    $ip = \Drupal::request()->server->get('REMOTE_ADDR', '', []);
+    $nodes = [];
+    if (!empty($ip)) {
+      $nodes = $this->getMachineFromIp($ip);
+    }
+
+    return AccessResult::allowedIf(!empty($nodes));
+  }
+
+  /**
+   * Get machine node based on IP address.
+   *
+   * @param string $ip
+   *   IP address to look up machine.
+   *
+   * @return array
+   *   Nodes that matches in the database.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  private function getMachineFromIp(string $ip): array {
+    return \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->loadByProperties([
+        'field_ip' => 'https://'.$ip,
+      ]);
+  }
+
 }
