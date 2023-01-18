@@ -6,6 +6,7 @@
 
 namespace Drupal\translation_field\Plugin\Field\FieldFormatter;
 
+use Drupal\Core\Field\Annotation\FieldFormatter;
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Field\FieldItemListInterface;
 
@@ -25,7 +26,7 @@ class TranslationFieldFormatter extends FormatterBase {
   /**
    * {@inheritdoc}
    */
-  public function settingsSummary() {
+  public function settingsSummary(): array {
     $summary = array();
     $summary[] = t('Displays the translation.');
 
@@ -35,7 +36,7 @@ class TranslationFieldFormatter extends FormatterBase {
   /**
    * {@inheritdoc}
    */
-  public function viewElements(FieldItemListInterface $items, $langcode) {
+  public function viewElements(FieldItemListInterface $items, $langcode): array {
     $element = array();
 
     foreach ($items as $delta => $item) {

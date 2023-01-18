@@ -6,12 +6,13 @@
 
 namespace Drupal\translation_field\Plugin\Field\FieldType;
 
+use Drupal\Core\Field\Annotation\FieldType;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\TypedData\DataDefinition;
 use Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem;
 
 /**
- * Provides a field type of a translation
+ * Provides a field type of translation
  *
  * @FieldType(
  *   id = "translation",
@@ -26,7 +27,7 @@ class TranslationItem extends EntityReferenceItem {
   /**
    * {@inheritdoc}
    */
-  public static function schema(FieldStorageDefinitionInterface $field_definition) {
+  public static function schema(FieldStorageDefinitionInterface $field_definition): array {
     return array(
       'columns' => array(
         'key' => array(
@@ -61,7 +62,7 @@ class TranslationItem extends EntityReferenceItem {
   /**
    * {@inheritdoc}
    */
-  public function isEmpty() {
+  public function isEmpty(): bool {
     $value1 = $this->get('key')->getValue();
     $value2 = $this->get('value')->getValue();
     $value3 = $this->get('target_id')->getValue();
@@ -79,7 +80,7 @@ class TranslationItem extends EntityReferenceItem {
    * @return bool
    *   TRUE if the item holds an unsaved entity.
    */
-  public function hasNewEntity() {
+  public function hasNewEntity(): bool {
     return !$this->isEmpty() && $this->target_id === NULL && isset($this->entity) && $this->entity->isNew();
   }
 

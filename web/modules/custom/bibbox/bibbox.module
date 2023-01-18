@@ -4,53 +4,56 @@
  * Contains Bibbox module hooks.
  */
 
+use \Drupal\Core\Entity\EntityInterface;
+use \Drupal\Core\Url;
+
 /**
  * Implements hook_entity_operation().
  */
-function bibbox_entity_operation(\Drupal\Core\Entity\EntityInterface $entity) {
+function bibbox_entity_operation(EntityInterface $entity): array {
   $operations = [];
 
   // Add entity operations to machine nodes.
   if ($entity->bundle() == 'machine') {
     $operations['push_translations'] = [
       'title' => t('Push translations'),
-      'url' => \Drupal\Core\Url::fromRoute('bibbox.push_translations', ['id' => $entity->id()]),
+      'url' => Url::fromRoute('bibbox.push_translations', ['id' => $entity->id()]),
       'weight' => 50,
     ];
 
     $operations['push_config'] = [
       'title' => t('Push config'),
-      'url' => \Drupal\Core\Url::fromRoute('bibbox.push_config', ['id' => $entity->id()]),
+      'url' => Url::fromRoute('bibbox.push_config', ['id' => $entity->id()]),
       'weight' => 51,
     ];
 
     $operations['restart_ui'] = [
       'title' => t('Restart UI'),
-      'url' => \Drupal\Core\Url::fromRoute('bibbox.restart_ui', ['id' => $entity->id()]),
+      'url' => Url::fromRoute('bibbox.restart_ui', ['id' => $entity->id()]),
       'weight' => 52,
     ];
 
     $operations['restart_node'] = [
       'title' => t('Restart Node'),
-      'url' => \Drupal\Core\Url::fromRoute('bibbox.restart_node', ['id' => $entity->id()]),
+      'url' => Url::fromRoute('bibbox.restart_node', ['id' => $entity->id()]),
       'weight' => 53,
     ];
 
     $operations['set_out_of_order'] = [
       'title' => t('Set in Out-of-Order'),
-      'url' => \Drupal\Core\Url::fromRoute('bibbox.out_of_order', ['id' => $entity->id()]),
+      'url' => Url::fromRoute('bibbox.out_of_order', ['id' => $entity->id()]),
       'weight' => 54,
     ];
 
     $operations['reboot_machine'] = [
       'title' => t('Reboot Machine'),
-      'url' => \Drupal\Core\Url::fromRoute('bibbox.reboot_machine', ['id' => $entity->id()]),
+      'url' => Url::fromRoute('bibbox.reboot_machine', ['id' => $entity->id()]),
       'weight' => 55,
     ];
 
     $operations['clear_printer_queue'] = [
       'title' => t('Clear printer queue'),
-      'url' => \Drupal\Core\Url::fromRoute('bibbox.clear_printer_queue', ['id' => $entity->id()]),
+      'url' => Url::fromRoute('bibbox.clear_printer_queue', ['id' => $entity->id()]),
       'weight' => 56,
     ];
   }

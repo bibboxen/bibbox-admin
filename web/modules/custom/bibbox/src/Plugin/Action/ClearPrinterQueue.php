@@ -7,6 +7,7 @@
 namespace Drupal\bibbox\Plugin\Action;
 
 use Drupal\Core\Action\ActionBase;
+use Drupal\Core\Annotation\Action;
 use Drupal\Core\Session\AccountInterface;
 
 /**

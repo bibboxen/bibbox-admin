@@ -59,6 +59,8 @@ dependencies:
     - field.field.node.machine.field_online_state_offline_to
     - field.field.node.machine.field_online_state_online_to
     - field.field.node.machine.field_online_state_threshold
+    - field.field.node.machine.field_private_key
+    - field.field.node.machine.field_public_key
     - field.field.node.machine.field_screen_off
     - field.field.node.machine.field_screen_on
     - field.field.node.machine.field_timeout
@@ -132,6 +134,8 @@ hidden:
   field_online_state_offline_to: true
   field_online_state_online_to: true
   field_online_state_threshold: true
+  field_private_key: true
+  field_public_key: true
   field_screen_off: true
   field_screen_on: true
   field_timeout: true

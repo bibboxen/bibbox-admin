@@ -7,7 +7,7 @@
 /**
  * Install script.
  */
-function bibbox_install() {
+function bibbox_install(): void {
   // Set permissions.
   \Drupal::configFactory()->getEditable('user.role.anonymous')
     ->set('permissions', [])
@@ -22,7 +22,7 @@ function bibbox_install() {
  *
  * Set permissions so anonymous users can not access content and create users.
  */
-function bibbox_update_8001() {
+function bibbox_update_8001(): void {
   // Set permissions.
   \Drupal::configFactory()->getEditable('user.role.anonymous')
     ->set('permissions', [])
@@ -37,7 +37,7 @@ function bibbox_update_8001() {
  *
  * Add missing option to field.storage.node.field_notification_layouts_cin.
  */
-function bibbox_update_8002() {
+function bibbox_update_8002(): void {
   $options = \Drupal::config('field.storage.node.field_notification_layouts_cin')->get('settings.allowed_values');
 
   $options[] = [
@@ -55,7 +55,7 @@ function bibbox_update_8002() {
  *
  * Add role admin.
  */
-function bibbox_update_8003() {
+function bibbox_update_8003(): void {
   \Drupal::configFactory()->getEditable('user.role.admin')
     ->set('status', true)
     ->set('label', 'Admin')
@@ -94,7 +94,7 @@ function bibbox_update_8003() {
  *
  * Added help texts.
  */
-function bibbox_update_8004() {
+function bibbox_update_8004(): void {
   \Drupal::configFactory()->getEditable('field.field.node.machine.field_bin_left_background_color')
     ->set('description', 'The color value to set for the background. E.g. #ff2 or red')
     ->save();
@@ -142,7 +142,7 @@ function bibbox_update_8004() {
  *
  * Change pager to full pager with 100 elements pr page.
  */
-function bibbox_update_8005() {
+function bibbox_update_8005(): void {
   $pager = [
     'type' => 'full',
     'options' => [
