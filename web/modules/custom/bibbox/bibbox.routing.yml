@@ -85,3 +85,5 @@ bibbox.expose_private_key:
   requirements:
     _custom_access: '\Drupal\bibbox\Controller\ApiController::accessPrivateKey'
     _content_type_format: text/plain
+  options:
+    no_cache: true
