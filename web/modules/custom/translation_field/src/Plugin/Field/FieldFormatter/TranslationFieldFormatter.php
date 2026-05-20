@@ -15,7 +15,6 @@ use Drupal\Core\Field\FieldItemListInterface;
  *
  * @FieldFormatter(
  *   id = "field_translation_formatter",
- *   module = "translation_field",
  *   label = @Translation("Translation"),
  *   field_types = {
  *     "field_translation"

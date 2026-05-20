@@ -16,7 +16,6 @@ use Drupal\Core\Form\FormStateInterface;
  *
  * @FieldWidget(
  *   id = "field_translation_widget",
- *   module = "translation_field",
  *   label = @Translation("Translation"),
  *   field_types = {
  *     "field_translation"
