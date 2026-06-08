@@ -1,7 +1,7 @@
 name: Bibbox
 type: theme
 description: 'Bibbox administration theme.'
-core_version_requirement: ^8.8 || ^9
+core_version_requirement: ^10
 base theme: adminimal_theme
 
 libraries:

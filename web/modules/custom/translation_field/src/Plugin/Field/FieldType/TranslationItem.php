@@ -17,7 +17,6 @@ use Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem;
  * @FieldType(
  *   id = "translation",
  *   label = @Translation("Translation"),
- *   module = "translation_field",
  *   description = @Translation("Provides a translation field"),
  *   default_widget = "field_translation_widget",
  *   default_formatter = "field_translation_formatter"

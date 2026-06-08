@@ -16,23 +16,18 @@
         }
     },
     "require": {
-        "php": "^8.1",
+        "php": "^8.3",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.7",
-        "drupal/adminimal_theme": "^1.6",
-        "drupal/core-composer-scaffold": "^9.3",
-        "drupal/core-project-message": "^9.3",
-        "drupal/core-recommended": "^9.3",
-        "drupal/field_group": "^3.0",
-        "drush/drush": "^10"
+        "drupal/adminimal_theme": "^1.7",
+        "drupal/core-composer-scaffold": "^10.4",
+        "drupal/core-project-message": "^10.4",
+        "drupal/core-recommended": "^10.4",
+        "drupal/field_group": "^3.4",
+        "drush/drush": "^13"
     },
     "require-dev": {
-        "behat/mink": "~1.7",
-        "behat/mink-goutte-driver": "~1.2",
-        "jcalderonzumba/gastonjs": "~1.0.2",
-        "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
-        "mikey179/vfsstream": "~1.2",
-        "symfony/css-selector": "~2.8"
+        "mikey179/vfsstream": "~1.2"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -46,7 +41,8 @@
             "cweagans/composer-patches": true,
             "drupal/console-extend-plugin": true,
             "drupal/core-composer-scaffold": true,
-            "drupal/core-project-message": true
+            "drupal/core-project-message": true,
+            "phpstan/extension-installer": true
         }
     },
     "autoload": {
