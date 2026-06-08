@@ -1,5 +1,9 @@
 # CHANGELOG (bibbox admin)
 
+## 2.0.0
+
+* Upgrade to Drupal 10.4.x.
+
 ## 1.6.1
 
 * Upgrade to Drupal 8.9.6.
