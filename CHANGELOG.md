@@ -1,5 +1,9 @@
 # CHANGELOG (bibbox admin)
 
+## Unreleased
+
+* Switched to maintained `nginx/nginx-unprivileged` image.
+
 ## 2.0.0
 
 * Upgrade to Drupal 10.4.x.
