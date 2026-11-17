@@ -8,7 +8,13 @@
 /**
  * Install script.
  */
-function bibbox_install(): void {
+function bibbox_install(bool $is_syncing): void {
+  // The config import supplies these values. A write here makes an anonymous
+  // role without an ID, and the import then fails.
+  if ($is_syncing) {
+    return;
+  }
+
   // Set permissions.
   \Drupal::configFactory()->getEditable('user.role.anonymous')
     ->set('permissions', [])

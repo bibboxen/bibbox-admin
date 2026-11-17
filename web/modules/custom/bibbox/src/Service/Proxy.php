@@ -309,7 +309,7 @@ class Proxy {
     $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
 
     // Query for language ids.
-    $query = \Drupal::entityQuery('node')->condition('type', 'language');
+    $query = \Drupal::entityQuery('node')->accessCheck(TRUE)->condition('type', 'language');
     $nids = $query->execute();
 
     foreach ($nids as $nid) {

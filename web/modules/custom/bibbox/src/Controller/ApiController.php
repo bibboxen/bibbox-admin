@@ -170,7 +170,7 @@ class ApiController extends ControllerBase {
     $machines = [];
 
     // Query for machine ids.
-    $query = \Drupal::entityQuery('node')->condition('type', 'machine');
+    $query = \Drupal::entityQuery('node')->accessCheck(TRUE)->condition('type', 'machine');
     $nids = $query->execute();
 
     foreach ($nids as $nid) {
