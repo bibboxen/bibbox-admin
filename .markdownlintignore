@@ -9,6 +9,7 @@ LICENSE.md
 .venv/
 # Drupal
 web/*.md
+drupal-project-README.md
 web/core/
 web/libraries/
 web/*/contrib/

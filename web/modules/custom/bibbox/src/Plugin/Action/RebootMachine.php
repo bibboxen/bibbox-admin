@@ -1,13 +1,8 @@
 <?php
-/**
- * @file
- * Contains the reboot machine action.
- */
 
 namespace Drupal\bibbox\Plugin\Action;
 
 use Drupal\Core\Action\ActionBase;
-use Drupal\Core\Annotation\Action;
 use Drupal\Core\Session\AccountInterface;
 
 /**
@@ -33,7 +28,7 @@ class RebootMachine extends ActionBase {
   /**
    * {@inheritdoc}
    */
-  public function access($object, AccountInterface $account = NULL, $return_as_object = FALSE) {
+  public function access($object, ?AccountInterface $account = NULL, $return_as_object = FALSE) {
     $result = $object->access('update', $account, TRUE);
 
     return $return_as_object ? $result : $result->isAllowed();

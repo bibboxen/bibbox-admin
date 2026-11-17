@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\bibbox\Controller\ApiController
- */
 
 namespace Drupal\bibbox\Controller;
 
@@ -15,19 +11,22 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Route;
 
 /**
- * ApiController.
+ * Controller for the bibbox machine operations and the machine API.
  */
 class ApiController extends ControllerBase {
+
   /**
    * Push config to a machine.
    *
    * @param Request $request
-   * @param $id
+   *   The current request.
+   * @param string $id
+   *   The node ID of the machine.
    *
    * @return RedirectResponse
+   *   Redirect to the destination or the front page.
    */
   public function pushConfig(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
@@ -42,9 +41,12 @@ class ApiController extends ControllerBase {
    * Push translations to machine.
    *
    * @param Request $request
-   * @param $id
+   *   The current request.
+   * @param string $id
+   *   The node ID of the machine.
    *
    * @return RedirectResponse
+   *   Redirect to the destination or the front page.
    */
   public function pushTranslations(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
@@ -59,15 +61,18 @@ class ApiController extends ControllerBase {
    * Restart UI to a machine.
    *
    * @param Request $request
-   * @param $id
+   *   The current request.
+   * @param string $id
+   *   The node ID of the machine.
    *
    * @return RedirectResponse
+   *   Redirect to the destination or the front page.
    */
-  public function restartUI(Request $request, $id): RedirectResponse {
+  public function restartUi(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
     $destination = $request->query->get('destination');
 
-    \Drupal::service('bibbox.proxy')->restartUI($id);
+    \Drupal::service('bibbox.proxy')->restartUi($id);
 
     return new RedirectResponse($destination);
   }
@@ -76,9 +81,12 @@ class ApiController extends ControllerBase {
    * Restart Node to a machine.
    *
    * @param Request $request
-   * @param $id
+   *   The current request.
+   * @param string $id
+   *   The node ID of the machine.
    *
    * @return RedirectResponse
+   *   Redirect to the destination or the front page.
    */
   public function restartNode(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
@@ -93,9 +101,12 @@ class ApiController extends ControllerBase {
    * Reboot the machine.
    *
    * @param Request $request
-   * @param $id
+   *   The current request.
+   * @param string $id
+   *   The node ID of the machine.
    *
    * @return RedirectResponse
+   *   Redirect to the destination or the front page.
    */
   public function rebootMachine(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
@@ -110,8 +121,12 @@ class ApiController extends ControllerBase {
    * Out of order.
    *
    * @param Request $request
-   * @param $id
+   *   The current request.
+   * @param string $id
+   *   The node ID of the machine.
+   *
    * @return RedirectResponse
+   *   Redirect to the destination or the front page.
    */
   public function outOfOrder(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
@@ -126,8 +141,12 @@ class ApiController extends ControllerBase {
    * Clear printer queue.
    *
    * @param Request $request
-   * @param $id
+   *   The current request.
+   * @param string $id
+   *   The node ID of the machine.
+   *
    * @return RedirectResponse
+   *   Redirect to the destination or the front page.
    */
   public function clearPrinterQueue(Request $request, $id): RedirectResponse {
     // Get destination to return to after completing request.
@@ -142,6 +161,7 @@ class ApiController extends ControllerBase {
    * Get json array of machines.
    *
    * @return JsonResponse
+   *   The machines as JSON.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
@@ -164,11 +184,13 @@ class ApiController extends ControllerBase {
   }
 
   /**
-   * Get json array of machines.
+   * Get json array of one machine.
    *
-   * @param $id
+   * @param string $id
+   *   The node ID of the machine.
    *
    * @return JsonResponse
+   *   The machine as JSON.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
@@ -182,11 +204,13 @@ class ApiController extends ControllerBase {
   }
 
   /**
-   * Get json array of machines.
+   * Get json array of the translations for one machine.
    *
-   * @param $id
+   * @param string $id
+   *   The node ID of the machine.
    *
    * @return JsonResponse
+   *   The translations as JSON.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
@@ -203,6 +227,7 @@ class ApiController extends ControllerBase {
    * Get private offline decrypt certificate based on the request IP.
    *
    * @param Request $request
+   *   The current request.
    *
    * @return Response
    *   The private certificate
@@ -234,8 +259,10 @@ class ApiController extends ControllerBase {
    * Access callback to only allow access based request IP.
    *
    * @param \Drupal\Core\Session\AccountInterface $account
+   *   The current user account.
    *
    * @return AccessResultNeutral|AccessResult|AccessResultAllowed
+   *   Allowed if the request IP is the IP of a machine. Neutral if not.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
@@ -266,7 +293,7 @@ class ApiController extends ControllerBase {
     return \Drupal::entityTypeManager()
       ->getStorage('node')
       ->loadByProperties([
-        'field_ip' => 'https://'.$ip,
+        'field_ip' => 'https://' . $ip,
       ]);
   }
 

@@ -1,15 +1,21 @@
 <?php
-/**
- * @file
- * Contains proxy to machines.
- */
 
 namespace Drupal\bibbox\Service;
 
+use Drupal\field\Entity\FieldConfig;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Client;
 
+/**
+ * Sends configuration, translations and commands to the bibbox machines.
+ */
 class Proxy {
+
+  /**
+   * HTTP client to make request to a given bibbox.
+   *
+   * @var \GuzzleHttp\Client
+   */
   private readonly Client $client;
 
   /**
@@ -26,6 +32,7 @@ class Proxy {
    * Push config to machine with $id.
    *
    * @param int $id
+   *   The node ID of the machine.
    *
    * @return void
    *
@@ -54,10 +61,10 @@ class Proxy {
         $default = $this->getMachineArray($defaultNode);
 
         // Merge.
-        $machine = $this->array_merge_recursive_distinct_ignore_nulls($default, $machine);
+        $machine = $this->arrayMergeRecursiveDistinctIgnoreNulls($default, $machine);
       }
 
-      // Get IP
+      // Get IP.
       $ip = $node->get('field_ip')->value;
 
       // Make sure it is set.
@@ -68,13 +75,14 @@ class Proxy {
       try {
         $this->client->request(
           'POST',
-          $node->get('field_ip')->value . "/config",
-          array(
+          $node->get('field_ip')->value . '/config',
+          [
             'json' => $machine,
-            'verify' => false
-          )
+            'verify' => FALSE,
+          ]
         );
-      } catch (RequestException $e) {
+      }
+      catch (RequestException $e) {
         \Drupal::messenger()->addError('Error pushing config to "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
         \Drupal::logger('bibbox')->error($e);
       }
@@ -85,6 +93,7 @@ class Proxy {
    * Push translation to machine with $id.
    *
    * @param int $id
+   *   The node ID of the machine.
    *
    * @return void
    *
@@ -108,13 +117,14 @@ class Proxy {
     try {
       $this->client->request(
         'POST',
-        $ip . "/translations",
-        array(
+        $ip . '/translations',
+        [
           'json' => $translations,
-          'verify' => false
-        )
+          'verify' => FALSE,
+        ]
       );
-    } catch (RequestException $e) {
+    }
+    catch (RequestException $e) {
       \Drupal::messenger()->addError('Error pushing translations to "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
       \Drupal::logger('bibbox')->error($e);
     }
@@ -124,20 +134,23 @@ class Proxy {
    * Restart the UI of the machine with $id.
    *
    * @param int $id
+   *   The node ID of the machine.
    *
    * @return void
+   *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    * @throws \GuzzleHttp\Exception\GuzzleException
    */
-  public function restartUI(int $id): void {
+  public function restartUi(int $id): void {
     $node = \Drupal::entityTypeManager()->getStorage('node')->load($id);
 
     $ip = $node->get('field_ip')->value;
 
     try {
-      $this->client->request('POST', $ip . "/restart/ui", array('verify' => false));
-    } catch (RequestException $e) {
+      $this->client->request('POST', $ip . '/restart/ui', ['verify' => FALSE]);
+    }
+    catch (RequestException $e) {
       \Drupal::messenger()->addError('Error restarting UI of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
       \Drupal::logger('bibbox')->error($e);
     }
@@ -147,8 +160,10 @@ class Proxy {
    * Restart the node of the machine with $id.
    *
    * @param int $id
+   *   The node ID of the machine.
    *
    * @return void
+   *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    * @throws \GuzzleHttp\Exception\GuzzleException
@@ -159,8 +174,9 @@ class Proxy {
     $ip = $node->get('field_ip')->value;
 
     try {
-      $this->client->request('POST', $ip . "/restart/application", array('verify' => false));
-    } catch (RequestException $e) {
+      $this->client->request('POST', $ip . '/restart/application', ['verify' => FALSE]);
+    }
+    catch (RequestException $e) {
       \Drupal::messenger()->addError('Error restarting Node of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
       \Drupal::logger('bibbox')->error($e);
     }
@@ -170,6 +186,7 @@ class Proxy {
    * Reboot the machine with $id.
    *
    * @param int $id
+   *   The node ID of the machine.
    *
    * @return void
    *
@@ -183,8 +200,9 @@ class Proxy {
     $ip = $node->get('field_ip')->value;
 
     try {
-      $this->client->request('POST', $ip . "/reboot", array('verify' => false));
-    } catch (RequestException $e) {
+      $this->client->request('POST', $ip . '/reboot', ['verify' => FALSE]);
+    }
+    catch (RequestException $e) {
       \Drupal::messenger()->addError('Error rebooting machine of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
       \Drupal::logger('bibbox')->error($e);
     }
@@ -194,6 +212,7 @@ class Proxy {
    * Set the machine with $id out of order.
    *
    * @param int $id
+   *   The node ID of the machine.
    *
    * @return void
    *
@@ -207,8 +226,9 @@ class Proxy {
     $ip = $node->get('field_ip')->value;
 
     try {
-      $this->client->request('POST', $ip . "/outoforder", array('verify' => false));
-    } catch (RequestException $e) {
+      $this->client->request('POST', $ip . '/outoforder', ['verify' => FALSE]);
+    }
+    catch (RequestException $e) {
       \Drupal::messenger()->addError('Error setting out of order of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
       \Drupal::logger('bibbox')->error($e);
     }
@@ -218,6 +238,7 @@ class Proxy {
    * Clear the printer queue of the machine with $id.
    *
    * @param int $id
+   *   The node ID of the machine.
    *
    * @return void
    *
@@ -231,8 +252,9 @@ class Proxy {
     $ip = $node->get('field_ip')->value;
 
     try {
-      $this->client->request('POST', $ip . "/clearprinter", array('verify' => false));
-    } catch (RequestException $e) {
+      $this->client->request('POST', $ip . '/clearprinter', ['verify' => FALSE]);
+    }
+    catch (RequestException $e) {
       \Drupal::messenger()->addError('Error clearing printer queue of "' . $node->get('title')->value . '" ( ' . $ip . ' )', 'error');
       \Drupal::logger('bibbox')->error($e);
     }
@@ -241,8 +263,9 @@ class Proxy {
   /**
    * Get translations for machine.
    *
-   * @param $node
+   * @param \Drupal\node\NodeInterface $node
    *   The machine node.
+   *
    * @return array
    *   The translations for the node.
    *   This is the result of merging:
@@ -259,10 +282,10 @@ class Proxy {
       $defaults = $this->getTranslationsArray($node->get('field_default')[0]->getValue()['target_id']);
     }
 
-    $defaults = $this->array_merge_recursive_distinct_ignore_nulls($baseTranslations, $defaults);
+    $defaults = $this->arrayMergeRecursiveDistinctIgnoreNulls($baseTranslations, $defaults);
 
     $translationsArray = $this->getTranslationsArray($node->id());
-    return $this->array_merge_recursive_distinct_ignore_nulls($defaults, $translationsArray);
+    return $this->arrayMergeRecursiveDistinctIgnoreNulls($defaults, $translationsArray);
   }
 
   /**
@@ -272,11 +295,12 @@ class Proxy {
    *   Optionally. Get only the translations where Machine.id == $mid.
    *
    * @return array|array[]
+   *   The translations. The language code is the first key.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function getTranslationsArray(?int $mid = null): array {
+  public function getTranslationsArray(?int $mid = NULL): array {
     $translations = [
       'ui' => [],
       'notification' => [],
@@ -320,7 +344,7 @@ class Proxy {
   /**
    * Get an array representation of a machine.
    *
-   * @param $node
+   * @param \Drupal\node\NodeInterface $node
    *   The machine node.
    *
    * @return array
@@ -348,7 +372,7 @@ class Proxy {
           'threshold' => $this->parseInt($node->get('field_online_state_threshold')->value),
           'onlineTimeout' => $this->parseInt($node->get('field_online_state_online_to')->value),
           'offlineTimeout' => $this->parseInt($node->get('field_online_state_offline_to')->value),
-        ]
+        ],
       ],
       'ui' => [
         'timeout' => [
@@ -367,10 +391,10 @@ class Proxy {
               'id' => 'right',
               'background_color' => $node->get('field_bin_right_background_color')->value,
               'color' => $node->get('field_bin_right_color')->value,
-            ]
+            ],
           ],
           // Will be attached later.
-          "bins" => []
+          'bins' => [],
         ],
         'display_more_materials' => $this->parseBoolean($node->get('field_image_more_materials')->value),
         'display_fines' => $this->parseBoolean($node->get('field_display_fines')->value),
@@ -435,14 +459,14 @@ class Proxy {
         ],
         'keys' => [
           'public' => $node->get('field_public_key')->value,
-          'url' => 'https://'.\Drupal::request()->server->get('HTTP_HOST', '', 'localhost').'/bibbox/private.pem'
+          'url' => 'https://' . \Drupal::request()->server->get('HTTP_HOST', '', 'localhost') . '/bibbox/private.pem',
         ],
-      ]
+      ],
     ];
 
-    // Attach notification layout status
+    // Attach notification layout status.
     if (isset($node->get('field_notification_layouts_statu')->value)) {
-      $allowed = \Drupal\field\Entity\FieldConfig::loadByName('node', 'machine', 'field_notification_layouts_statu')
+      $allowed = FieldConfig::loadByName('node', 'machine', 'field_notification_layouts_statu')
         ->getSetting('allowed_values');
       foreach ($allowed as $key => $value) {
         $machine['notification']['layouts']['status'][$key] = FALSE;
@@ -452,9 +476,9 @@ class Proxy {
       }
     }
 
-    // Attach notification layout checkOut
+    // Attach notification layout checkOut.
     if (isset($node->get('field_notification_layouts_cout')->value)) {
-      $allowed = \Drupal\field\Entity\FieldConfig::loadByName('node', 'machine', 'field_notification_layouts_cout')
+      $allowed = FieldConfig::loadByName('node', 'machine', 'field_notification_layouts_cout')
         ->getSetting('allowed_values');
       foreach ($allowed as $key => $value) {
         $machine['notification']['layouts']['checkOut'][$key] = FALSE;
@@ -464,9 +488,9 @@ class Proxy {
       }
     }
 
-    // Attach notification layout checkIn
+    // Attach notification layout checkIn.
     if (isset($node->get('field_notification_layouts_cin')->value)) {
-      $allowed = \Drupal\field\Entity\FieldConfig::loadByName('node', 'machine', 'field_notification_layouts_cin')
+      $allowed = FieldConfig::loadByName('node', 'machine', 'field_notification_layouts_cin')
         ->getSetting('allowed_values');
       foreach ($allowed as $key => $value) {
         $machine['notification']['layouts']['checkIn'][$key] = FALSE;
@@ -476,9 +500,9 @@ class Proxy {
       }
     }
 
-    // Attach notification layout reservations
+    // Attach notification layout reservations.
     if (isset($node->get('field_notification_layouts_reser')->value)) {
-      $allowed = \Drupal\field\Entity\FieldConfig::loadByName('node', 'machine', 'field_notification_layouts_reser')
+      $allowed = FieldConfig::loadByName('node', 'machine', 'field_notification_layouts_reser')
         ->getSetting('allowed_values');
       foreach ($allowed as $key => $value) {
         $machine['notification']['layouts']['reservations'][$key] = FALSE;
@@ -490,10 +514,10 @@ class Proxy {
 
     // Attach bins to binSorting.
     foreach ($node->get('field_bin_left') as $item) {
-      $machine['ui']['binSorting']['bins']["" . $item->value] = 'left';
+      $machine['ui']['binSorting']['bins']['' . $item->value] = 'left';
     }
     foreach ($node->get('field_bin_right') as $item) {
-      $machine['ui']['binSorting']['bins']["" . $item->value] = 'right';
+      $machine['ui']['binSorting']['bins']['' . $item->value] = 'right';
     }
 
     // Attach features.
@@ -504,7 +528,6 @@ class Proxy {
         $feature = \Drupal::entityTypeManager()
           ->getStorage('node')
           ->load($ref->getValue()['target_id']);
-
 
         $machine['ui']['features'][] = [
           'title' => $feature->get('title')->value,
@@ -538,40 +561,39 @@ class Proxy {
   }
 
   /**
-   * array_merge_recursive does indeed merge arrays, but it converts values with duplicate
-   * keys to arrays rather than overwriting the value in the first array with the duplicate
-   * value in the second array, as array_merge does. I.e., with array_merge_recursive,
-   * this happens (documented behavior):
+   * Merge two arrays recursively and ignore null values in the second array.
    *
-   * array_merge_recursive(array('key' => 'org value'), array('key' => 'new value'));
-   *     => array('key' => array('org value', 'new value'));
+   * The function array_merge_recursive converts values with duplicate keys to
+   * arrays. This function replaces the value in the first array with the value
+   * in the second array, as array_merge does:
    *
-   * array_merge_recursive_distinct does not change the datatypes of the values in the arrays.
-   * Matching keys' values in the second array overwrite those in the first array, as is the
-   * case with array_merge, i.e.:
+   * @code
+   * merge(['key' => 'org value'], ['key' => 'new value']);
+   *   => ['key' => 'new value'];
+   * @endcode
    *
-   * array_merge_recursive_distinct(array('key' => 'org value'), array('key' => 'new value'));
-   *     => array('key' => array('new value'));
-   *
-   * Parameters are passed by reference, though only for performance reasons. They're not
-   * altered by this function.
+   * The parameters are references for performance reasons only. This function
+   * does not change them.
    *
    * @param array $array1
+   *   The base array.
    * @param array $array2
+   *   The array with the values that replace the base values.
+   *
    * @return array
+   *   The merged array.
+   *
    * @author Daniel <daniel (at) danielsmedegaardbuus (dot) dk>
    * @author Gabriel Sobrinho <gabriel (dot) sobrinho (at) gmail (dot) com>
    *
-   * @from http://php.net/manual/en/function.array-merge-recursive.php#92195
-   *
-   * Modified to ignore null values in array2.
+   * @see http://php.net/manual/en/function.array-merge-recursive.php#92195
    */
-  private function array_merge_recursive_distinct_ignore_nulls(array &$array1, array &$array2): array {
+  private function arrayMergeRecursiveDistinctIgnoreNulls(array &$array1, array &$array2): array {
     $merged = $array1;
 
     foreach ($array2 as $key => &$value) {
-      if (is_array($value) && isset ($merged[$key]) && is_array($merged[$key])) {
-        $merged[$key] = $this->array_merge_recursive_distinct_ignore_nulls($merged[$key], $value);
+      if (is_array($value) && isset($merged[$key]) && is_array($merged[$key])) {
+        $merged[$key] = $this->arrayMergeRecursiveDistinctIgnoreNulls($merged[$key], $value);
       }
       else {
         if (isset($value)) {
@@ -586,20 +608,24 @@ class Proxy {
   /**
    * Parse the boolean string value from drupal to true/false.
    *
-   * @param $bool
+   * @param mixed $bool
+   *   The value from the Drupal field.
    *
    * @return bool
+   *   The boolean value.
    */
   private function parseBoolean($bool): bool {
     return $bool ? TRUE : FALSE;
   }
 
   /**
-   * Parse the int string value from drupal to true/false.
+   * Parse the int string value from drupal to an integer.
    *
-   * @param $int
+   * @param mixed $int
+   *   The value from the Drupal field.
    *
    * @return int|null
+   *   The integer value. Null if the field has no value.
    */
   private function parseInt($int): ?int {
     return isset($int) ? intval($int) : NULL;

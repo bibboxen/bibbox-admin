@@ -1,6 +1,6 @@
 name: Bibbox
 type: theme
-description: 'Bibbox administration theme.'
+description: "Bibbox administration theme."
 core_version_requirement: ^10
 base theme: adminimal_theme
 

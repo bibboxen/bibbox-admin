@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - Upgrade to Drupal 11.4.x.
+- Add the development tools for the coding standards checks.
+- Apply the coding standards to the custom code.
 
 ## [2.0.0] - 2026-06-08
 
