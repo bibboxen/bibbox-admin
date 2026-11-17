@@ -5,6 +5,8 @@
 vendor/
 node_modules/
 LICENSE.md
+# Python
+.venv/
 # Drupal
 web/*.md
 web/core/
