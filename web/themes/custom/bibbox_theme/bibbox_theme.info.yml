@@ -1,8 +1,8 @@
 name: Bibbox
 type: theme
 description: "Bibbox administration theme."
-core_version_requirement: ^10
-base theme: adminimal_theme
+core_version_requirement: ^10 || ^11
+base theme: claro
 
 libraries:
   - bibbox_theme/bibbox-styling
