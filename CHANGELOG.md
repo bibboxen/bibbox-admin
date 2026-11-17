@@ -7,9 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.0] - 2026-11-23
+
+### Added
+
+- Add the development tools and the GitHub Actions workflows for the coding standards checks.
+
+### Changed
+
 - Upgrade to Drupal 11.4.x.
-- Add the development tools for the coding standards checks.
+- Upgrade the `field_group` module to 4.x.
+- Change the base theme of `bibbox_theme` from `adminimal_theme` to `claro`.
+- Change the PHP docker images to PHP 8.5.
+- Change to the maintained `nginx/nginx-unprivileged` image.
 - Apply the coding standards to the custom code.
+- Change the change log format to Keep a Changelog.
+
+### Removed
+
+- Remove the `adminimal_theme` theme.
+
+### Fixed
+
+- Correct the site install from the existing configuration.
 
 ## [2.0.0] - 2026-06-08
 
@@ -95,7 +115,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First version.
 
-[Unreleased]: https://github.com/bibboxen/bibbox-admin/compare/2.0.0...HEAD
+[Unreleased]: https://github.com/bibboxen/bibbox-admin/compare/3.0.0...HEAD
+[3.0.0]: https://github.com/bibboxen/bibbox-admin/compare/2.0.0...3.0.0
 [2.0.0]: https://github.com/bibboxen/bibbox-admin/compare/1.6.1...2.0.0
 [1.6.1]: https://github.com/bibboxen/bibbox-admin/compare/1.4.0...1.6.1
 [1.4.0]: https://github.com/bibboxen/bibbox-admin/compare/1.2.2...1.4.0
