@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contains update/install functions for bibbox.
@@ -7,7 +8,13 @@
 /**
  * Install script.
  */
-function bibbox_install(): void {
+function bibbox_install(bool $is_syncing): void {
+  // The config import supplies these values. A write here makes an anonymous
+  // role without an ID, and the import then fails.
+  if ($is_syncing) {
+    return;
+  }
+
   // Set permissions.
   \Drupal::configFactory()->getEditable('user.role.anonymous')
     ->set('permissions', [])
@@ -57,12 +64,12 @@ function bibbox_update_8002(): void {
  */
 function bibbox_update_8003(): void {
   \Drupal::configFactory()->getEditable('user.role.admin')
-    ->set('status', true)
+    ->set('status', TRUE)
     ->set('label', 'Admin')
     ->set('dependencies', [])
     ->set('id', 'admin')
     ->set('weight', 2)
-    ->set('is_admin', null)
+    ->set('is_admin', NULL)
     ->set('permissions', [
       'access content overview',
       'view own unpublished content',
@@ -84,7 +91,7 @@ function bibbox_update_8003(): void {
       'delete any translations content',
       'delete own translations content',
       'edit any translations content',
-      'edit own translations content'
+      'edit own translations content',
     ])
     ->save();
 }
@@ -149,7 +156,7 @@ function bibbox_update_8005(): void {
       'items_per_page' => 100,
       'offset' => 0,
       'id' => 0,
-      'total_pages' => null,
+      'total_pages' => NULL,
       'tags' => [
         'previous' => '‹‹',
         'next' => '››',
@@ -157,16 +164,16 @@ function bibbox_update_8005(): void {
         'last' => 'Last »',
       ],
       'expose' => [
-        'items_per_page' => false,
+        'items_per_page' => FALSE,
         'items_per_page_label' => 'Items per page',
         'items_per_page_options' => '5, 10, 25, 50',
-        'items_per_page_options_all' => false,
+        'items_per_page_options_all' => FALSE,
         'items_per_page_options_all_label' => '- All -',
-        'offset' => false,
+        'offset' => FALSE,
         'offset_label' => 'Offset',
       ],
       'quantity' => 9,
-    ]
+    ],
   ];
 
   \Drupal::configFactory()->getEditable('views.view.features')

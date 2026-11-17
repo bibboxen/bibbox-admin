@@ -1,85 +1,85 @@
 bibbox.machines:
-  path: '/bibbox/machine'
+  path: "/bibbox/machine"
   defaults:
     _controller: '\Drupal\bibbox\Controller\ApiController::machines'
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
     _content_type_format: text/html
 
 bibbox.machine:
-  path: '/bibbox/machine/{id}'
+  path: "/bibbox/machine/{id}"
   defaults:
     _controller: '\Drupal\bibbox\Controller\ApiController::machine'
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
     _content_type_format: text/html
 
 bibbox.translations:
-  path: '/bibbox/translations/{id}'
+  path: "/bibbox/translations/{id}"
   defaults:
     _controller: '\Drupal\bibbox\Controller\ApiController::translations'
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
     _content_type_format: text/html
 
 bibbox.push_config:
-  path: '/bibbox/push_config/{id}'
+  path: "/bibbox/push_config/{id}"
   defaults:
     _controller: '\Drupal\bibbox\Controller\ApiController::pushConfig'
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
     _content_type_format: text/html
 
 bibbox.restart_ui:
-  path: '/bibbox/restart_ui/{id}'
+  path: "/bibbox/restart_ui/{id}"
   defaults:
-    _controller: '\Drupal\bibbox\Controller\ApiController::restartUI'
+    _controller: '\Drupal\bibbox\Controller\ApiController::restartUi'
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
     _content_type_format: text/html
 
 bibbox.restart_node:
-  path: '/bibbox/restart_node/{id}'
+  path: "/bibbox/restart_node/{id}"
   defaults:
     _controller: '\Drupal\bibbox\Controller\ApiController::restartNode'
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
     _content_type_format: text/html
 
 bibbox.reboot_machine:
-  path: '/bibbox/reboot_machine/{id}'
+  path: "/bibbox/reboot_machine/{id}"
   defaults:
     _controller: '\Drupal\bibbox\Controller\ApiController::rebootMachine'
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
     _content_type_format: text/html
 
 bibbox.out_of_order:
-  path: '/bibbox/out_of_order/{id}'
+  path: "/bibbox/out_of_order/{id}"
   defaults:
     _controller: '\Drupal\bibbox\Controller\ApiController::outOfOrder'
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
     _content_type_format: text/html
 
 bibbox.clear_printer_queue:
-  path: '/bibbox/clear_printer_queue/{id}'
+  path: "/bibbox/clear_printer_queue/{id}"
   defaults:
     _controller: '\Drupal\bibbox\Controller\ApiController::clearPrinterQueue'
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
     _content_type_format: text/html
 
 bibbox.push_translations:
-  path: '/bibbox/push_translations/{id}'
+  path: "/bibbox/push_translations/{id}"
   defaults:
     _controller: '\Drupal\bibbox\Controller\ApiController::pushTranslations'
   requirements:
-    _permission: 'access content'
+    _permission: "access content"
     _content_type_format: text/html
 
 bibbox.expose_private_key:
-  path: '/bibbox/private.pem'
+  path: "/bibbox/private.pem"
   defaults:
     _controller: '\Drupal\bibbox\Controller\ApiController::exposePrivateKey'
   requirements:

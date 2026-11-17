@@ -27,7 +27,7 @@ services:
       #- ENCRYPT=1 # Uncomment to enable database encryption.
 
   phpfpm:
-    image: itkdev/php8.3-fpm:latest
+    image: itkdev/php8.5-fpm:latest
     user: ${COMPOSE_USER:-deploy}
     networks:
       - app
@@ -116,7 +116,7 @@ services:
       - ./:/md
 
   prettier:
-    # Prettier does not (yet, fcf.
+    # Prettier does not (yet, cf.
     # https://github.com/prettier/prettier/issues/15206) have an official
     # docker image.
     # https://hub.docker.com/r/jauderho/prettier is good candidate (cf. https://hub.docker.com/search?q=prettier&sort=updated_at&order=desc)

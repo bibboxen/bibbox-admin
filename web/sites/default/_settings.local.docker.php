@@ -9,3 +9,6 @@ $databases['default']['default'] = array(
  'driver' => 'mysql',
  'prefix' => '',
 );
+
+// Replace the domain on a server.
+$settings['trusted_host_patterns'] = ['^bibbox-admin\.local\.itkdev\.dk$'];
