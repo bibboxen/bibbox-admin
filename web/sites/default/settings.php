@@ -9,6 +9,8 @@
 $databases = [];
 $config_directories = [];
 $settings['update_free_access'] = FALSE;
+// Use the Drupal 12 default: server-side form validation only.
+$settings['enable_html5_validation'] = FALSE;
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
 $settings['file_scan_ignore_directories'] = [
   'node_modules',
@@ -28,8 +30,13 @@ $settings['file_scan_ignore_directories'] = [
 // This is defined inside the read-only "config" directory, deployed via Git.
 $settings["config_sync_directory"] = '../config/sync';
 
-
 // Local settings. These come last so that they can override anything.
 if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
+}
+
+// Use the transaction isolation level that Drupal recommends.
+// The local settings define the connection, so set this after the include.
+if (isset($databases['default']['default'])) {
+  $databases['default']['default']['init_commands']['isolation_level'] ??= 'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED';
 }

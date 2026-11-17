@@ -1,4 +1,4 @@
 services:
   bibbox.proxy:
     class: Drupal\bibbox\Service\Proxy
-    arguments: ['@http_client']
+    arguments: ["@http_client"]

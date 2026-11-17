@@ -1,18 +1,13 @@
 <?php
-/**
-* @file
-* Contains Drupal\translation_field\Plugin\Field\FieldType\TranslationItem.
-*/
 
 namespace Drupal\translation_field\Plugin\Field\FieldType;
 
-use Drupal\Core\Field\Annotation\FieldType;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\TypedData\DataDefinition;
 use Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem;
 
 /**
- * Provides a field type of translation
+ * Provides a field type of translation.
  *
  * @FieldType(
  *   id = "translation",
@@ -23,39 +18,40 @@ use Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem;
  * )
  */
 class TranslationItem extends EntityReferenceItem {
+
   /**
    * {@inheritdoc}
    */
   public static function schema(FieldStorageDefinitionInterface $field_definition): array {
-    return array(
-      'columns' => array(
-        'key' => array(
+    return [
+      'columns' => [
+        'key' => [
           'type' => 'text',
           'size' => 'tiny',
           'not null' => TRUE,
-        ),
-        'value' => array(
+        ],
+        'value' => [
           'type' => 'text',
           'size' => 'tiny',
           'not null' => TRUE,
-        ),
-        'target_id' => array(
+        ],
+        'target_id' => [
           'description' => 'The ID of the node.',
           'type' => 'int',
           'unsigned' => TRUE,
           'not null' => FALSE,
-        ),
-      ),
-      'indexes' => array(
-        'target_id' => array('target_id'),
-      ),
-      'foreign keys' => array(
-        'target_id' => array(
+        ],
+      ],
+      'indexes' => [
+        'target_id' => ['target_id'],
+      ],
+      'foreign keys' => [
+        'target_id' => [
           'table' => 'node',
-          'columns' => array('target_id' => 'nid'),
-        ),
-      ),
-    );
+          'columns' => ['target_id' => 'nid'],
+        ],
+      ],
+    ];
   }
 
   /**
@@ -67,7 +63,6 @@ class TranslationItem extends EntityReferenceItem {
     $value3 = $this->get('target_id')->getValue();
     return empty($value1) && empty($value2) && empty($value3);
   }
-
 
   /**
    * Determines whether the item holds an unsaved entity.
@@ -118,4 +113,5 @@ class TranslationItem extends EntityReferenceItem {
 
     return $properties;
   }
+
 }

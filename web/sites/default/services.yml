@@ -24,6 +24,9 @@ parameters:
     # @default 2000000
     cookie_lifetime: 2000000
     #
+    # Set the SameSite cookie attribute: 'None', 'Lax', or 'Strict'.
+    cookie_samesite: Lax
+    #
     # Drupal automatically generates a unique session cookie name based on the
     # full domain name used to access the site. This mechanism is sufficient
     # for most use-cases, including multi-site deployments. However, if it is
@@ -83,7 +86,8 @@ parameters:
     # render array, hence varying every render array by these cache contexts.
     #
     # @default ['languages:language_interface', 'theme', 'user.permissions']
-    required_cache_contexts: ['languages:language_interface', 'theme', 'user.permissions']
+    required_cache_contexts:
+      ["languages:language_interface", "theme", "user.permissions"]
     # Renderer automatic placeholdering conditions:
     #
     # Drupal allows portions of the page to be automatically deferred when
@@ -108,7 +112,7 @@ parameters:
       # Disable by setting to [].
       #
       # @default ['session', 'user']
-      contexts: ['session', 'user']
+      contexts: ["session", "user"]
       # Tags with a high invalidation frequency.
       #
       # Disable by setting to [].
@@ -126,15 +130,13 @@ parameters:
   # Not recommended in production environments
   # @default false
   http.response.debug_cacheability_headers: false
-  factory.keyvalue:
-    {}
+  factory.keyvalue: {}
     # Default key/value storage service to use.
     # @default keyvalue.database
     # default: keyvalue.database
     # Collection-specific overrides.
     # state: keyvalue.database
-  factory.keyvalue.expirable:
-    {}
+  factory.keyvalue.expirable: {}
     # Default key/value expirable storage service to use.
     # @default keyvalue.database.expirable
     # default: keyvalue.database.expirable
@@ -154,10 +156,10 @@ parameters:
     - webcal
     - rtsp
 
-   # Configure Cross-Site HTTP requests (CORS).
-   # Read https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
-   # for more information about the topic in general.
-   # Note: By default the configuration is disabled.
+    # Configure Cross-Site HTTP requests (CORS).
+    # Read https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
+    # for more information about the topic in general.
+    # Note: By default the configuration is disabled.
   cors.config:
     enabled: false
     # Specify allowed headers, like 'x-allowed-header'.
@@ -165,7 +167,7 @@ parameters:
     # Specify allowed request methods, specify ['*'] to allow all possible ones.
     allowedMethods: []
     # Configure requests allowed from specific origins.
-    allowedOrigins: ['*']
+    allowedOrigins: ["*"]
     # Sets the Access-Control-Expose-Headers header.
     exposedHeaders: false
     # Sets the Access-Control-Max-Age header.
