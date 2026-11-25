@@ -1,13 +1,8 @@
 <?php
-/**
- * @file
- * Contains the restart ui action.
- */
 
 namespace Drupal\bibbox\Plugin\Action;
 
 use Drupal\Core\Action\ActionBase;
-use Drupal\Core\Annotation\Action;
 use Drupal\Core\Session\AccountInterface;
 
 /**
@@ -26,14 +21,14 @@ class RestartUI extends ActionBase {
    */
   public function execute($entity = NULL) {
     if (!is_null($entity)) {
-      \Drupal::service('bibbox.proxy')->restartUI($entity->id());
+      \Drupal::service('bibbox.proxy')->restartUi($entity->id());
     }
   }
 
   /**
    * {@inheritdoc}
    */
-  public function access($object, AccountInterface $account = NULL, $return_as_object = FALSE) {
+  public function access($object, ?AccountInterface $account = NULL, $return_as_object = FALSE) {
     $result = $object->access('update', $account, TRUE);
 
     return $return_as_object ? $result : $result->isAllowed();

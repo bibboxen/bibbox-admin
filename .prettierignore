@@ -1,0 +1,10 @@
+# Drupal exports these files. A new export removes all Prettier changes.
+config/sync/
+web/modules/custom/*/config/
+web/themes/custom/*/config/
+# Drupal scaffold files.
+web/sites/default/default.services.yml
+web/sites/development.services.yml
+# Third-party libraries.
+web/themes/custom/bibbox_theme/js/jquery.timepicker*.js
+web/themes/custom/bibbox_theme/css/jquery.timepicker*.css
