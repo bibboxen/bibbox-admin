@@ -21,6 +21,7 @@ module:
   path_alias: 0
   system: 0
   text: 0
+  text_with_summary: 0
   translation_field: 0
   update: 0
   user: 0

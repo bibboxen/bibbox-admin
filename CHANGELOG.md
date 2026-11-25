@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add `UPGRADED.md` with the upgrade procedure from Drupal 9 to Drupal 11.
+
+### Fixed
+
+- Enable the `text_with_summary` module in the configuration. Drupal 11.5 needs it for the `node.body` field.
+
 ## [3.0.0] - 2026-11-23
 
 ### Added
